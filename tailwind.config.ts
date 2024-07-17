@@ -24,6 +24,10 @@ const config: Config = {
       },
       lineHeight: {
         "badge-height": "var(--line-height-badge)" 
+      },
+
+      fontFamily: {
+        "main": "var(--font-inter)"
       }
     },
   },

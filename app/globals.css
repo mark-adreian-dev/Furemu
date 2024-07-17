@@ -16,3 +16,22 @@
     --darker-blue: #0F172A;
 
 }
+
+.swiper-pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.swiper-pagination > .bullet {
+    width: 0.875rem;
+    height: 0.875rem;
+    border-radius: 100%;
+    background-color: var(--dark-blue);
+}
+.swiper-pagination > .bullet:not(:last-child) {
+     margin-right: 0.5rem; /* 8px */
+}
+
+.swiper-pagination > .active-bullet {
+    background-color: var(--accent);
+}
