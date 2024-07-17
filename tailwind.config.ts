@@ -33,9 +33,8 @@ const config: Config = {
 
   daisyui: {
     themes: false,
-    darkTheme: "dark",
     styled: false, 
-  
+    themeRoot: ""
   }
 };
 export default config;
