@@ -28,7 +28,15 @@ const config: Config = {
 
       fontFamily: {
         "main": "var(--font-inter)"
+      },
+      
+      screens: {
+        'mobile': '23.4375rem',
+        'tablet': '48rem',
+        'desktop': '90rem',
+        'wide': '90.0625rem'
       }
+
     },
   },
   plugins: [
