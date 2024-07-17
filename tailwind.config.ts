@@ -30,5 +30,12 @@ const config: Config = {
   plugins: [
     require('daisyui')
   ],
+
+  daisyui: {
+    themes: false,
+    darkTheme: "dark",
+    styled: false, 
+  
+  }
 };
 export default config;

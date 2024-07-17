@@ -1,0 +1,37 @@
+{
+    "data": [
+        {
+            "itemIndex": 0,
+            "imagePathMobile": "/landing_page/mobile/demon_slayer.png",
+            "imagePathTablet": "/landing_page/tablet/demon_slayer.png",
+            "imagePathDeskktop": "/landing_page/desktop/demon_slayer.png",
+            "description" : {
+                "title": "Kimetsu no Yaiba",
+                "context": "Tanjiro sets out to become a demon slayer to avenge his family and cure his sister.A family is attacked by demons and only two members survive"
+            }
+        },
+        
+        {
+            "itemIndex": 1,
+            "imagePathMobile": "/landing_page/mobile/kaiju_no_8.png",
+            "imagePathTablet": "/landing_page/tablet/kaiju_no_8.png",
+            "imagePathDeskktop": "/landing_page/desktop/kaiju_no_8.png",
+            "description" : {
+                "title": "Kaiju No.8",
+                "context": "Kafka Hibino, a man who, after ingesting a kaiju, gains the ability to turn into one and now must navigate using his power while trying to become part of an organization that eliminates kaiju"
+            }
+        },
+
+        {
+            "itemIndex": 2,
+            "imagePathMobile": "/landing_page/mobile/frieren.png",
+            "imagePathTablet": "/landing_page/tablet/frieren.png",
+            "imagePathDeskktop": "/landing_page/desktop/frieren.png",
+            "description" : {
+                "title": "Frieren: Beyond Journey's End",
+                "context": "Frieren, an elf mage who had once embarked on perilous adventures with her comrades to vanquish evil. The story takes place decades after their victory."
+            }
+        },
+
+    ]
+}
