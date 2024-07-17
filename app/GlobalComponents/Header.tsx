@@ -30,7 +30,6 @@ const Header = () => {
       <h1 className='leading-7 text-nav-logo-text text-white font-black'>Heroku</h1>
       <nav className='hidden tablet:block bg-dark-blue px-1 py-[0.375rem] rounded-xl' style={{background: 'rgba(15, 23, 42, 0.2)'}}>
         <ul className='flex'>
-          
           {
             menu.map(item =>  
             <li key={item.menuTitle}>
@@ -40,11 +39,6 @@ const Header = () => {
             </li>
             )
           }
-         
-         
-     
-          
-          
         </ul>
       </nav>
       <IconButton iconPath='/icons/hamburger_menu.svg' className='tablet:hidden'/>
