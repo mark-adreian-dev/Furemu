@@ -8,7 +8,23 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      
+      colors: {
+
+        "accent": "var(--accent)",
+        "white": "var(--white)",
+        "light-blue": "var(--light-blue)",
+        "dark-blue": "var(--dark-blue)",
+        "darker-blue": "var(--darker-blue)"
+
+      },
+      fontSize: {
+        "nav-logo-text": "var(--nav-logo-text)",
+        "card-title-desktop": "var(--card-title-desktop)",
+        "hero-title-mobile": "var(--hero-title-mobile)"
+      },
+      lineHeight: {
+        "badge-height": "var(--line-height-badge)" 
+      }
     },
   },
   plugins: [

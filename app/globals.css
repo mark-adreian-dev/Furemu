@@ -3,5 +3,16 @@
 @tailwind utilities;
 
 :root {
-  
+
+    --nav-logo-text: 1.25rem;
+    --card-title-desktop: 1.5rem;
+    --line-height-badge: 1.25rem;
+    --hero-title-mobile: 4rem;
+
+    --accent: #A7F3D0;
+    --white: #FFFFFF;
+    --light-blue:#94A3B8;
+    --dark-blue: #1E293B;
+    --darker-blue: #0F172A;
+
 }
