@@ -1,4 +1,3 @@
-import React from 'react'
 import Link from 'next/link'
 import IconButton from './IconButton'
 
@@ -41,8 +40,8 @@ const Header = () => {
           }
         </ul>
       </nav>
-      <IconButton iconPath='/icons/hamburger_menu.svg' className='tablet:hidden'/>
-      <IconButton iconPath='/icons/search_icon.svg' className='hidden desktop:block'/>
+      <IconButton iconPath='/icons/hamburger_menu.svg' className='w-12 h-12 p-[0.875rem] tablet:hidden'/>
+      <IconButton iconPath='/icons/search_icon.svg' className='w-12 h-12 p-[0.875rem] hidden desktop:block'/>
     </header>
   )
 }

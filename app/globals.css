@@ -20,6 +20,7 @@
 .swiper-pagination{
     display: flex;
     justify-content: center;
+    padding-bottom: 1.5rem;
 }
 
 .swiper-pagination > .bullet {
@@ -49,4 +50,8 @@
     .swiper-pagination{
         padding-right: 4rem;
     }
+}
+
+.swiper-slide{
+    width: auto;
 }
