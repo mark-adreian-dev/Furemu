@@ -6,9 +6,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Autoplay } from 'swiper/modules';
 
 import data from '../data.json'
-// Import Swiper styles
-import 'swiper/css';
-import 'swiper/css/pagination';
+
 
 const heroSectionData = data.data
 
@@ -33,8 +31,8 @@ export default function Home() {
           <h1 className='text-white font-black text-hero-title-mobile'>Heroku</h1>
           <p className='font-main font-medium leading-4 text-white text-xs w-[10.8125rem] text-center'>Immerse yourself with the latest and best animes here with us!</p>
         </div>
-        <div className='absolute bottom-8 swiper-pagination h-fit z-100 tablet:!right-8 tablet:w-fit desktop:!right-16'></div>
-    
+      
+        
         <Swiper
           modules={[Pagination, Autoplay]}
           autoplay={{
@@ -50,14 +48,14 @@ export default function Home() {
             bulletActiveClass: "active-bullet",
             
           }}
+
           loop={true}
           slidesPerView={1}
           onSlideChange={(slide) => {setActiveSlide(slide.realIndex)}}
 
           onSwiper={(swiper) => swiperRef.current = swiper}
           initialSlide={0}
-        >
-       
+        >     
             {
               heroSectionData.map(slide => 
                 <SwiperSlide key={slide.itemIndex} >
@@ -70,9 +68,7 @@ export default function Home() {
                     }}></div>
                   </div>   
                 </SwiperSlide>)
-            }
-
-            
+            }  
           {
             heroSectionData.map(slide => activeSlide === slide.itemIndex && 
               <div key={slide.itemIndex} className='context absolute z-40 left-8 bottom-8 mobile:hidden tablet:block desktop:left-16'>
@@ -83,7 +79,7 @@ export default function Home() {
             )
           }
         </Swiper>
-
+        <div className='swiper-pagination'></div>
       </div>
     </>
   );

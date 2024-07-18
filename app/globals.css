@@ -17,12 +17,13 @@
 
 }
 
-.swiper-pagination {
+.swiper-pagination{
     display: flex;
     justify-content: center;
-    align-items: center;
 }
+
 .swiper-pagination > .bullet {
+    display: block;
     width: 0.875rem;
     height: 0.875rem;
     border-radius: 100%;
@@ -34,4 +35,18 @@
 
 .swiper-pagination > .active-bullet {
     background-color: var(--accent);
+}
+
+
+@media (min-width: 768px) {
+    .swiper-pagination{
+        padding-right: 2rem;
+        justify-content: end;
+    }
+}
+
+@media (min-width: 1440px) {
+    .swiper-pagination{
+        padding-right: 4rem;
+    }
 }
