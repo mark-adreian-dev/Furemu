@@ -38,6 +38,15 @@
     background-color: var(--accent);
 }
 
+.swiper-slide{
+    width: auto;
+}
+
+.featured-image {
+    background: url("/landing_page/featured/featured_desktop.png") no-repeat;
+    background-size: cover;
+    background-position: center;
+}
 
 @media (min-width: 768px) {
     .swiper-pagination{
@@ -52,6 +61,3 @@
     }
 }
 
-.swiper-slide{
-    width: auto;
-}

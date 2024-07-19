@@ -8,10 +8,11 @@ interface Props {
   endpoint: string
   nextEl: string,
   prevEl: string,
-  title: string
+  title: string,
+  type: string
 }
 
-const CardList:React.FC<Props> = async ({ endpoint, prevEl, nextEl, title}) => {
+const CardList:React.FC<Props> = async ({ endpoint, prevEl, nextEl, title, type}) => {
   const response = await fetch(endpoint, {method: 'GET'})
   const result = await response.json()
   const animes = result.data
@@ -29,10 +30,9 @@ const CardList:React.FC<Props> = async ({ endpoint, prevEl, nextEl, title}) => {
                 imageUrl={anime.images.jpg.image_url}
                 animeTitleEnglish={!anime.title_english ? anime.title : anime.title_english}
                 animeTitleJapanese={anime.title_japanese}
-                animeType={anime.type != "TV" ? "TV" : anime.type}
+                animeType={type== "manga" ? anime.type : String(anime.type).toLowerCase() == "tv special" ? "TV" : anime.type}
                 animeStatus={anime.status}
                 animeRating={anime.rating}
-                animeYear={anime.aired.prop.from.year}
               />
             )
           }

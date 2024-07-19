@@ -1,5 +1,7 @@
+
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import SmoothScroll from "./Components/SmoothScroll";
 
 import 'swiper/css';
 import 'swiper/css/pagination';
@@ -24,12 +26,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`bg-darker-blue ${inter.variable}`}>
-        <main>
-          {children}
-        </main>
-      </body>
+    <SmoothScroll >
+    <html lang="en" className="scrollbar-thin scrollbar-corner-accent scrollbar-thumb-rounded-full scrollbar-thumb-accent scrollbar-track-darker-blue">
+        <body className={`bg-darker-blue ${inter.variable} `}>
+         
+            <main  className="">
+              {children}
+            </main>
+      
+        </body>
     </html>
+    </SmoothScroll>
   );
 }
+//

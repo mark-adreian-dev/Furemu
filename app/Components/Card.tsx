@@ -7,10 +7,9 @@ interface Props {
   animeType: string, 
   animeStatus: string, 
   animeRating: string, 
-  animeYear: number
 }
 
-const Card:React.FC<Props> = async ({ imageUrl, animeTitleEnglish, animeTitleJapanese, animeType, animeStatus, animeRating, animeYear}) => {
+const Card:React.FC<Props> = async ({ imageUrl, animeTitleEnglish, animeTitleJapanese, animeType, animeStatus, animeRating }) => {
 
   return (
 
@@ -36,7 +35,7 @@ const Card:React.FC<Props> = async ({ imageUrl, animeTitleEnglish, animeTitleJap
             </div>
             <div className="flex justify-between tablet:mb-3">
               <p className="text-light-blue italic text-[0.3555rem] tablet:text-xs">{animeRating}</p>
-              <p className="text-light-blue italic text-[0.3555rem] tablet:text-xs">{animeYear}</p>
+            
             </div>
           </div>
       </div>

@@ -21,6 +21,7 @@ const CardCarousel:React.FC<Props> = ({ children, nextEl, prevEl }) => {
         nextEl: "." + nextEl,
         prevEl: "." + prevEl
     }}
+    slidesPerGroup={3}
     onSlideChange={() => {}}
     slidesPerView='auto'
     onSwiper={(swiper) => animeRef.current = swiper}
