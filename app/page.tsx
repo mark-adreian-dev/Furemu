@@ -2,6 +2,7 @@ import Header from './Components/Header'
 import Banner from './Components/Banner'
 import CardList from './Components/CardList'
 import FeaturedAnime from './Components/FeaturedAnime';
+import Footer from './Components/Footer';
 
 
 export default function Home() {
@@ -15,6 +16,7 @@ export default function Home() {
       <FeaturedAnime />
       
       <CardList endpoint='https://api.jikan.moe/v4/top/manga' prevEl="prev-top-manga" nextEl="next-top-manga" title="Top Manga" type='manga'/>
+      <Footer />
     </>
   );
 }

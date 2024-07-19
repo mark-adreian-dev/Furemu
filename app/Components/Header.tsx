@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import IconButton from './IconButton'
 
-const menu = [
+export const menu = [
   {
     menuTitle: "Home",
     destination: "/"
@@ -18,7 +18,29 @@ const menu = [
   },
 
   {
-    menuTitle: "manga",
+    menuTitle: "Manga",
+    destination: "/"
+  },
+]
+
+export const socials = [
+  {
+    menuTitle: "Linked In",
+    destination: "/"
+  },
+
+  {
+    menuTitle: "Facebook",
+    destination: "/"
+  },
+
+  {
+    menuTitle: "Instagram",
+    destination: "/"
+  },
+
+  {
+    menuTitle: "Github",
     destination: "/"
   },
 ]
