@@ -48,8 +48,8 @@ const Footer = () => {
                 </div>
             </div>
         </div>
-        <div className="disclaimer bg-accent px-6 py-2">
-            <p className="text-darker-blue font-semibold text-xs text-center tablet:text-sm tablet:px-16">Disclaimer: This site does not store any files on its server. All contents are provided by non-affiliated third parties.</p>
+        <div className="disclaimer bg-darker-blue px-6 py-2">
+            <p className="text-accent font-semibold text-xs text-center tablet:text-sm tablet:px-16">Disclaimer: This site does not store any files on its server. All contents are provided by non-affiliated third parties.</p>
         </div>
     </footer>
     

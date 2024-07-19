@@ -1,5 +1,4 @@
-const url = "https://api.jikan.moe/v4/anime/52991/full"
-
+import Image from "next/image"
 interface Props {
   imageUrl: string, 
   animeTitleEnglish : string, 
@@ -14,12 +13,9 @@ const Card:React.FC<Props> = async ({ imageUrl, animeTitleEnglish, animeTitleJap
   return (
 
       <div className="carousel-item card relative w-[6.63563rem] tablet:w-56">
-        <div className="image w-full h-[9.39063rem] rounded-[0.47rem] mb-[0.47rem] tablet:h-[19.8125rem]" style={{
-            backgroundImage: `url("${imageUrl}")`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            backgroundRepeat: 'no-repeat'
-          }}></div>
+        <div className="relative image w-full h-[9.39063rem] rounded-[0.47rem] mb-[0.47rem] tablet:h-[19.8125rem] overflow-hidden">
+          <Image src={imageUrl} alt="anime-poster" fill className="object-cover" sizes="100%"/>
+        </div>
           <div className="anime-content">
             <h3 className="text-white text-[12px] leading-[12px] font-semibold mb-[0.3555rem] tablet:mb-3 tablet:text-lg tablet:!leading-5">{animeTitleEnglish}</h3>
             <h4 className="text-white text-[8px] leading-[8px] font-normal mb-[0.3555rem] tablet:text-xs tablet:mb-3">{animeTitleJapanese}</h4>

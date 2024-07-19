@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Autoplay } from 'swiper/modules';
+import Image from 'next/image';
 
 import data from '../../data.json'
 
@@ -22,7 +23,6 @@ const Banner = () => {
         setScreenSize(window.innerWidth < 768 ? "mobile" : window.innerWidth < 1440 ? "tablet" : "desktop")
         })
     },[])
-
 
     return (
         <>
@@ -59,12 +59,16 @@ const Banner = () => {
                 heroSectionData.map(slide => 
                     <SwiperSlide key={slide.itemIndex} >
                     <div className='relative w-screen h-[26.5625rem] tablet:h-[43.8125rem]'>
-                        <div className='absolute z-0 w-full h-full' style={{
-                        backgroundImage: screenSize === "mobile" ? `url(${slide.imagePathMobile})` : screenSize === "tablet" ? `url(${slide.imagePathTablet})` :  `url(${slide.imagePathDesktop})`,
-                        backgroundSize: 'cover',
-                        backgroundRepeat: 'no-repeat',
-                        backgroundPosition: 'bottom'
-                        }}></div>
+                        <div className='absolute z-0 w-full h-full '>
+                            <Image 
+                                src={screenSize === "mobile" ? slide.imagePathMobile : screenSize === "tablet" ? slide.imagePathTablet : slide.imagePathDesktop} 
+                                alt="banner-image" 
+                                fill
+                                quality={100}
+                                className='object-cover object-bottom'
+                                priority={true}
+                            />
+                        </div>
                     </div>   
                     </SwiperSlide>)
                 }  

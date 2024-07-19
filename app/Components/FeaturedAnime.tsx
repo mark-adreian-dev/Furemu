@@ -1,6 +1,7 @@
 'use client'
+import Image from "next/image"
+import { useState, useEffect } from "react"
 
-import { useEffect } from "react"
 interface ImagePath {
     "mobile": string
     "tablet": string
@@ -12,13 +13,27 @@ const featuredImage: ImagePath = {
     "tablet": '/landing_page/featured/featured_tablet.png',
     "desktop": '/landing_page/featured/featured_desktop.png'
 }
+
+
+
 const FeaturedAnime = () => {
+    const [screenSize, setScreenSize] = useState<string>("desktop")
+   
+   
+    useEffect(() => {
+        setScreenSize(window.innerWidth < 768 ? "mobile" : window.innerWidth < 1440 ? "tablet" : "desktop")
+        
+        window.addEventListener('resize', () => {
+            setScreenSize(window.innerWidth < 768 ? "mobile" : window.innerWidth < 1440 ? "tablet" : "desktop")
+        })
+    },[])
 
- 
-
+    
     return (
         <div className='featured px-6 pb-16 relative tablet:px-8 desktop:px-16'>
-            <div className={`relative featured-image w-full h-[25.96875rem] rounded-3xl tablet:h-[42.25rem] desktop:h-[42.1875rem]`}>
+            <div className={`overflow-hidden relative featured-image w-full h-[25.96875rem] rounded-3xl tablet:h-[42.25rem] desktop:h-[42.1875rem]`}>
+                <Image src={featuredImage[screenSize as keyof typeof featuredImage]} alt="featured-image" fill className="object-cover" priority={true} quality={100}/>
+
                 <div className='absolute left-6 bottom-6 z-100 context tablet:left-16 tablet:bottom-16'>
                     <h1 className='text-accent text-2xl font-bold w-48 leading-6 mb-4 tablet:text-6xl tablet:w-[29.625rem]'>Frieren: Beyond Journey’s End</h1>
                     <p className='text-white text-xs w-64 leading-4 font-normal mb-4 tablet tablet:text-base tablet:leading-6 tablet:w-[26.8125rem]'>Frieren, after she and her companions defeat the Demon King and go back to their regular lives. Except Frieren is near-immortal, and the rest of the party is human.</p>
@@ -38,7 +53,7 @@ const FeaturedAnime = () => {
                     <p className='text-sm text-dark-blue font-semibold'>See More</p>
                 </button>
             </div>
-            </div>
+        </div>
     )
 }
 
