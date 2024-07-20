@@ -19,7 +19,6 @@ const featuredImage: ImagePath = {
 const FeaturedAnime = () => {
     const [screenSize, setScreenSize] = useState<string>("desktop")
    
-   
     useEffect(() => {
         setScreenSize(window.innerWidth < 768 ? "mobile" : window.innerWidth < 1440 ? "tablet" : "desktop")
         

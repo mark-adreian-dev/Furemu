@@ -1,6 +1,7 @@
 
 import TitleControl from './TitleControl'
 import CardCarousel from './CardCarousel'
+import Link from 'next/link'
 
 import Card from './Card'
 
@@ -24,16 +25,18 @@ const CardList:React.FC<Props> = async ({ endpoint, prevEl, nextEl, title, type}
         <CardCarousel nextEl={nextEl} prevEl={prevEl} >
           {
             animes.map((anime:any) => 
-              
-              <Card 
+              <Link href={type + "/" + anime.mal_id}>
+                <Card 
                 key={anime.mal_id}
-                imageUrl={anime.images.jpg.image_url}
+                imageUrl={anime.images.jpg.large_image_url}
                 animeTitleEnglish={!anime.title_english ? anime.title : anime.title_english}
                 animeTitleJapanese={anime.title_japanese}
                 animeType={type== "manga" ? anime.type : String(anime.type).toLowerCase() == "tv special" ? "TV" : anime.type}
                 animeStatus={anime.status}
                 animeRating={anime.rating}
               />
+              </Link>
+              
             )
           }
           

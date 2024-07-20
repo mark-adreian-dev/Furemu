@@ -1,13 +1,14 @@
 
+import { useSearchParams } from "next/navigation"
 import Header from './Components/Header'
 import Banner from './Components/Banner'
-import CardList from './Components/CardList'
+import CardList from './Components/CardCarousel/CardList'
 import FeaturedAnime from './Components/FeaturedAnime';
 import Footer from './Components/Footer';
 
 
 export default function Home () {
-  
+
   return (
     <>
       <Header />

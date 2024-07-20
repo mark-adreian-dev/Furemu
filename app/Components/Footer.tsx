@@ -4,7 +4,7 @@ import { menu, socials } from '../Components/Header'
 const Footer = () => {
   return (
     <footer>
-        <div className="w-full bg-dark-blue py-16 tablet:flex tablet:justify-between tablet:items-center tablet:px-16">
+        <div className="w-full bg-dark-blue py-16 tablet:flex tablet:justify-between tablet:items-center tablet:px-16 desktop:mt-16">
             <div className="footer-title mb-16 tablet:mb-0">
                 <h1 className="text-center text-white font-black text-7xl mb-1 tablet:text-8xl desktop:text-9xl tablet:mb-4">Heroku</h1>
                 <p className="text-center text-accent italic leading-5 text-xs tablet:text-sm tablet:text-start">Copyright © 2024 - All right reserved.</p>
