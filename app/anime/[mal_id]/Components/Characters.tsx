@@ -43,7 +43,7 @@ const Characters = async ({ id }: { id: number}) => {
 
             {
                 castData.map((item: Item) =>
-                <div className="w-[calc((100vw-4.5rem)/4)] h-[calc((100vw-4.5rem)/4)] relative rounded-xl overflow-hidden">
+                <div key={item.character.mal_id} className="w-[calc((100vw-4.5rem)/4)] h-[calc((100vw-4.5rem)/4)] relative rounded-xl overflow-hidden">
                     <Image src={item.character.images.jpg.image_url} alt={`${item.character.name}-image`} draggable={false} fill sizes="100%" className="object-cover" priority={true} quality={100}/>
                 </div>)
             }
