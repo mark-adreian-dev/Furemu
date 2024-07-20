@@ -13,7 +13,7 @@ interface Props {
 
 const BasicInfo:React.FC<Props> = ({ data, basicInfo }) => {
   return (
-    <div className="anime-basic-info flex flex-col items-center mb-16">
+    <div className="anime-basic-info flex flex-col items-start mb-16">
           {
             Object.entries(basicInfo).map(
               (key) => 
@@ -35,7 +35,7 @@ const BasicInfo:React.FC<Props> = ({ data, basicInfo }) => {
                   : 
                     <div key={String(key).split(",")[0]} className="info-item flex mb-2">
                       <p className="text-white text-sm leading-6 font-bold mr-4">{ String(key).split(",")[0]}:</p>
-                      <p className="text-white text-sm leading-6 font-normal">{ String(key).split(",")[1]}</p>
+                      <p className="text-accent text-sm leading-6 font-normal">{ String(key).split(",")[1]}</p>
                     </div>
             )
           }

@@ -2,28 +2,28 @@ import Image from "next/image"
 
 interface ImageUrl{
     image_url: string
-  }
-  
-  interface Webp {
-    image_url: string,
-    small_image_url: string
-  }
-  interface Images {
-    jpg: ImageUrl,
-    webp: Webp
-  }
-  interface Character {
-    mal_id: number,
-    url: string,
-    images: Images,
-    name: string
-  }
-  
-  interface Item {
-    character: Character,
-    role: string,
-    favorites: number
-  }
+}
+
+interface Webp {
+  image_url: string,
+  small_image_url: string
+}
+interface Images {
+  jpg: ImageUrl,
+  webp: Webp
+}
+interface Character {
+  mal_id: number,
+  url: string,
+  images: Images,
+  name: string
+}
+
+interface Item {
+  character: Character,
+  role: string,
+  favorites: number
+}
   
 
 const Characters = async ({ id }: { id: number}) => {
@@ -37,9 +37,9 @@ const Characters = async ({ id }: { id: number}) => {
 
   
     return (
-        <div className="characters text-center">
+        <div className="characters text-start mb-16">
             <p className=" text-white text-sm leading-6 font-bold mb-8">Characters:</p>
-            <div className="images grid grid-cols-4 gap-2 w-full h-fit">
+            <div className="images grid grid-cols-4 gap-2 w-full h-fit relative">
 
             {
                 castData.map((item: Item) =>
