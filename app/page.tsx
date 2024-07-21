@@ -4,11 +4,6 @@ import Banner from './HomepageComponents/Banner'
 import CardList from './HomepageComponents/CardCarousel/CardList'
 import FeaturedAnime from './HomepageComponents/FeaturedAnime';
 
-export enum Breakpoints {
-  MOBILE = 375,
-  TABLET = 768,
-  DESKTOP = 1440
-}
 
 export default function Home () {
  

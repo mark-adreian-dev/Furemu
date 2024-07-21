@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from "react"
-import { Breakpoints } from '../page';
+import { Breakpoints } from '../Types/Enums';
 import Image from "next/image"
 import data from '../../FeaturedAnime.json'
 

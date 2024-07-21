@@ -3,7 +3,7 @@
 import { useState, useRef, useEffect } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Autoplay } from 'swiper/modules';
-import { Breakpoints } from '../page';
+import { Breakpoints } from '../Types/Enums';
 import Image from 'next/image';
 import Link from 'next/link';
 
