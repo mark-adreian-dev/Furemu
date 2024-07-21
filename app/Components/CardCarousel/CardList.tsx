@@ -31,7 +31,7 @@ const CardList:React.FC<Props> = async ({ endpoint, prevEl, nextEl, title, type}
         <CardCarousel nextEl={nextEl} prevEl={prevEl} >
           {
             data.map((anime:any) => 
-              <Link href={type + "/" + anime.mal_id}>
+              <Link key={anime.mal_id} href={type + "/" + anime.mal_id}>
                 <Card 
                 imageUrl={anime.images.jpg.large_image_url}
                 animeTitleEnglish={!anime.title_english ? anime.title : anime.title_english}

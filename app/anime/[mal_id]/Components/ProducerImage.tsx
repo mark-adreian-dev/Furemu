@@ -3,7 +3,8 @@ import Image from "next/image"
 const ProducerImage = async ({ prodId}: {prodId: number}) => {
     const prodResponse = await fetch(`https://api.jikan.moe/v4/producers/${prodId}`)
     const prodResult = await prodResponse.json()
-    const prodData = await prodResult.data
+    const prodData = prodResult.data
+
 
     return (
         <div>
@@ -11,7 +12,7 @@ const ProducerImage = async ({ prodId}: {prodId: number}) => {
                 <Image src={prodData.images.jpg.image_url} alt={`${prodData.titles[0].title}-image`} fill draggable={false}  sizes="100%" className="object-cover" priority={true} quality={100}/>
             </div>
             <h3 className="text-white text-sm font-semibold leading-[0.875rem] mb-[0.23669rem]">{prodData.titles[0].title}</h3>
-            <p className="text-xs text-light-blue">{prodData.titles[1].title}</p>
+            <p className="text-xs text-light-blue">{!prodData.titles[1] ? prodData.titles[0].title : prodData.titles[1].title}</p>
         </div>
         
        
