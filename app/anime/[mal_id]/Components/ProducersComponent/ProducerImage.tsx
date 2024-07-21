@@ -7,7 +7,6 @@ const GetProducerData = async (prodId: number): Promise<Producer> => {
     return prodResult
 }
 const ProducerImage = async ({ prodId}: {prodId: number}) => {
-   
     const prod: Producer = await GetProducerData(prodId)
     const prodData: ProducerData = prod.data
 
