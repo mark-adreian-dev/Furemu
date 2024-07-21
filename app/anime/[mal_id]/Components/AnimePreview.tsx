@@ -2,7 +2,7 @@ import BasicInfo from "./BasicInfo"
 import Theme from "./Theme"
 import Characters from "./Characters"
 import Producers from "./Producers"
-import { Anime, AnimeData } from "@/app/Types/Anime"
+import { Anime } from "@/app/Types/Anime"
 import PreviewImage from "./PreviewImage"
 import Synopsis from "./Synopsis"
 
@@ -17,22 +17,22 @@ const GetAnimeData = async ( endPoint: string ): Promise<Anime> => {
 }
 
 const AnimePreview:React.FC<Props> = async ({ endPoint }) => {
-  const data: AnimeData = (await GetAnimeData(endPoint)).data
+  const animeData: Anime = await GetAnimeData(endPoint)
  
 
 
   return (
     <div className="main-content px-6 mt-24 pt-8 flex flex-col items-center tablet:pt-16 tablet:px-16">
-      <PreviewImage data={data}/>
+      <PreviewImage data={animeData.data}/>
       <div className="relative w-full tablet:w-full">
-        <h1 className="text-accent text-center text-3xl font-bold mb-32 tablet:mb-16 tablet:text-6xl  tablet:mx-auto">{!data.title_english ? data.title : data.title_english}</h1>
-        <BasicInfo data={data}/>
-        <Theme data={data.theme.openings} type="Openings"/>
-        <Theme data={data.theme.endings} type="Endings"/>
-        <Synopsis synopsis={data.synopsis} />
+        <h1 className="text-accent text-center text-3xl font-bold mb-32 tablet:mb-16 tablet:text-6xl  tablet:mx-auto">{!animeData.data.title_english ? animeData.data.title : animeData.data.title_english}</h1>
+        <BasicInfo data={animeData.data}/>
+        <Theme data={animeData.data.theme.openings} type="Openings"/>
+        <Theme data={animeData.data.theme.endings} type="Endings"/>
+        <Synopsis synopsis={animeData.data.synopsis} />
       </div>
-      <Characters id={data.mal_id}/>
-      <Producers animeProducers={data.producers} />
+      <Characters id={animeData.data.mal_id}/>
+      <Producers animeProducers={animeData.data.producers} />
     </div>
   )
 }

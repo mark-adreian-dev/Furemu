@@ -29,10 +29,10 @@ const GetAnimeData = async (endpoint: string, params: Params): Promise<TopAnime>
 }
 
 const CardList:React.FC<Props> = async ({ endpoint, prevEl, nextEl, title, type}) => {
-  const page1: TopAnimeData[] = (await GetAnimeData(endpoint, {page: 1})).data
-  const page2: TopAnimeData[] = (await GetAnimeData(endpoint, {page: 2})).data
+  const page1: TopAnime = await GetAnimeData(endpoint, {page: 1})
+  const page2: TopAnime = await GetAnimeData(endpoint, {page: 2})
 
-  const data: TopAnimeData[] = [...page1, ...page2]
+  const data: TopAnimeData[] = [...page1.data, ...page2.data]
 
   return (
     <div className='featured-section py-8 px-6 tablet:px-8 tablet:py-16 desktop:px-16'>
