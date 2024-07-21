@@ -1,0 +1,63 @@
+import TitleControl from './TitleControl'
+import CardCarousel from './CardCarousel'
+import Link from 'next/link'
+import { TopAnimeData, TopAnime } from '@/app/Types/TopAnime'
+
+import Card from './Card'
+
+interface Props {
+  
+  endpoint: string
+  nextEl: string,
+  prevEl: string,
+  title: string,
+  type: string
+
+}
+
+interface Params {
+  page: number
+}
+
+const GetAnimeData = async (endpoint: string, params: Params): Promise<TopAnime> => {
+
+  const url = `${endpoint}?page=${params.page}`
+  const response = await fetch(url, {method: 'GET'})
+  const result : TopAnime = await response.json()
+  return result
+  
+}
+
+const CardList:React.FC<Props> = async ({ endpoint, prevEl, nextEl, title, type}) => {
+  const page1: TopAnimeData[] = (await GetAnimeData(endpoint, {page: 1})).data
+  const page2: TopAnimeData[] = (await GetAnimeData(endpoint, {page: 2})).data
+
+  const data: TopAnimeData[] = [...page1, ...page2]
+
+  return (
+    <div className='featured-section py-8 px-6 tablet:px-8 tablet:py-16 desktop:px-16'>
+        <TitleControl title={title} nextEl={nextEl} prevEl={prevEl}/>
+        <CardCarousel nextEl={nextEl} prevEl={prevEl} >
+          {
+            data.map((anime: TopAnimeData) => 
+              <Link key={anime.mal_id} href={type + "/" + anime.mal_id}>
+                <Card 
+                  imageUrl={anime.images.jpg.large_image_url}
+                  animeTitleEnglish={!anime.title_english ? anime.title : anime.title_english}
+                  animeTitleJapanese={anime.title_japanese}
+                  animeType={type == "manga" ? anime.type : String(anime.type).toLowerCase() == "tv special" ? "TV" : anime.type}
+                  animeStatus={anime.status}
+                  animeRating={anime.rating}
+               />
+              </Link>
+              
+            )
+          }
+          
+        </CardCarousel>
+       
+    </div>
+  )
+}
+
+export default CardList

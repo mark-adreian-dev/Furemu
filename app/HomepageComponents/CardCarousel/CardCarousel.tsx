@@ -27,7 +27,7 @@ const CardCarousel:React.FC<Props> = ({ children, nextEl, prevEl }) => {
         initialSlide={0}
     >     
         {
-           children.map(child => 
+            children.map(child => 
                 <SwiperSlide key={children.indexOf(child)} className='mr-2'>
                     {child}
                 </SwiperSlide>

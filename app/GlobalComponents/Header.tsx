@@ -1,7 +1,10 @@
 import Link from 'next/link'
 import IconButton from './IconButton'
+import { MenuItem } from '../Types/MenuItem'
 
-export const menu = [
+
+
+export const menu: MenuItem[] = [
   {
     menuTitle: "Home",
     destination: "/"
@@ -23,7 +26,7 @@ export const menu = [
   },
 ]
 
-export const socials = [
+export const socials: MenuItem[]  = [
   {
     menuTitle: "Linked In",
     destination: "/"

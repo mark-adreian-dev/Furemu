@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { menu, socials } from '../Components/Header'
+import { menu, socials } from './Header'
 
 const Footer = () => {
   return (
@@ -24,8 +24,7 @@ const Footer = () => {
                                         </li>
                                     )
                                 }
-                            </ul>
-                        
+                            </ul>    
                         </nav>
                     </div>
                             

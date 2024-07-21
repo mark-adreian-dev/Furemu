@@ -7,7 +7,7 @@ interface Props {
     children: JSX.Element
 }
 
-const SmoothScroll:React.FC<Props> = ({children}) => {
+const SmoothScroll:React.FC<Props> = ({ children }) => {
   return (
     <ReactLenis root>
         {children}

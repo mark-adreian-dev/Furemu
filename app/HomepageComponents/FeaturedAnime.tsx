@@ -1,6 +1,9 @@
 'use client'
-import Image from "next/image"
+
 import { useState, useEffect } from "react"
+import { Breakpoints } from '../page';
+import Image from "next/image"
+import data from '../../FeaturedAnime.json'
 
 interface ImagePath {
     "mobile": string
@@ -8,30 +11,28 @@ interface ImagePath {
     "desktop": string
 }
 
-const featuredImage: ImagePath = {
-    "mobile": '/landing_page/featured/featured_mobile.png',
-    "tablet": '/landing_page/featured/featured_tablet.png',
-    "desktop": '/landing_page/featured/featured_desktop.png'
-}
-
-
+const featuredImage: ImagePath = data.data[0]
 
 const FeaturedAnime = () => {
     const [screenSize, setScreenSize] = useState<string>("desktop")
-   
-    useEffect(() => {
-        setScreenSize(window.innerWidth < 768 ? "mobile" : window.innerWidth < 1440 ? "tablet" : "desktop")
-        
-        window.addEventListener('resize', () => {
-            setScreenSize(window.innerWidth < 768 ? "mobile" : window.innerWidth < 1440 ? "tablet" : "desktop")
-        })
-    },[])
 
+    const updateScreenSize = () => {
+      if (window.innerWidth >= Breakpoints.DESKTOP) setScreenSize("desktop")
+      else if (window.innerWidth >= Breakpoints.TABLET)  setScreenSize("tablet")
+      else setScreenSize("mobile") 
+    }
+  
+    useEffect(() => {
+      
+        updateScreenSize()
+        window.addEventListener('resize', () => updateScreenSize())
+  
+    },[])
     
     return (
         <div className='featured px-6 pb-16 relative tablet:px-8 desktop:px-16'>
             <div className={`overflow-hidden relative featured-image w-full h-[25.96875rem] rounded-3xl tablet:h-[42.25rem] desktop:h-[42.1875rem]`}>
-                <Image src={featuredImage[screenSize as keyof typeof featuredImage]} alt="featured-image" fill className="object-cover" priority={true} quality={100}/>
+                <Image src={featuredImage[screenSize as keyof typeof featuredImage]} alt="featured-image" fill className="object-cover" priority={true} quality={100} />
 
                 <div className='absolute left-6 bottom-6 z-100 context tablet:left-16 tablet:bottom-16'>
                     <h1 className='text-accent text-2xl font-bold w-48 leading-6 mb-4 tablet:text-6xl tablet:w-[29.625rem]'>Frieren: Beyond Journey’s End</h1>

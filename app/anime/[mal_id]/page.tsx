@@ -1,7 +1,7 @@
 
 import React from 'react'
-import Header from '../../Components/Header'
-import Footer from '../../Components/Footer'
+import Header from '../../GlobalComponents/Header'
+import Footer from '../../GlobalComponents/Footer'
 import AnimePreview from './Components/AnimePreview'
 
 const page = ({ params }: {params: {mal_id: string}}) => {
@@ -9,7 +9,7 @@ const page = ({ params }: {params: {mal_id: string}}) => {
     return (
         <>
             <Header />  
-            <AnimePreview endPoint={`https://api.jikan.moe/v4/anime/${animeId}/full`} />
+            <AnimePreview endPoint={String(`https://api.jikan.moe/v4/anime/${animeId}/full`)} />
             <Footer />
         </>
   )

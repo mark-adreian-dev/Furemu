@@ -1,43 +1,7 @@
-import React from 'react'
-import ProducerImage from './ProducerImage'
+import ProducerImage from './ProducersComponent/ProducerImage'
+import { Producer } from '@/app/Types/GlobalTypes'
 
-
-interface Producer {
-    mal_id: number,
-    type: string,
-    name: string,
-    url: string
-}
-
-interface ImageUrl{
-    image_url: string
-}
-
-interface Images {
-  jpg: ImageUrl,
-}
-
-interface Title{
-    type: string,
-    title: string
-}
-
-
-interface ProdResult {
-    mal_id: number,
-    name: string,
-    url: string,
-    titles: Title[],
-    images: Images,
-    favorites: number,
-    established: Date,
-    about: string,
-    count: number
-}
-
-
-
-const Producers = async ({ animeProducers }: { animeProducers: any}) => {
+const Producers = async ({ animeProducers }: { animeProducers: Producer[]}) => {
     return (
         <div className='producers pb-16 mb-8'>
             <p className="text-start text-white text-sm leading-6 font-bold mb-8 tablet:text-center">Producers:</p>

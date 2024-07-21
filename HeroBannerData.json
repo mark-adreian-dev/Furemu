@@ -1,6 +1,7 @@
 {
     "data": [
         {
+            "mal_id": 5922,
             "itemIndex": 0,
             "imagePathMobile": "/landing_page/mobile/demon_slayer.png",
             "imagePathTablet": "/landing_page/tablet/demon_slayer.png",
@@ -23,6 +24,7 @@
         },
 
         {
+            "mal_id": 5922,
             "itemIndex": 2,
             "imagePathMobile": "/landing_page/mobile/frieren.png",
             "imagePathTablet": "/landing_page/tablet/frieren.png",
@@ -34,6 +36,7 @@
         },
 
         {
+            "mal_id": 5922,
             "itemIndex": 3,
             "imagePathMobile": "/landing_page/mobile/boku_no_hero.png",
             "imagePathTablet": "/landing_page/tablet/boku_no_hero.png",
@@ -45,6 +48,7 @@
         },
 
         {
+            "mal_id": 5922,
             "itemIndex": 4,
             "imagePathMobile": "/landing_page/mobile/apothecary_diaries.png",
             "imagePathTablet": "/landing_page/tablet/apothecary_diaries.png",

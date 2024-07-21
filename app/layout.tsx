@@ -1,7 +1,7 @@
 
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import SmoothScroll from "./Components/SmoothScroll";
+import SmoothScroll from "./GlobalComponents/SmoothScroll";
 
 import 'swiper/css';
 import 'swiper/css/pagination';
@@ -29,8 +29,7 @@ export default function RootLayout({
     <SmoothScroll >
     <html lang="en" className="scrollbar-thin scrollbar-corner-accent scrollbar-thumb-rounded-full scrollbar-thumb-accent scrollbar-track-darker-blue">
         <body className={`bg-darker-blue ${inter.variable} `}>
-         
-            <main  className="">
+            <main>
               {children}
             </main>
       

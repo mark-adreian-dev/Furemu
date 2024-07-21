@@ -1,0 +1,9 @@
+{
+    "data": [
+        {
+            "mobile": "/landing_page/featured/featured_mobile.png",
+            "tablet": "/landing_page/featured/featured_tablet.png",
+            "desktop": "/landing_page/featured/featured_desktop.png"
+        }
+    ]
+}
