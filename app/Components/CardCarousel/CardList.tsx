@@ -15,7 +15,14 @@ interface Props {
 const CardList:React.FC<Props> = async ({ endpoint, prevEl, nextEl, title, type}) => {
   const response = await fetch(endpoint, {method: 'GET'})
   const result = await response.json()
-  const animes = result.data
+  const animes = await result.data
+
+  const mresponse = await fetch(endpoint +"?page=2", {method: 'GET'})
+  const mresult = await mresponse.json()
+  const manimes = await mresult.data
+
+  const data = [...animes, ...manimes]
+ 
   
 
   return (
@@ -23,8 +30,8 @@ const CardList:React.FC<Props> = async ({ endpoint, prevEl, nextEl, title, type}
         <TitleControl title={title} nextEl={nextEl} prevEl={prevEl}/>
         <CardCarousel nextEl={nextEl} prevEl={prevEl} >
           {
-            animes.map((anime:any) => 
-              <Link key={anime.mal_id} href={type + "/" + anime.mal_id}>
+            data.map((anime:any) => 
+              <Link href={type + "/" + anime.mal_id}>
                 <Card 
                 imageUrl={anime.images.jpg.large_image_url}
                 animeTitleEnglish={!anime.title_english ? anime.title : anime.title_english}
