@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { TopAnimeData, TopAnime } from '@/app/Types/TopAnime'
 
 import Card from './Card'
+import page from '@/app/anime/[mal_id]/page'
 
 interface Props {
   
@@ -32,7 +33,7 @@ const CardList:React.FC<Props> = async ({ endpoint, prevEl, nextEl, title, type}
   const page1: TopAnime = await GetAnimeData(endpoint, {page: 1})
   const page2: TopAnime = await GetAnimeData(endpoint, {page: 2})
 
-  const data: TopAnimeData[] = [...page1.data, ...page2.data]
+  const data: TopAnimeData[] = page1.data.concat(page2.data)
 
   return (
     <div className='featured-section py-8 px-6 tablet:px-8 tablet:py-16 desktop:px-16'>
