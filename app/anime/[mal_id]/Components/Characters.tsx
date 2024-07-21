@@ -37,13 +37,13 @@ const Characters = async ({ id }: { id: number}) => {
 
   
     return (
-        <div className="characters text-start mb-16">
-            <p className=" text-white text-sm leading-6 font-bold mb-8">Characters:</p>
-            <div className="images grid grid-cols-4 gap-2 w-full h-fit relative">
+        <div className="characters text-start mb-16 ">
+            <p className=" text-white text-sm leading-6 font-bold mb-8 text-start tablet:text-center">Characters:</p>
+            <div className="images grid grid-cols-5 gap-2 w-full h-fit relative">
 
             {
                 castData.map((item: Item) =>
-                <div key={item.character.mal_id} className="w-[calc((100vw-4.5rem)/4)] h-[calc((100vw-4.5rem)/4)] relative rounded-xl overflow-hidden">
+                <div key={item.character.mal_id} className="w-[calc((100vw-5rem)/5)] h-[calc((100vw-5rem)/5)] relative rounded-xl overflow-hidden tablet:w-[calc((100vw-10rem)/5)]">
                     <Image src={item.character.images.jpg.image_url} alt={`${item.character.name}-image`} draggable={false} fill sizes="100%" className="object-cover" priority={true} quality={100}/>
                 </div>)
             }

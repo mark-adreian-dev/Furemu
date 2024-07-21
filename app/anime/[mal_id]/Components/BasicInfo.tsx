@@ -13,7 +13,7 @@ interface Props {
 
 const BasicInfo:React.FC<Props> = ({ data, basicInfo }) => {
   return (
-    <div className="anime-basic-info flex flex-col items-start mb-16">
+    <div className="anime-basic-info flex flex-col items-start mb-16 tablet:items-center">
           {
             Object.entries(basicInfo).map(
               (key) => 
