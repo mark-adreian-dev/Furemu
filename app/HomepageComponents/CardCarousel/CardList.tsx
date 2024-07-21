@@ -50,7 +50,6 @@ const CardList:React.FC<Props> = async ({ endpoint, prevEl, nextEl, title, type}
                   animeRating={anime.rating}
                />
               </Link>
-              
             )
           }
           

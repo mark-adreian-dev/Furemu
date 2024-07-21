@@ -1,9 +1,8 @@
-import Image from "next/image"
 import BasicInfo from "./BasicInfo"
 import Theme from "./Theme"
 import Characters from "./Characters"
 import Producers from "./Producers"
-import { Anime } from "@/app/Types/Anime"
+import { Anime, AnimeData } from "@/app/Types/Anime"
 import PreviewImage from "./PreviewImage"
 import Synopsis from "./Synopsis"
 
@@ -18,7 +17,7 @@ const GetAnimeData = async ( endPoint: string ): Promise<Anime> => {
 }
 
 const AnimePreview:React.FC<Props> = async ({ endPoint }) => {
-  const data = (await GetAnimeData(endPoint)).data
+  const data: AnimeData = (await GetAnimeData(endPoint)).data
  
 
 

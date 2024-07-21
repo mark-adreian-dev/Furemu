@@ -1,5 +1,5 @@
 import Image from "next/image"
-import { Producer } from "@/app/Types/Producer"
+import { Producer, ProducerData } from "@/app/Types/Producer"
 
 const GetProducerData = async (prodId: number): Promise<Producer> => {
     const prodResponse = await fetch(`https://api.jikan.moe/v4/producers/${prodId}`)
@@ -8,7 +8,7 @@ const GetProducerData = async (prodId: number): Promise<Producer> => {
 }
 const ProducerImage = async ({ prodId}: {prodId: number}) => {
    
-    const prodData = (await GetProducerData(prodId)).data
+    const prodData: ProducerData = (await GetProducerData(prodId)).data
 
     return (
         <div>

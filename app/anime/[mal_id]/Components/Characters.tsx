@@ -1,5 +1,5 @@
 import Image from "next/image"
-import { Character, CharacterFull, Data } from "@/app/Types/Charactes"
+import { CharacterFull, Data } from "@/app/Types/Charactes"
 
   
 const GetCharactedData = async (id: number): Promise<CharacterFull> => {
@@ -10,7 +10,7 @@ const GetCharactedData = async (id: number): Promise<CharacterFull> => {
 
 const Characters = async ({ id }: { id: number }) => {
 
-    const castData  = (await GetCharactedData(id)).data.filter((cast: Data) => cast.role.toLowerCase() === "main" || cast.favorites > 100)
+    const castData: Data[]  = (await GetCharactedData(id)).data.filter((cast: Data) => cast.role.toLowerCase() === "main" || cast.favorites > 100)
     
     return (
         <div className="characters text-start mb-16 ">
