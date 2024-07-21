@@ -1,4 +1,3 @@
-
 import { useSearchParams } from "next/navigation"
 import Header from './Components/Header'
 import Banner from './Components/Banner'

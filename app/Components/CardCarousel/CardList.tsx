@@ -1,4 +1,3 @@
-
 import TitleControl from './TitleControl'
 import CardCarousel from './CardCarousel'
 import Link from 'next/link'
