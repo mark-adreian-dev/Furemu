@@ -30,12 +30,12 @@ const CardList:React.FC<Props> = async ({ endpoint, prevEl, nextEl, title, type}
             data.map((anime: TopAnimeData) => 
               <Link key={anime?.mal_id} href={type + "/" + anime?.mal_id}>
                 <Card 
-                  imageUrl={anime.images.jpg.large_image_url}
-                  animeTitleEnglish={!anime.title_english ? anime.title : anime.title_english}
-                  animeTitleJapanese={anime.title_japanese}
-                  animeType={type == "manga" ? anime.type : String(anime.type).toLowerCase() == "tv special" ? "TV" : anime.type}
-                  animeStatus={anime.status}
-                  animeRating={anime.rating}
+                  imageUrl={anime?.images.jpg.large_image_url}
+                  animeTitleEnglish={!anime?.title_english ? anime?.title : anime?.title_english}
+                  animeTitleJapanese={anime?.title_japanese}
+                  animeType={type == "manga" ? anime?.type : anime?.type.toLowerCase() == "tv special" ? "TV" : anime?.type}
+                  animeStatus={anime?.status}
+                  animeRating={anime?.rating}
                />
               </Link>
           
