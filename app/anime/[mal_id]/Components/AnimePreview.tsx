@@ -17,7 +17,8 @@ const GetAnimeData = async ( endPoint: string ): Promise<Anime> => {
 }
 
 const AnimePreview:React.FC<Props> = async ({ endPoint }) => {
-  const animeData: Anime = await GetAnimeData(endPoint)
+  const result: Anime = await GetAnimeData(endPoint)
+  const animeData = result
  
   return (
     <div className="main-content px-6 mt-24 pt-8 flex flex-col items-center tablet:pt-16 tablet:px-16">
