@@ -31,7 +31,7 @@ const CardList:React.FC<Props> = async ({ endpoint, prevEl, nextEl, title, type}
   const page1Result : TopAnime = await page1Response.json()
   const page2Result : TopAnime = await page2Response.json()
 
-  const data: TopAnimeData[] = [...page1Result.data, ...page2Result.data]
+  const data: TopAnimeData[] = page1Result.data.concat(page2Result.data)
 
 
 
