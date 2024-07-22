@@ -32,7 +32,7 @@ const CardList:React.FC<Props> = async ({ endpoint, prevEl, nextEl, title, type}
   const mergeData = async (endpoint: string): Promise<TopAnimeData[]> => {
     const page1: TopAnime = (await getTopAnimeData(endpoint, {page: 1}))
     const page2: TopAnime = (await getTopAnimeData(endpoint, {page: 2}))
-    const data: TopAnimeData[] = [...page1.data, ...page2.data] 
+    const data: TopAnimeData[] = page1.data.concat(page2.data) 
   
     return data
   }
