@@ -4,14 +4,12 @@ import Banner from './HomepageComponents/Banner'
 import CardList from './HomepageComponents/CardCarousel/CardList'
 import FeaturedAnime from './HomepageComponents/FeaturedAnime';
 
-
 export default function Home () {
  
   return (
     <>
       <Header />
       <Banner/>
-
       <CardList 
         endpoint='https://api.jikan.moe/v4/top/anime' 
         prevEl="prev-top-anime" 

@@ -62,21 +62,24 @@ const Banner = () => {
                     initialSlide={0}
                 >     
                     {
-                    heroSectionData.map((slide: BannerSlide) => 
-                        <SwiperSlide key={slide.mal_id} >
-                            <div className='relative w-screen h-[26.5625rem] tablet:h-[43.8125rem]'>
-                                <div className='absolute z-0 w-full h-full '>
-                                    <Image 
-                                        src={screenSize === "mobile" ? slide.imagePathMobile : screenSize === "tablet" ? slide.imagePathTablet : slide.imagePathDesktop} 
-                                        alt="banner-image" 
-                                        fill
-                                        quality={100}
-                                        className='object-cover object-bottom'
-                                        priority={true}
-                                    />
-                                </div>
-                            </div>   
-                        </SwiperSlide>)
+                        heroSectionData.map((slide: BannerSlide) => 
+                            
+                            <SwiperSlide key={slide.mal_id} >
+                                <div className='relative w-screen h-[26.5625rem] tablet:h-[43.8125rem]'>
+                                    <div className='absolute z-0 w-full h-full '>
+                                        <Image 
+                                            src={screenSize === "mobile" ? slide.imagePathMobile : screenSize === "tablet" ? slide.imagePathTablet : slide.imagePathDesktop} 
+                                            alt="banner-image" 
+                                            fill
+                                            quality={100}
+                                            className='object-cover object-bottom'
+                                            priority={true}
+                                        />
+                                    </div>
+                                </div>   
+                            </SwiperSlide>
+                        
+                        )
                     }  
                 {
                     heroSectionData.map(slide => activeSlide === slide.itemIndex && 
