@@ -31,7 +31,7 @@ const CardList:React.FC<Props> = async ({ endpoint, prevEl, nextEl, title, type}
   const page1Data: Promise<TopAnime> = getTopAnimeData(endpoint, {page: 1})
   const page2Data: Promise<TopAnime> = getTopAnimeData(endpoint, {page: 2})
   const [page1, page2] = await Promise.all([page1Data, page2Data])
-  
+  const data = page1.data.concat(page2.data)
 
 
   
@@ -40,7 +40,7 @@ const CardList:React.FC<Props> = async ({ endpoint, prevEl, nextEl, title, type}
         <TitleControl title={title} nextEl={nextEl} prevEl={prevEl}/>
         <CardCarousel nextEl={nextEl} prevEl={prevEl} >
           {
-            page1.data.map((anime: TopAnimeData) => 
+            data?.map((anime: TopAnimeData) => 
               <Link key={anime.mal_id} href={`${type}/${anime.mal_id}`}>
                 <Card 
                   imageUrl={anime.images.jpg.large_image_url}
