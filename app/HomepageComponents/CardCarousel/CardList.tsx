@@ -2,7 +2,6 @@ import TitleControl from './TitleControl'
 import CardCarousel from './CardCarousel'
 import Link from 'next/link'
 import { TopAnimeData, TopAnime } from '@/app/Types/TopAnime'
-import { useRouter } from 'next/router'
 import Card from './Card'
 
 interface Props {
@@ -35,11 +34,9 @@ const mergeData = async (endpoint: string): Promise<TopAnimeData[]> => {
 }
 
 const CardList:React.FC<Props> = async ({ endpoint, prevEl, nextEl, title, type}) => {
-  const router = useRouter()
+ 
   const animeData: TopAnimeData[] = await mergeData(endpoint)
   const data: TopAnimeData[] = animeData
-
-  if(router.isFallback) return <div>Loading...</div>
   
   return (
     <div className='featured-section py-8 px-6 tablet:px-8 tablet:py-16 desktop:px-16'>
