@@ -3,12 +3,12 @@
 import { useState, useRef, useEffect } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Autoplay } from 'swiper/modules';
-import { Breakpoints } from '../Types/Enums';
+import { Breakpoints } from '@/app/Types/Enums';
 import Image from 'next/image';
 import Link from 'next/link';
 
-import data from '../../HeroBannerData.json'
-import { BannerSlide } from '../Types/BannerType';
+import data from '@/HeroBannerData.json'
+import { BannerSlide } from '@/app/Types/BannerType';
 
 const heroSectionData: BannerSlide[] = data.data  
 

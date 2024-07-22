@@ -1,7 +1,7 @@
 
 import React from 'react'
-import Header from '../../GlobalComponents/Header'
-import Footer from '../../GlobalComponents/Footer'
+import Header from '@/app/GlobalComponents/Header'
+import Footer from '@/app/GlobalComponents/Footer'
 import AnimePreview from './Components/AnimePreview'
 
 const page = ({ params }: {params: {mal_id: string}}) => {

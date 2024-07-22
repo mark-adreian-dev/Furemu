@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import IconButton from './IconButton'
-import { MenuItem } from '../Types/MenuItem'
+import { MenuItem } from '@/app/Types/MenuItem'
 
 
 

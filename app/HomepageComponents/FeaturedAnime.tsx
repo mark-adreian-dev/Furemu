@@ -1,9 +1,9 @@
 'use client'
 
 import { useState, useEffect } from "react"
-import { Breakpoints } from '../Types/Enums';
+import { Breakpoints } from '@/app/Types/Enums';
 import Image from "next/image"
-import data from '../../FeaturedAnime.json'
+import data from '@/FeaturedAnime.json'
 
 interface ImagePath {
     "mobile": string

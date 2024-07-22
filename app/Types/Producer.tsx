@@ -1,4 +1,4 @@
-import { Title } from "./GlobalTypes";
+import { Title } from "@/app/Types/GlobalTypes";
 
 export interface Producer{
     data: ProducerData;

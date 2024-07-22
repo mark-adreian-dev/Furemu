@@ -5,7 +5,7 @@ import SmoothScroll from "./GlobalComponents/SmoothScroll";
 
 import 'swiper/css';
 import 'swiper/css/pagination';
-import "./globals.css";
+import "@/app/globals.css";
 
 
 const inter = Inter({

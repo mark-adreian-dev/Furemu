@@ -1,8 +1,8 @@
-import Header from './GlobalComponents/Header'
-import Footer from './GlobalComponents/Footer';
-import Banner from './HomepageComponents/Banner'
-import CardList from './HomepageComponents/CardCarousel/CardList'
-import FeaturedAnime from './HomepageComponents/FeaturedAnime';
+import Header from '@/app/GlobalComponents/Header'
+import Footer from '@/app/GlobalComponents/Footer';
+import Banner from '@/app/HomepageComponents/Banner'
+import CardList from '@/app/HomepageComponents/CardCarousel/CardList'
+import FeaturedAnime from '@/app/HomepageComponents/FeaturedAnime';
 
 export default function Home () {
  

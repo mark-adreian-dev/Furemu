@@ -1,4 +1,4 @@
-import { Image, Trailer, Title, Aired, Broadcast, Producer, Studios, Genre, Demographic} from "./GlobalTypes";
+import { Image, Trailer, Title, Aired, Broadcast, Producer, Studios, Genre, Demographic} from "@/app/Types/GlobalTypes";
 
 
 export interface Anime {
