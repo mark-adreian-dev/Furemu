@@ -20,7 +20,7 @@ interface Params {
 
 export const getTopAnimeData = async (endpoint: string, params: Params): Promise<TopAnime> => {
   const url = `${endpoint}?page=${params.page}`
-  const response = await fetch(url, {method: 'GET'})
+  const response = await fetch(url, {method: 'GET', cache: 'force-cache'})
   const result : TopAnime = await response.json()
   return result
 }
@@ -28,14 +28,14 @@ export const getTopAnimeData = async (endpoint: string, params: Params): Promise
 const mergeData = async (endpoint: string): Promise<TopAnimeData[]> => {
   const page1: TopAnime = await getTopAnimeData(endpoint, {page: 1})
   const page2: TopAnime = await getTopAnimeData(endpoint, {page: 2})
-  const data: TopAnimeData[] = page1.data.concat(page2.data)
+  const data: TopAnimeData[] = [...page1.data, ...page2.data]
 
   return data
 }
 
 const CardList:React.FC<Props> = async ({ endpoint, prevEl, nextEl, title, type}) => {
-  const data: TopAnimeData[] = await mergeData(endpoint)
-  
+  const animeData: TopAnimeData[] = await mergeData(endpoint)
+  const data: TopAnimeData[] = animeData
 
   return (
     <div className='featured-section py-8 px-6 tablet:px-8 tablet:py-16 desktop:px-16'>
