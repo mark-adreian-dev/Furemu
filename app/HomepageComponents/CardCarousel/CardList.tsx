@@ -3,7 +3,6 @@ import CardCarousel from './CardCarousel'
 import Link from 'next/link'
 import { TopAnimeData, TopAnime } from '@/app/Types/TopAnime'
 import Card from './Card'
-import page from '@/app/anime/[mal_id]/page'
 
 interface Props {
   
@@ -19,22 +18,27 @@ interface Params {
   page: number
 }
 
-export const getTopAnimeData = async (endpoint: string, params: Params): Promise<TopAnime> => {
-  const url = `${endpoint}?page=${params.page}`
-  const response = await fetch(url, {method: 'GET', cache: 'force-cache'})
-  return response.json()
-}
-
 
 
 const CardList:React.FC<Props> = async ({ endpoint, prevEl, nextEl, title, type}) => {
-  const page1Data: Promise<TopAnime> = getTopAnimeData(endpoint, {page: 1})
-  const page2Data: Promise<TopAnime> = getTopAnimeData(endpoint, {page: 2})
-  const [page1, page2] = await Promise.all([page1Data, page2Data])
-  const data = page1.data.concat(page2.data)
-
   
-
+  const getTopAnimeData = async (endpoint: string, params: Params): Promise<TopAnime> => {
+    const url = `${endpoint}?page=${params.page}`
+    const response = await fetch(url, {method: 'GET', cache: 'force-cache'})
+    const result : TopAnime = await response.json()
+    return result
+  }
+  
+  const mergeData = async (endpoint: string): Promise<TopAnimeData[]> => {
+    const page1: TopAnime = (await getTopAnimeData(endpoint, {page: 1}))
+    const page2: TopAnime = (await getTopAnimeData(endpoint, {page: 2}))
+    const data: TopAnimeData[] = [...page1.data, ...page2.data] 
+  
+    return data
+  }
+ 
+  const animeData: TopAnimeData[] = await mergeData(endpoint)
+  const data: TopAnimeData[] = animeData
   
   return (
     <div className='featured-section py-8 px-6 tablet:px-8 tablet:py-16 desktop:px-16'>
