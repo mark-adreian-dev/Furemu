@@ -1,12 +1,7 @@
 import Image from "next/image"
-import { CharacterFull, Data } from "@/app/Types/Charactes"
+import { CharacterFull, Data } from "@/app/Types/Characters"
+import { GetCharactedData } from "@/app/Fetch"
 
-  
-const GetCharactedData = async (id: number): Promise<CharacterFull> => {
-  const castResponse = await fetch(`https://api.jikan.moe/v4/anime/${id}/characters`)
-  const castResult: CharacterFull = await castResponse.json()
-  return castResult
-}
 
 const Characters = async ({ id }: { id: number }) => {
 
