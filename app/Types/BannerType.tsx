@@ -3,7 +3,7 @@ export interface BannerData {
 }
 
 export interface BannerSlide {
-    mal_id?:          number;
+    mal_id:           number;
     itemIndex:        number;
     imagePathMobile:  string;
     imagePathTablet:  string;
