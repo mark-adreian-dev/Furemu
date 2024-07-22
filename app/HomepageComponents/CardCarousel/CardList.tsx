@@ -33,7 +33,7 @@ const CardList:React.FC<Props> = async ({ endpoint, prevEl, nextEl, title, type}
 
   const [page1, page2] = await Promise.all([page1Data, page2Data])
 
-  const data = [...page1.data, ...page2.data]
+  const data = page1.data.concat(page2.data)
 
 
   
