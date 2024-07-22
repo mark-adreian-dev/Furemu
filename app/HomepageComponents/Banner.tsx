@@ -63,19 +63,19 @@ const Banner = () => {
                 >     
                     {
                     heroSectionData.map((slide: BannerSlide) => 
-                        <SwiperSlide key={slide.itemIndex} >
-                        <div className='relative w-screen h-[26.5625rem] tablet:h-[43.8125rem]'>
-                            <div className='absolute z-0 w-full h-full '>
-                                <Image 
-                                    src={screenSize === "mobile" ? slide.imagePathMobile : screenSize === "tablet" ? slide.imagePathTablet : slide.imagePathDesktop} 
-                                    alt="banner-image" 
-                                    fill
-                                    quality={100}
-                                    className='object-cover object-bottom'
-                                    priority={true}
-                                />
-                            </div>
-                        </div>   
+                        <SwiperSlide key={slide.mal_id} >
+                            <div className='relative w-screen h-[26.5625rem] tablet:h-[43.8125rem]'>
+                                <div className='absolute z-0 w-full h-full '>
+                                    <Image 
+                                        src={screenSize === "mobile" ? slide.imagePathMobile : screenSize === "tablet" ? slide.imagePathTablet : slide.imagePathDesktop} 
+                                        alt="banner-image" 
+                                        fill
+                                        quality={100}
+                                        className='object-cover object-bottom'
+                                        priority={true}
+                                    />
+                                </div>
+                            </div>   
                         </SwiperSlide>)
                     }  
                 {
@@ -83,7 +83,9 @@ const Banner = () => {
                     <div key={slide.itemIndex} className='context absolute z-40 left-8 bottom-8 hidden tablet:block desktop:left-16'>
                         <h1 className="text-6xl text-accent font-bold w-[39.125rem] mb-6">{slide.description.title}</h1>
                         <p className='text-white w-[28.75rem] text-base leading-6 font-normal mb-6'>{slide.description.context}</p>
-                        <Link href={`/anime/${slide.mal_id}`}><button className="w-[7.375rem] py-[0.88rem] bg-accent px-[1rem] rounded-lg"><p className='text-sm text-darker-blue leading-5 font-semibold'>See More</p></button></Link>
+                        <Link href={`anime/${slide.mal_id}`}>
+                            <button className="w-[7.375rem] py-[0.88rem] bg-accent px-[1rem] rounded-lg"><p className='text-sm text-darker-blue leading-5 font-semibold'>See More</p></button>
+                        </Link>
                     </div> 
                     )
                 }
