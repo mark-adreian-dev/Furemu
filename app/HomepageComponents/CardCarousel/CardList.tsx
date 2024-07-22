@@ -26,8 +26,8 @@ export const getTopAnimeData = async (endpoint: string, params: Params): Promise
 }
 
 const mergeData = async (endpoint: string): Promise<TopAnimeData[]> => {
-  const page1: TopAnime = await getTopAnimeData(endpoint, {page: 1})
-  const page2: TopAnime = await getTopAnimeData(endpoint, {page: 2})
+  const page1: TopAnime = (await getTopAnimeData(endpoint, {page: 1}))
+  const page2: TopAnime = (await getTopAnimeData(endpoint, {page: 2}))
   const data: TopAnimeData[] = page1.data.concat(page2.data)
 
   return data
@@ -45,7 +45,7 @@ const CardList:React.FC<Props> = async ({ endpoint, prevEl, nextEl, title, type}
             data.map((anime: TopAnimeData) => 
               <Link key={anime.mal_id} href={`${type}/${anime.mal_id}`}>
                 <Card 
-                  imageUrl={anime?.images.jpg.large_image_url}
+                  imageUrl={anime.images.jpg.large_image_url}
                   animeTitleEnglish={anime.title_english }
                   animeTitleJapanese={anime.title_japanese}
                   animeType={anime.type}
