@@ -1,8 +1,11 @@
 import Image from "next/image"
 import { CharacterFull, Data } from "@/app/Types/Characters"
-import { getCharactedData } from "@/app/Fetch"
 
-
+export const getCharactedData = async (id: number): Promise<CharacterFull> => {
+    const castResponse = await fetch(`https://api.jikan.moe/v4/anime/${id}/characters`)
+    const castResult: CharacterFull = await castResponse.json()
+    return castResult
+}
 const Characters = async ({ id }: { id: number }) => {
 
     const data: CharacterFull  = await getCharactedData(id)
@@ -12,7 +15,6 @@ const Characters = async ({ id }: { id: number }) => {
         <div className="characters text-start mb-16 ">
             <p className=" text-white text-sm leading-6 font-bold mb-8 text-start tablet:text-center">Characters:</p>
             <div className="images grid grid-cols-5 gap-2 w-full h-fit relative">
-
             {
                 castData.map((cast: Data) =>
                 <div key={cast.character.mal_id} className="w-[calc((100vw-5rem)/5)] h-[calc((100vw-5rem)/5)] relative rounded-xl overflow-hidden tablet:w-[calc((100vw-10rem)/5)]">

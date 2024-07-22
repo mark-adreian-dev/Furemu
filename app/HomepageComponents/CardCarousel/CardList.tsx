@@ -2,8 +2,6 @@ import TitleControl from './TitleControl'
 import CardCarousel from './CardCarousel'
 import Link from 'next/link'
 import { TopAnimeData, TopAnime } from '@/app/Types/TopAnime'
-import { getTopAnimeData } from '@/app/Fetch'
-
 import Card from './Card'
 
 interface Props {
@@ -14,6 +12,17 @@ interface Props {
   title: string,
   type: string
 
+}
+
+interface Params {
+  page: number
+}
+
+export const getTopAnimeData = async (endpoint: string, params: Params): Promise<TopAnime> => {
+  const url = `${endpoint}?page=${params.page}`
+  const response = await fetch(url, {method: 'GET'})
+  const result : TopAnime = await response.json()
+  return result
 }
 
 

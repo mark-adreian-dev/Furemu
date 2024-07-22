@@ -1,6 +1,11 @@
 import Image from "next/image"
 import { Producer, ProducerData } from "@/app/Types/Producer"
-import { GetProducerData } from "@/app/Fetch"
+
+export const GetProducerData = async (prodId: number): Promise<Producer> => {
+    const prodResponse = await fetch(`https://api.jikan.moe/v4/producers/${prodId}`)
+    const prodResult: Producer = await prodResponse.json()
+    return prodResult
+}
 
 const ProducerImage = async ({ prodId}: {prodId: number}) => {
     const prod: Producer = await GetProducerData(prodId)
