@@ -5,14 +5,14 @@ import Producers from "./Producers"
 import { Anime } from "@/app/Types/Anime"
 import PreviewImage from "./PreviewImage"
 import Synopsis from "./Synopsis"
-import { GetAnimeData } from "@/app/Fetch"
+import { getAnimeData } from "@/app/Fetch"
 
 interface Props {
     endPoint: string
 }
 
 const AnimePreview:React.FC<Props> = async ({ endPoint }) => {
-  const result: Anime = await GetAnimeData(endPoint)
+  const result: Anime = await getAnimeData(endPoint)
   const animeData = result
  
   return (

@@ -2,7 +2,7 @@ import TitleControl from './TitleControl'
 import CardCarousel from './CardCarousel'
 import Link from 'next/link'
 import { TopAnimeData, TopAnime } from '@/app/Types/TopAnime'
-import { GetTopAnimeData } from '@/app/Fetch'
+import { getTopAnimeData } from '@/app/Fetch'
 
 import Card from './Card'
 
@@ -18,8 +18,8 @@ interface Props {
 
 
 const CardList:React.FC<Props> = async ({ endpoint, prevEl, nextEl, title, type}) => {
-  const page1: TopAnime = await GetTopAnimeData(endpoint, {page: 1})
-  const page2: TopAnime = await GetTopAnimeData(endpoint, {page: 2})
+  const page1: TopAnime = await getTopAnimeData(endpoint, {page: 1})
+  const page2: TopAnime = await getTopAnimeData(endpoint, {page: 2})
   const data: TopAnimeData[] = page1.data.concat(page2.data)
 
   return (

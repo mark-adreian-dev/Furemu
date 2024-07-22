@@ -1,11 +1,11 @@
 import Image from "next/image"
 import { CharacterFull, Data } from "@/app/Types/Characters"
-import { GetCharactedData } from "@/app/Fetch"
+import { getCharactedData } from "@/app/Fetch"
 
 
 const Characters = async ({ id }: { id: number }) => {
 
-    const data: CharacterFull  = await GetCharactedData(id)
+    const data: CharacterFull  = await getCharactedData(id)
     const castData: Data[] = data.data.filter((cast: Data) => cast.role.toLowerCase() === "main" || cast.favorites > 100)
     
     return (
