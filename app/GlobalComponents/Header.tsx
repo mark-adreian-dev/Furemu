@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import IconButton from './IconButton'
 import { MenuItem } from '@/app/Types/MenuItem'
+import React from 'react'
 
 
 
@@ -48,9 +49,12 @@ export const socials: MenuItem[]  = [
   },
 ]
 
-const Header = () => {
+interface Props {
+  className? : string
+}
+const Header:React.FC<Props> = ({ className }) => {
   return (
-    <header className='absolute top-0 z-40 p-6 w-full flex justify-between items-center tablet:p-8 desktop:px-16 desktop:py-8'>
+    <header className={`absolute top-0 z-40 p-6 w-full flex justify-between items-center tablet:p-8 desktop:px-16 desktop:py-8 ${className}`}>
       <h1 className='leading-7 text-nav-logo-text text-white font-black'>Heroku</h1>
       <nav className='hidden tablet:block bg-dark-blue px-1 py-[0.375rem] rounded-xl' style={{background: 'rgba(15, 23, 42, 0.2)'}}>
         <ul className='flex'>

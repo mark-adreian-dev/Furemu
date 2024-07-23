@@ -19,7 +19,7 @@ const page = async ({ params }: {params: {mal_id: string}}) => {
 
     return (
         <>
-            <Header />  
+            <Header className={"sticky"}/>  
             <AnimePreview animeData={animeData}/>
             {/* <Footer /> */}
         </>
