@@ -1,6 +1,6 @@
 const Theme = ({ data, type }: { data: string[], type: string}) => {
   return (
-    <div className="text-start mb-16 tablet:text-center">
+    <div className="text-start mb-16 tablet:text-center desktop:text-start">
         <p className=" text-white text-sm leading-6 font-bold mb-[0.875rem]">{type}:</p>
         <div className="">
           {

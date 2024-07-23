@@ -12,7 +12,6 @@ const inter = Inter({
   weight: ['100','200','300','400','500','600','700','800','900'],
   subsets: ["latin"],
   variable: "--font-inter"
-
 });
 
 export const metadata: Metadata = {
@@ -26,15 +25,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <SmoothScroll >
-    <html lang="en" className="scrollbar-thin scrollbar-corner-accent scrollbar-thumb-rounded-full scrollbar-thumb-accent scrollbar-track-darker-blue">
+    <SmoothScroll root={true}>
+      <html lang="en" className="scrollbar-thin scrollbar-thumb-accent scrollbar-track-darker-blue scrollbar-thumb-rounded-full">
         <body className={`bg-darker-blue ${inter.variable} `}>
             <main>
               {children}
             </main>
-      
         </body>
-    </html>
+      </html>
     </SmoothScroll>
   );
 }

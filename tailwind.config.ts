@@ -14,8 +14,11 @@ const config: Config = {
         "white": "var(--white)",
         "light-blue": "var(--light-blue)",
         "dark-blue": "var(--dark-blue)",
-        "darker-blue": "var(--darker-blue)"
+        "darker-blue": "var(--darker-blue)",
 
+      },
+      backgroundImage: {
+        "preview-overlay": "var(--preview-overlay)"
       },
       fontSize: {
         "nav-logo-text": "var(--nav-logo-text)",
@@ -33,14 +36,15 @@ const config: Config = {
       screens: {
         'mobile': '23.4375rem',
         'tablet': '48rem',
-        'desktop': '90rem',
-        'wide': '90.0625rem'
+        'desktop': '85.375rem',
+        'wide': '120rem'
       }
 
     },
   },
   plugins: [
     require('daisyui'),
+    require('tailwind-scrollbar'),
   ],
 
   daisyui: {

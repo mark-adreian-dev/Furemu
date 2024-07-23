@@ -1,5 +1,5 @@
-import Badge from "./BasicInfoComponents/Badge"
-import InfoRow from "./BasicInfoComponents/InfoRow"
+import Badge from "../BasicInfoComponents/Badge"
+import InfoRow from "../BasicInfoComponents/InfoRow"
 import { AnimeData } from "@/app/Types/Anime"
 import { Genre } from "@/app/Types/GlobalTypes"
 
@@ -28,7 +28,6 @@ enum BasicInfoAttributes {
 }
 
 const BasicInfo:React.FC<Props> = ({ data }) => {
-
   let genreContainer:string[] = []
   data.genres.map((genre: Genre) => genreContainer.push(genre.name))
   
@@ -42,8 +41,7 @@ const BasicInfo:React.FC<Props> = ({ data }) => {
   }
 
   return (
-    <div className="anime-basic-info flex flex-col items-start mb-16 tablet:items-center">
-     
+    <div className="anime-basic-info flex flex-col items-start mb-16 tablet:items-center desktop:items-start">
       {
         Object.entries(basicInfoAnime).map(([key, value], index) => {
             if(key === BasicInfoAttributes.TYPE || key === BasicInfoAttributes.GENRE) {
@@ -54,7 +52,7 @@ const BasicInfo:React.FC<Props> = ({ data }) => {
             } 
             else {
               return <div key={index} className="info-item flex mb-2">
-                <p className="text-white text-sm leading-6 font-bold mr-4 tablet:hidden">{key}:</p>
+                <p className="text-white text-sm leading-6 font-bold mr-4 tablet:hidden desktop:block">{key}:</p>
                 <p className="text-accent text-sm leading-6 font-normal">{value}</p>
               </div>
             }

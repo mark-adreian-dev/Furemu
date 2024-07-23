@@ -3,13 +3,15 @@
 import { ReactLenis} from 'lenis/react'
 
 interface Props {
-    children: JSX.Element
+    children: JSX.Element[] | JSX.Element
+    root: boolean,
+    options?: any
 }
 
-const SmoothScroll:React.FC<Props> = ({ children }) => {
+const SmoothScroll:React.FC<Props> = ({ children, root, options }) => {
   return (
-    <ReactLenis root>
-        {children}
+    <ReactLenis root={root} options={options}>
+      {children}
     </ReactLenis>
   )
 }
