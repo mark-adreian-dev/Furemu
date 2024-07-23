@@ -5,7 +5,7 @@ import Header from '@/app/GlobalComponents/Header'
 import AnimePreview from './Components/AnimePreview'
 import { Anime } from '@/app/Types/Anime'
 
-export const getAnimeData = async ( endPoint: string ): Promise<Anime> => {
+const getAnimeData = async ( endPoint: string ): Promise<Anime> => {
     const response = await fetch(endPoint)  
     const result: Anime = await response.json()
     return result
