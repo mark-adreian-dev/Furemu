@@ -15,7 +15,7 @@ interface Props {
 
 const AnimePreview:React.FC<Props> = ({ animeData }) => {
   return (
-    <div className="main-content px-6 mt-24 pt-8 flex flex-col items-center tablet:pt-16 tablet:px-16 desktop:flex-row desktop:items-start ">
+    <div className="main-content px-6 mt-24 pt-8 flex flex-col items-center tablet:pt-16 tablet:px-16 desktop:flex-row desktop:items-start desktop:mt-0">
       <div className="fixed top-0 right-0 h-screen w-[39.875rem] poster-desktop-imgae wide:w-[55rem] ">
         <div className="relative h-screen w-[39.875rem]">
           <div className="absolute top-0 left-0 h-screen w-[39.875rem] hidden desktop:block wide:w-[55rem]">
@@ -26,7 +26,7 @@ const AnimePreview:React.FC<Props> = ({ animeData }) => {
       </div>
       <PreviewImage data={animeData.data}/>
       <SmoothScroll root={false}>
-          <div className="anime-preview-scroll-wrapper relative w-full tablet:w-full desktop:w-[40.5rem] desktop:overflow-x-hidden scrollbar-thin scrollbar-thumb-accent scrollbar-track-darker-blue wide:pl-16 wide:pt-8 wide:w-[44.5rem]">
+          <div className="anime-preview-scroll-wrapper relative w-full tablet:w-full desktop:w-[40.5rem] desktop:overflow-x-hidden scrollbar-thin scrollbar-thumb-accent scrollbar-track-darker-blue wide:pl-16 wide:w-[44.5rem]">
             <h1 className="text-accent text-center text-3xl font-bold mb-32 tablet:mb-16 tablet:text-6xl  tablet:mx-auto desktop:text-start">{!animeData.data.title_english ? animeData.data.title : animeData.data.title_english}</h1>
             <BasicInfo data={animeData.data}/>
             <Theme data={animeData.data.theme.openings} type="Openings"/>
