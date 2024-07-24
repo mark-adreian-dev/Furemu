@@ -12,10 +12,8 @@ const error = ({ error }: {error: Error, reset: ()=> void}) => {
       <Header />
       <div className='w-screen h-screen flex justify-center items-center'>
           <div className='flex justify-center items-center flex-col'>
-              <p className='text-red-400 italic'>&quot;{error.message}&quot;</p>
-              <h6 className='text-center text-9xl text-white leading-[8rem] font-black mb-6'>Ops Sorry!</h6>
-   
-              <p className='text-center w-80 text-accent leading-7 text-xl font-normal mb-12'>Something went wrong! Please try refreshing the page</p>
+              <h6 className='text-center text-white text-6xl font-black mb-6 tablet:text-8xl desktop:text-9xl desktop:leading-[8rem]'>Ops Sorry!</h6>
+              <p className='text-center text-lg text-accent w-80 font-normal mb-12 desktop:text-xl desktop:leading-7'>Something went wrong! Please try refreshing the page</p>
               
 
               <Link href="/" scroll={false}>

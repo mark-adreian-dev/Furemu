@@ -14,8 +14,7 @@ interface Props {
 const AnimePreview:React.FC<Props> = ({ animeData }) => {
   return (
     <>
-    
-      <div className="main-content px-6 pt-8 flex flex-col items-center tablet:pt-16 tablet:px-16 desktop:flex-row desktop:items-start desktop:pt-36">
+      <div className="main-content px-6 pt-32 flex flex-col items-center tablet:pt-36 tablet:px-16 desktop:flex-row desktop:items-start desktop:pt-36">
         <div className="fixed top-0 right-0 h-screen w-[39.875rem] poster-desktop-imgae wide:w-[55rem] ">
           <div className="relative h-screen w-[39.875rem]">
             <div className="absolute top-0 left-0 h-screen w-[39.875rem] hidden desktop:block wide:w-[55rem]">
