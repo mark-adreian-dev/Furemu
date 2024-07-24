@@ -5,7 +5,7 @@ import React from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 
-const error = ({ error }: {error: Error, reset: ()=> void}) => {
+const Error = ({ error }: {error: Error, reset: ()=> void}) => {
   const router = useRouter()
   return (
     <>
@@ -30,4 +30,4 @@ const error = ({ error }: {error: Error, reset: ()=> void}) => {
   )
 }
 
-export default error
+export default Error
