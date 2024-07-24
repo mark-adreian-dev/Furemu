@@ -16,6 +16,8 @@
     --darker-blue: #0F172A;
     --preview-overlay: linear-gradient(270deg, rgba(31, 41, 55, 0.00) 10.5%, #0F172A 90.91%);
 
+    scroll-padding: 0;
+
 }
 
 .swiper-pagination{

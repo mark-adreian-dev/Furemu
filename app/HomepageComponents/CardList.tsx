@@ -1,8 +1,8 @@
-import TitleControl from './TitleControl'
-import CardCarousel from './CardCarousel'
+import TitleControl from './CardListComponents/TitleControl'
+import CardCarousel from './CardListComponents/CardCarousel'
 import Link from 'next/link'
-import { TopAnimeData, TopAnime } from '@/app/Types/TopAnime'
-import Card from './Card'
+import { TopAnimeData, TopAnime, Pagination } from '@/app/Types/TopAnime'
+import Card from './CardListComponents/Card'
 
 interface Props {
   
@@ -24,18 +24,10 @@ const getTopAnimeData = async (endpoint: string, params: Params): Promise<TopAni
   return result
 }
 
-// const mergeData = async (endpoint: string): Promise<TopAnimeData[]> => {
-//   const page1: TopAnime = await getTopAnimeData(endpoint, {page: 1})
- 
-//   const data: TopAnimeData[] = page1.data.concat(page2.data) 
-
-//   return data
-// }
-
 const CardList:React.FC<Props> = async ({ endpoint, prevEl, nextEl, title, type}) => {
-  
   const animeData: TopAnime = await getTopAnimeData(endpoint, {page: 1})
   const data: TopAnimeData[] = animeData.data
+  const animePagination: Pagination = animeData.pagination
 
   return (
     <div className='featured-section py-8 px-6 tablet:px-8 tablet:py-16 desktop:px-16'>
@@ -43,7 +35,7 @@ const CardList:React.FC<Props> = async ({ endpoint, prevEl, nextEl, title, type}
         <CardCarousel nextEl={nextEl} prevEl={prevEl} >
           {
             data.map((anime: TopAnimeData) => 
-              <Link key={anime.mal_id} href={`${type}/${anime.mal_id}`}>
+              <Link key={anime.mal_id} href={`${type}/${anime.mal_id}`} scroll={false}>
                 <Card 
                   imageUrl={anime.images.jpg.large_image_url}
                   animeTitleEnglish={anime.title_english}

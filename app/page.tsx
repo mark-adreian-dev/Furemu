@@ -1,17 +1,19 @@
 import Header from '@/app/GlobalComponents/Header'
 import Footer from '@/app/GlobalComponents/Footer';
 import Banner from '@/app/HomepageComponents/Banner'
-import CardList from '@/app/HomepageComponents/CardCarousel/CardList'
+import CardList from '@/app/HomepageComponents/CardList'
 import FeaturedAnime from '@/app/HomepageComponents/FeaturedAnime';
 
+export const BASE_URL = 'https://api.jikan.moe/v4'
+
 export default function Home () {
- 
   return (
     <>
       <Header />
+      
       <Banner/>
       <CardList 
-        endpoint='https://api.jikan.moe/v4/top/anime' 
+        endpoint={`${BASE_URL}/top/anime`}
         prevEl="prev-top-anime" 
         nextEl="next-top-anime" 
         title="Top Anime" 
@@ -19,7 +21,7 @@ export default function Home () {
       />
 
       <CardList 
-        endpoint='https://api.jikan.moe/v4/seasons/upcoming' 
+        endpoint={`${BASE_URL}/seasons/upcoming`}
         prevEl="prev-upcoming-anime" 
         nextEl="next-upcoming-anime" 
         title="Upcoming Anime" 
@@ -29,7 +31,7 @@ export default function Home () {
       <FeaturedAnime/>
 
       <CardList 
-        endpoint='https://api.jikan.moe/v4/top/manga' 
+        endpoint={`${BASE_URL}/top/manga`}
         prevEl="prev-top-manga" 
         nextEl="next-top-manga" 
         title="Top Manga" 
