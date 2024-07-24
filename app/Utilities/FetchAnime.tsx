@@ -42,11 +42,13 @@ export async function FetchAnime <T>(endpoint: string, params?: Params): Promise
     try {
         const parameters = extractParams(params ? params : undefined)
         const url = `${BASE_URL}${endpoint}${parameters ? parameters : ''}`
-        const response = await fetch(url, {method: 'GET'})
+        const response = await fetch(url, {
+            method: 'GET'
+        })
         const result : T = await response.json()
         return result
     } catch (err) {
-        throw Error("Error with fetching tht data")
+        throw Error("Error with fetching data")
     }
     
 }

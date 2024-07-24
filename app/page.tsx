@@ -25,19 +25,9 @@ export default function Home () {
         nextEl="next-top-anime" 
         title="Top Anime" 
         type='anime'
-      />
-
-    
+      /> 
 
       <FeaturedAnime/>
-
-      {/* <CardList 
-        endpoint={`/seasons/upcoming`}
-        prevEl="prev-upcoming-anime" 
-        nextEl="next-upcoming-anime" 
-        title="Upcoming Anime" 
-        type='anime'
-      /> */}
 
       <CardList 
         endpoint={`/top/manga`}
