@@ -31,7 +31,7 @@ const AnimePreview:React.FC<Props> = ({ animeData }) => {
           <Theme data={animeData.data.theme.endings} type="Endings"/>
           <Synopsis synopsis={animeData.data.synopsis} />
           <Characters id={animeData.data.mal_id} />
-          <Producers animeProducers={animeData.data.producers} animeId={animeData.data.mal_id}/>
+          <Producers animeProducers={animeData.data.producers}/>
         </div>
       </div>
     </>
