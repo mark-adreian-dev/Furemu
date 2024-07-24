@@ -1,8 +1,8 @@
 import React from "react";
-import Header from "@/app/GlobalComponents/Header";
+import Header from "@/app/Components/Header";
 import AnimePreview from "./Components/AnimePreview";
 import { Anime } from "@/app/Types/Anime";
-import { FetchAnime } from "@/app/Hooks/FetchAnime";
+import { FetchAnime } from "@/app/Utilities/FetchAnime";
 
 const page = async ({ params }: { params: { mal_id: string } }) => {
   const animeId = params.mal_id;

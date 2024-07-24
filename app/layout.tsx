@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import SmoothScroll from "./GlobalComponents/SmoothScroll";
+import SmoothScroll from "./Components/SmoothScroll";
 
 import 'swiper/css';
 import 'swiper/css/pagination';

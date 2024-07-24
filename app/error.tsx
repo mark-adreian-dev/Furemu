@@ -1,6 +1,6 @@
 'use client'
 
-import Header from '@/app/GlobalComponents/Header'
+import Header from '@/app/Components/Header'
 import React from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'

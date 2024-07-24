@@ -1,7 +1,6 @@
 import Image from "next/image"
 import { Anime } from "@/app/Types/Anime"
 import PreviewImage from "./AnimeDetailsComponents/PreviewImage"
-import SmoothScroll from "@/app/GlobalComponents/SmoothScroll"
 import BasicInfo from "./AnimeDetailsComponents/BasicInfo"
 import Theme from "./AnimeDetailsComponents/Theme"
 import Characters from "./AnimeDetailsComponents/Characters"
@@ -35,7 +34,6 @@ const AnimePreview:React.FC<Props> = ({ animeData }) => {
         </div>
       </div>
     </>
- 
   )
 }
 

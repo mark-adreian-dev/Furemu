@@ -1,8 +1,8 @@
-import Header from '@/app/GlobalComponents/Header'
-import Footer from '@/app/GlobalComponents/Footer';
-import Banner from '@/app/HomepageComponents/Banner'
-import CardList from '@/app/HomepageComponents/CardList'
-import FeaturedAnime from '@/app/HomepageComponents/FeaturedAnime';
+import Header from '@/app/Components/Header'
+import Footer from '@/app/Components/Footer';
+import Banner from '@/app/Components/HomepageComponents/Banner'
+import CardList from '@/app/Components/HomepageComponents/CardList'
+import FeaturedAnime from '@/app/Components/HomepageComponents/FeaturedAnime';
 
 export default function Home () {
   return (
@@ -10,6 +10,15 @@ export default function Home () {
       <Header />
       
       <Banner/>
+
+      <CardList 
+        endpoint={`/seasons/now`}
+        prevEl="prev-seasons-now" 
+        nextEl="next-seasons-now" 
+        title="Latest Anime" 
+        type='anime'
+      />
+
       <CardList 
         endpoint={`/top/anime`}
         prevEl="prev-top-anime" 
@@ -18,6 +27,10 @@ export default function Home () {
         type='anime'
       />
 
+    
+
+      <FeaturedAnime/>
+
       <CardList 
         endpoint={`/seasons/upcoming`}
         prevEl="prev-upcoming-anime" 
@@ -25,8 +38,6 @@ export default function Home () {
         title="Upcoming Anime" 
         type='anime'
       />
-
-      <FeaturedAnime/>
 
       <CardList 
         endpoint={`/top/manga`}

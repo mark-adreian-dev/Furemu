@@ -1,4 +1,4 @@
-import IconButton from '@/app/GlobalComponents/IconButton'
+import IconButton from '@/app/Components/IconButton'
 
 interface Props {
     title: string,

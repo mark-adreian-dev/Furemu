@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { Producer, ProducerData } from "@/app/Types/Producer";
-import { FetchAnime } from "@/app/Hooks/FetchAnime";
+import { FetchAnime } from "@/app/Utilities/FetchAnime";
 
 const ProducerImage = async ({ prodId }: { prodId: number }) => {
   const endpoint = `/producers/${prodId}`;

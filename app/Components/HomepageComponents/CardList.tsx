@@ -3,7 +3,7 @@ import TitleControl from './CardListComponents/TitleControl'
 import CardCarousel from './CardListComponents/CardCarousel'
 import Card from './CardListComponents/Card'
 import { TopAnimeData, TopAnime, Pagination } from '@/app/Types/TopAnime'
-import { FetchAnime } from '../Hooks/FetchAnime'
+import { FetchAnime } from '@/app/Utilities/FetchAnime'
 
 interface Props {
   

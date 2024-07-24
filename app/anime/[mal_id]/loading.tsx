@@ -1,4 +1,4 @@
-import Header from "@/app/GlobalComponents/Header"
+import Header from "@/app/Components/Header"
 
 const Loading = () => {
   return (

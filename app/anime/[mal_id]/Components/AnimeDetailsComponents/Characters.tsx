@@ -1,6 +1,6 @@
 import Image from "next/image"
 import { CharacterFull, Data } from "@/app/Types/Characters"
-import { FetchAnime } from "@/app/Hooks/FetchAnime"
+import { FetchAnime } from "@/app/Utilities/FetchAnime"
 
 const Characters = async ({ id }: { id: number }) => {
     const enpoint = `/anime/${id}/characters`
