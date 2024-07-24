@@ -3,47 +3,38 @@ import Header from "@/app/GlobalComponents/Header"
 const Loading = () => {
   return (
     <> 
-    
-    <Header />
-                
-                <div className="relative px-6 pt-24 h-screen w-screen  tablet:h-fit tablet:pb-8 desktop:h-screen wide:pl-16 wide:w-[44.5rem]">
-                
-                <div className="main-content px-6 pt-8 flex flex-col items-center tablet:pt-16 tablet:px-16 desktop:flex-row desktop:items-start desktop:pl">
-                    <div className="fixed top-0 right-0 h-screen w-[39.875rem] poster-desktop-imgae wide:w-[55rem]">
-                      <div className="relative h-screen w-[39.875rem]">
-                        <div className="absolute top-0 left-0 h-screen animate-pulse bg-dark-blue w-[39.875rem] hidden desktop:block wide:w-[55rem]"></div>
-                      </div>
-                    </div>
-                  </div>
-    
-    
-                  <div className='mx-auto image-skeleton w-[19.9375rem] mt-8 mb-8 h-[28.375rem] bg-dark-blue animate-pulse rounded-3xl tablet:h-[52rem] tablet:w-[36.5rem] tablet:mb-16 desktop:hidden'></div>
-                  <div className='context-skeleton mx-auto tablet:w-[36.5rem]  desktop:hidden'>
-                    <div className='animate-pulse bg-dark-blue mx-auto rounded-2xl mb-8 w-[19.9375rem] h-8 tablet:mx-0 tablet:w-[30rem]'></div>
-                    <div className='basic-info-skeleton mx-auto w-[19.9375rem] relative tablet:mx-0'>
-                      <div className='animate-pulse bg-dark-blue rounded-2xl mb-4 w-64 h-4'></div>
-                      <div className='animate-pulse bg-dark-blue rounded-2xl mb-4 w-56 h-4'></div>
-                      <div className='animate-pulse bg-dark-blue rounded-2xl w-44 h-4'></div>
-                    </div>
-                  </div>
-    
-                  <div className="anime-preview-scroll-wrapper relative w-full tablet:w-full desktop:w-[40.5rem]">
-                    <div className='animate-pulse bg-dark-blue mx-auto rounded-2xl mb-8 w-[19.9375rem] h-8 tablet:mx-0 tablet:w-[30rem]'></div>
-                    <div className='basic-info-skeleton mx-auto w-[19.9375rem] relative tablet:mx-0 mb-16'>
-                      <div className='animate-pulse bg-dark-blue rounded-2xl mb-4 w-64 h-4'></div>
-                      <div className='animate-pulse bg-dark-blue rounded-2xl mb-4 w-56 h-4'></div>
-                      <div className='animate-pulse bg-dark-blue rounded-2xl w-44 h-4'></div>
-                    </div>
-    
-                    <div className='animate-pulse bg-dark-blue mx-auto rounded-2xl mb-8 w-[19.9375rem] h-8 tablet:mx-0 tablet:w-[20rem]'></div>
-                    <div className='basic-info-skeleton mx-auto w-[19.9375rem] relative tablet:mx-0'>
-                      <div className='animate-pulse bg-dark-blue rounded-2xl mb-4 w-64 h-4'></div>
-                      <div className='animate-pulse bg-dark-blue rounded-2xl mb-4 w-56 h-4'></div>
-                      <div className='animate-pulse bg-dark-blue rounded-2xl w-44 h-4'></div>
-                    </div>
-                  </div>
-                </div>
-    
+      <Header />
+      <div className="relative w-full h-full py-32 tablet:pt-[12.25rem] desktop:px-16 desktop:pb-0 ">
+          <div className="image-skeleton w-[19.9375rem] h-[28.375rem] mx-auto bg-dark-blue rounded-3xl animate-pulse mb-6 tablet:w-[36.5rem] tablet:h-[52rem] tablet:mb-16 desktop:hidden"></div>
+          <div className="absolute top-0 right-0 animate-pulse image-skeleton-desktop hidden desktop:block w-[39.875rem] h-screen bg-dark-blue"></div>  
+          <div className="context-skeletons desktop:w-[28.875rem] wide:pl-16 wide:w-[44.5rem]">
+            <div className="context-skeleton-1">
+              <div className="title-skeleton mb-6"> 
+                <div className="animate-pulse mx-auto title w-[19.9375rem] h-9 bg-dark-blue rounded-md mb-2 tablet:w-[28.875rem] tablet:h-16 desktop:mx-0"></div>
+                <div className="animate-pulse mx-auto title w-[19.9375rem] h-9 bg-dark-blue rounded-md tablet:w-[28.875rem] tablet:h-16 desktop:mx-0"></div>
+              </div>
+              <div className="content-skeleton-1 w-[19.9375rem] mx-auto desktop:mb-[4.4375rem] desktop:mx-0">
+                <div className="animate-pulse mx-auto title w-[19.9375rem] h-6 bg-dark-blue rounded-md mb-2"></div>
+                <div className="animate-pulse mx-auto title w-[19.9375rem] h-6 bg-dark-blue rounded-md mb-2"></div>
+                <div className="animate-pulse title w-[16.625rem] h-6 bg-dark-blue rounded-md mb-2 tablet:mx-auto desktop:mx-0"></div>
+                <div className="animate-pulse title w-[16.625rem] h-6 bg-dark-blue rounded-md mb-2 tablet:mx-auto desktop:mx-0"></div>
+              </div>
+            </div>
+
+            <div className="context-skeleton-2 hidden desktop:block desktop:w-[28.875rem]">
+              <div className="title-skeleton mb-6"> 
+                <div className="animate-pulse mx-auto title w-[19.9375rem] h-9 bg-dark-blue rounded-md mb-2 tablet:w-[28.875rem] tablet:h-16"></div>
+                <div className="animate-pulse mx-auto title w-[19.9375rem] h-9 bg-dark-blue rounded-md tablet:w-[28.875rem] tablet:h-16"></div>
+              </div>
+              <div className="content-skeleton-1 w-[19.9375rem] mx-auto desktop:mb-[4.4375rem] desktop:mx-0">
+                <div className="animate-pulse mx-auto title w-[19.9375rem] h-6 bg-dark-blue rounded-md mb-2"></div>
+                <div className="animate-pulse mx-auto title w-[19.9375rem] h-6 bg-dark-blue rounded-md mb-2"></div>
+                <div className="animate-pulse title w-[16.625rem] h-6 bg-dark-blue rounded-md mb-2 tablet:mx-auto desktop:mx-0"></div>
+                <div className="animate-pulse title w-[16.625rem] h-6 bg-dark-blue rounded-md mb-2 tablet:mx-auto desktop:mx-0"></div>
+              </div>
+            </div>
+          </div>
+        </div>
     </>
   )
 }

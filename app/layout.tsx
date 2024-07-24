@@ -20,7 +20,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode;}>) {
   return (
     <SmoothScroll root={true}>
-      <html lang="en" className="scrollbar-thin scrollbar-thumb-accent scrollbar-track-darker-blue scrollbar-thumb-rounded-full">
+      <html lang="en" className="scrollbar-thin scrollbar-thumb-accent scrollbar-track-darker-blue scrollbar-thumb-rounded-full bg-darker-blue">
         <body className={`bg-darker-blue ${inter.variable} relative`}>
           <main>
             {children}
