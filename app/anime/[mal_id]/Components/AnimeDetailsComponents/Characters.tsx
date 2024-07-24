@@ -1,13 +1,10 @@
 import Image from "next/image"
 import { CharacterFull, Data } from "@/app/Types/Characters"
+import { FetchAnime } from "@/app/Hooks/FetchAnime"
 
-export const getCharactedData = async (id: number): Promise<CharacterFull> => {
-    const castResponse = await fetch(`https://api.jikan.moe/v4/anime/${id}/characters`)
-    const castResult: CharacterFull = await castResponse.json()
-    return castResult
-}
 const Characters = async ({ id }: { id: number }) => {
-    const data: CharacterFull  = await getCharactedData(id)
+    const enpoint = `/anime/${id}/characters`
+    const data: CharacterFull  = await FetchAnime(enpoint)
     const castData: Data[] = data.data.filter((cast: Data) => cast.role.toLowerCase() === "main" || cast.favorites > 100)
     
     return (

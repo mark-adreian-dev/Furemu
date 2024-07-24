@@ -1,8 +1,9 @@
+import Link from 'next/link'
 import TitleControl from './CardListComponents/TitleControl'
 import CardCarousel from './CardListComponents/CardCarousel'
-import Link from 'next/link'
-import { TopAnimeData, TopAnime, Pagination } from '@/app/Types/TopAnime'
 import Card from './CardListComponents/Card'
+import { TopAnimeData, TopAnime, Pagination } from '@/app/Types/TopAnime'
+import { FetchAnime } from '../Hooks/FetchAnime'
 
 interface Props {
   
@@ -13,22 +14,12 @@ interface Props {
   type: string
 
 }
-interface Params {
-  page: number
-}
-
-const getTopAnimeData = async (endpoint: string, params: Params): Promise<TopAnime> => {
-  const url = `${endpoint}?page=${params.page}`
-  const response = await fetch(url, {method: 'GET'})
-  const result : TopAnime = await response.json()
-  return result
-}
 
 const CardList:React.FC<Props> = async ({ endpoint, prevEl, nextEl, title, type}) => {
-  const animeData: TopAnime = await getTopAnimeData(endpoint, {page: 1})
+  const animeData: TopAnime = await FetchAnime(endpoint)
   const data: TopAnimeData[] = animeData.data
   const animePagination: Pagination = animeData.pagination
-
+  
   return (
     <div className='featured-section py-8 px-6 tablet:px-8 tablet:py-16 desktop:px-16'>
         <TitleControl title={title} nextEl={nextEl} prevEl={prevEl}/>
