@@ -18,7 +18,7 @@ const error = ({ error }: {error: Error, reset: ()=> void}) => {
               <p className='text-center w-80 text-accent leading-7 text-xl font-normal mb-12'>Something went wrong! Please try refreshing the page</p>
               
 
-              <Link href={`/`} scroll={false}>
+              <Link href="/" scroll={false}>
                 <button className='btn bg-transparent text-accent border-accent hover:text-darker-blue  hover:bg-accent'>
                   Homepage
                 </button>
