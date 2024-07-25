@@ -60,7 +60,4 @@ export async function FetchAnime <T>(endpoint: string, params?: Params): Promise
     const result : T = await response.json()
     return result
 
-
-
-
 }
