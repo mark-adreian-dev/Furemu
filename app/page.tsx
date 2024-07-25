@@ -77,7 +77,7 @@ const Home:React.FC<Props> = () => {
         </div>
         
       </SmoothScroll>
-     
+      <Footer/>
     </>
   );
 }
