@@ -11,12 +11,13 @@ interface Props {
   nextEl: string,
   prevEl: string,
   title: string,
-  type: string
+  type: string,
+  index: number
 
 }
 
-const CardList:React.FC<Props> = async ({ endpoint, prevEl, nextEl, title, type}) => {
-  const animeData: TopAnime = await FetchAnime(endpoint)
+const CardList:React.FC<Props> = async ({ endpoint, prevEl, nextEl, title, type, index}) => {
+  const animeData: TopAnime = await FetchAnime(endpoint, index)
   const data: TopAnimeData[] = animeData.data
   const animePagination: Pagination = animeData.pagination
   

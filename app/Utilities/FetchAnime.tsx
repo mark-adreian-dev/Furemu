@@ -46,18 +46,24 @@ const extractParams = (params: Params | undefined): string => {
     }  
 }
 
-export async function FetchAnime <T>(endpoint: string, params?: Params): Promise<T> {
-   
-    const parameters = extractParams(params ? params : undefined)
-    const url = `${BASE_URL}${endpoint}${parameters ? parameters : ''}`
-    const response = await fetch(url, {
-        method: 'GET'
+export async function FetchAnime <T>(endpoint: string, index?: number, params?: Params, ): Promise<T> {
+    const rateLimitPerSec = 3
+    const oneSecondMilis = 1000
+    const delay = oneSecondMilis / rateLimitPerSec 
+
+    const delayInMilis = index ? delay : 0
+    return new Promise((resolve => setTimeout(resolve, delayInMilis))).then(async() => {
+        
+        const parameters = extractParams(params ? params : undefined)
+        const url = `${BASE_URL}${endpoint}${parameters ? parameters : ''}`
+        const response = await fetch(url, {
+            method: 'GET'
+        })
+
+        if(response.status === ResponseStatus.TooManyRequest) throw Error("Too many request! rate limit exceed")
+            console.log(`\nEndpoint : ${endpoint}\nResponse Status: ${response.status}`)
+        
+        const result : T = await response.json()
+        return result
     })
-
-    if(response.status === ResponseStatus.TooManyRequest) throw Error("Too many request! rate limit exceed")
-    console.log(`\nEndpoint : ${endpoint}\nResponse Status: ${response.status}`)
-    
-    const result : T = await response.json()
-    return result
-
 }

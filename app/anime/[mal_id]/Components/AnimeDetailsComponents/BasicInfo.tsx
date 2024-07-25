@@ -59,6 +59,8 @@ const BasicInfo:React.FC<Props> = ({ data }) => {
           }          
         )
       }
+
+  
     </div>
   )
 }

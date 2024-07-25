@@ -8,7 +8,7 @@ const Producers = ({ animeProducers }: { animeProducers: Producer[] }) => {
             <div className="images grid grid-cols-4 gap-2 w-full h-fit relative">
 
             {
-                animeProducers.map((item: Producer) => <ProducerImage key={item.mal_id} prodId={item.mal_id} />)  
+                animeProducers.map((item: Producer, index: number) => <ProducerImage key={item.mal_id} prodId={item.mal_id} index={index}/>)  
                 
             }
             </div>
