@@ -25,6 +25,15 @@ interface Params {
     limit?:   number
 }
 
+enum ResponseStatus {
+    BadRequest = 400,
+    NotFound = 404,
+    MethodNotAllowed = 405,
+    TooManyRequest = 429,
+    InternalServerError = 500,
+    ServiceUnavailable = 503
+}
+
 const extractParams = (params: Params | undefined): string => {
     if (params === undefined) return ''
     else {
@@ -39,18 +48,19 @@ const extractParams = (params: Params | undefined): string => {
 
 export async function FetchAnime <T>(endpoint: string, params?: Params): Promise<T> {
    
-    try {
-        const parameters = extractParams(params ? params : undefined)
-        const url = `${BASE_URL}${endpoint}${parameters ? parameters : ''}`
-        const response = await fetch(url, {
-            method: 'GET'
-        })
+    const parameters = extractParams(params ? params : undefined)
+    const url = `${BASE_URL}${endpoint}${parameters ? parameters : ''}`
+    const response = await fetch(url, {
+        method: 'GET'
+    })
 
-        console.log("Endpoint :" + endpoint, response.status)
-        const result : T = await response.json()
-        return result
-    } catch (err) {
-        throw Error("Error with fetching data")
-    }
+    if(response.status === ResponseStatus.TooManyRequest) throw Error("Too many request! rate limit exceed")
+    console.log(`\nEndpoint : ${endpoint}\nResponse Status: ${response.status}`)
     
+    const result : T = await response.json()
+    return result
+
+
+
+
 }
