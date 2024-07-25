@@ -52,7 +52,6 @@ export async function FetchAnime <T>(endpoint: string, index?: number, params?: 
     const delay = oneSecondMilis / rateLimitPerSec 
     const delayInMilis = index ? delay * index : 0
 
-    console.log(delayInMilis)
     return new Promise((resolve => setTimeout(resolve, delayInMilis))).then(async() => {
         
         const parameters = extractParams(params ? params : undefined)
@@ -62,7 +61,7 @@ export async function FetchAnime <T>(endpoint: string, index?: number, params?: 
         })
 
         if(response.status === ResponseStatus.TooManyRequest) throw Error("Too many request! rate limit exceed")
-            console.log(`\nEndpoint : ${endpoint}\nResponse Status: ${response.status}`)
+            console.log(`\nEndpoint : ${endpoint}\nResponse Status: ${response.status}\nDelay: ${delayInMilis}`)
         
         const result : T = await response.json()
         return result
