@@ -50,8 +50,9 @@ export async function FetchAnime <T>(endpoint: string, index?: number, params?: 
     const rateLimitPerSec = 2
     const oneSecondMilis = 1000
     const delay = oneSecondMilis / rateLimitPerSec 
+    const delayInMilis = index ? delay * index : 0
 
-    const delayInMilis = index ? delay : 0
+    console.log(delayInMilis)
     return new Promise((resolve => setTimeout(resolve, delayInMilis))).then(async() => {
         
         const parameters = extractParams(params ? params : undefined)
