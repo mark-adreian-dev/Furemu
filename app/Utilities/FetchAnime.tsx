@@ -49,7 +49,7 @@ const extractParams = (params: Params | undefined): string => {
 export async function FetchAnime <T>(endpoint: string, index?: number, params?: Params, ): Promise<T> {
     //This is to ensure that the request sent to JikanAPI does not reach or exceeds the rate limit
     //This may cause slow performance since I'm limiting request sent to the API and prevent any runtime error at most
-    const delay = 333
+    const delay = 400
     const delayInMilis = index ? delay * index : 0
 
     return new Promise((resolve => setTimeout(resolve, delayInMilis))).then(async() => {
