@@ -1,4 +1,3 @@
-import React from "react";
 import Header from "@/app/Components/Header";
 import AnimePreview from "./Components/AnimePreview";
 import { Anime } from "@/app/Types/Anime";

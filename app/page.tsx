@@ -27,6 +27,14 @@ export default function Home () {
         type='anime'
       /> 
 
+      <CardList 
+        endpoint={`/top/anime`}
+        prevEl="prev-top-anime" 
+        nextEl="next-top-anime" 
+        title="Top Anime" 
+        type='anime'
+      /> 
+
       <FeaturedAnime/>
 
       <CardList 

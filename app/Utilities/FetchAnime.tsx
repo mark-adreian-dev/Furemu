@@ -45,6 +45,8 @@ export async function FetchAnime <T>(endpoint: string, params?: Params): Promise
         const response = await fetch(url, {
             method: 'GET'
         })
+
+        console.log("Endpoint :" + endpoint, response.status)
         const result : T = await response.json()
         return result
     } catch (err) {
