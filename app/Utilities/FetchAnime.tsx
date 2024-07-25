@@ -47,7 +47,7 @@ const extractParams = (params: Params | undefined): string => {
 }
 
 export async function FetchAnime <T>(endpoint: string, index?: number, params?: Params, ): Promise<T> {
-    const rateLimitPerSec = 2
+    const rateLimitPerSec = 3
     const oneSecondMilis = 1000
     const delay = oneSecondMilis / rateLimitPerSec 
     const delayInMilis = index ? delay * index : 0
