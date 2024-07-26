@@ -54,7 +54,7 @@ export async function FetchAnime<T>(
 ): Promise<T> {
   //This is to ensure that the request sent to JikanAPI does not reach or exceeds the rate limit
   //This may cause slow performance since I'm limiting request sent to the API and prevent any runtime error at most
-  const delay = 334;
+  const delay = 335;
   const delayInMilis = index ? delay * index : 0;
 
   return new Promise((resolve) => setTimeout(resolve, delayInMilis)).then(
