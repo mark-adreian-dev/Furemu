@@ -16,8 +16,6 @@ export const metadata: Metadata = {
   description: "Heroku, your friendly anime dictionary find details on your favorite anime, manga and more",
 };
 
-export const requestCount = 0
-
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode;}>) {
   return (
     <html lang="en" className="scrollbar-thin scrollbar-thumb-accent scrollbar-track-darker-blue scrollbar-thumb-rounded-full bg-darker-blue">
