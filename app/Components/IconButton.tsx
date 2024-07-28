@@ -1,4 +1,5 @@
 import Image from "next/image";
+import path from "path";
 
 interface Props {
   iconPath: string;
@@ -6,9 +7,12 @@ interface Props {
 }
 
 const IconButton: React.FC<Props> = ({ iconPath, className }) => {
+  const iconFileName: string = iconPath.split("/")[2]
+
   return (
-    <div
+    <label
       className={`bg-accent rounded-lg relative cursor-pointer ${className}`}
+      htmlFor={iconFileName === "hamburger_menu.svg" || iconFileName === "close_icon.svg" ? "my-drawer-4" : ""}
     >
       <Image
         src={iconPath}
@@ -18,7 +22,7 @@ const IconButton: React.FC<Props> = ({ iconPath, className }) => {
         alt="control-icon"
         className="m-auto !w-5 !h-5 object-contain"
       />
-    </div>
+    </label>
   );
 };
 

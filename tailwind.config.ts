@@ -49,7 +49,7 @@ const config: Config = {
 
   daisyui: {
     themes: false,
-    styled: true, 
+    styled: false, 
     themeRoot: "*"
   }
 };

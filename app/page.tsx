@@ -62,7 +62,7 @@ const Home:React.FC<Props> = () => {
   return (
     <>
       <SmoothScroll root={true}>
-        <Header />
+        <Header active='home'/>
         <Banner/>
      
         <div>
