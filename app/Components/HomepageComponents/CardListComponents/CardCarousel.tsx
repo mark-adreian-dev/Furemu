@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 interface Props {
@@ -9,8 +9,11 @@ interface Props {
   prevEl: string;
 }
 
-const CardCarousel: React.FC<Props> = ({ children, nextEl, prevEl }) => {
+const CardCarousel: React.FC<Props> = async ({ children, nextEl, prevEl }) => {
   const animeRef = useRef<any>();
+  const [lazyLoadAnime, setLazyLoad]= useState()
+
+
   return (
     <Swiper
       modules={[Navigation]}

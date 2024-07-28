@@ -4,6 +4,7 @@ import Banner from '@/app/Components/HomepageComponents/Banner'
 import CardList from '@/app/Components/HomepageComponents/CardList'
 import FeaturedAnime from '@/app/Components/HomepageComponents/FeaturedAnime';
 import SmoothScroll from './Components/SmoothScroll';
+import Loading from './loading';
 
 interface EndpointDetails {
   endpoint: string,
@@ -63,6 +64,7 @@ const Home:React.FC<Props> = () => {
       <SmoothScroll root={true}>
         <Header />
         <Banner/>
+     
         <div>
           {
             Object.entries(endpoints).map(([key, value], index) => {

@@ -1,4 +1,4 @@
-import ProducerImage from '../ProducersComponent/ProducerImage'
+import ProducerImage from '../ProducersComponents/ProducerImage'
 import { Producer } from '@/app/Types/GlobalTypes'
 
 const Producers = ({ animeProducers }: { animeProducers: Producer[] }) => {

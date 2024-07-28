@@ -2,16 +2,22 @@
 
 import { useState, useEffect } from "react"
 import { Breakpoints } from '@/app/Types/Enums';
+import Link from "next/link";
 import Image from "next/image"
 import data from '@/FeaturedAnime.json'
 
 interface ImagePath {
     "mobile": string
     "tablet": string
-    "desktop": string
+    "desktop": string,
+}
+interface FeaturedData {
+    "mal_id": number,
+    "images": ImagePath 
 }
 
-const featuredImage: ImagePath = data.data[0]
+const featuredData: FeaturedData = data.data[0]
+const featuredImage: ImagePath = featuredData.images
 
 const FeaturedAnime = () => {
     const [screenSize, setScreenSize] = useState<string>("desktop")
@@ -49,9 +55,11 @@ const FeaturedAnime = () => {
                     <p className='text-darker-blue text-xs font-medium leading-4'>Finished Airing</p>
                     </div>
                 </div>
-                <button className='w-[6.625rem] h-[6.625rem] absolute right-0 btn bg-accent rounded-none rounded-bl-3xl rounded-tr-3xl tablet:w-40 tablet:h-40 tablet:bottom-0 tablet:rounded-tl-3xl tablet:rounded-tr-none tablet:rounded-bl-none tablet:rounded-br-3xl'>
-                    <p className='text-sm text-dark-blue font-semibold'>See More</p>
-                </button>
+                <Link href={`anime/${featuredData.mal_id}`} scroll={false}>
+                    <button className='w-[6.625rem] h-[6.625rem] absolute right-0 bg-accent rounded-none rounded-bl-3xl rounded-tr-3xl tablet:w-40 tablet:h-40 tablet:bottom-0 tablet:rounded-tl-3xl tablet:rounded-tr-none tablet:rounded-bl-none tablet:rounded-br-3xl hover:bg-white btn'>
+                        <p className='text-sm text-dark-blue font-semibold'>See More</p>
+                    </button>
+                </Link>  
             </div>
         </div>
     )

@@ -5,10 +5,14 @@ export interface Anime {
     data: AnimeData;
 }
 
+interface Jpg {
+    jpg: Image
+}
+
 export interface AnimeData {
     mal_id:  number;
     url:     string;
-    images:  { [key: string]: Image };
+    images:  Jpg;
     trailer: Trailer;
     approved:       boolean;
     titles:         Title[];

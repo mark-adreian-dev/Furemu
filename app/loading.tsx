@@ -7,7 +7,7 @@ const loading = () => {
     <>
         <Header />
         <Banner />
-        <div className="w-full h-screen flex justify-center items-start mt-16">
+        <div className="w-full flex justify-center items-start mt-16 pb-96">
             <span className="block w-32 h-32 loading loading-ring"></span>
         </div>
     </>

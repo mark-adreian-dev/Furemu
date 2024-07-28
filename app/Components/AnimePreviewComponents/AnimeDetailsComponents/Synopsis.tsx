@@ -1,5 +1,3 @@
-
-
 const Synopsis = ({ synopsis }: { synopsis: string}) => {
   return (
     

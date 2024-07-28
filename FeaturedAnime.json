@@ -1,9 +1,14 @@
 {
     "data": [
         {
-            "mobile": "/landing_page/featured/featured_mobile.png",
-            "tablet": "/landing_page/featured/featured_tablet.png",
-            "desktop": "/landing_page/featured/featured_desktop.png"
+            "mal_id": 52991,
+            "images" : {
+                "mobile": "/landing_page/featured/featured_mobile.png",
+                "tablet": "/landing_page/featured/featured_tablet.png",
+                "desktop": "/landing_page/featured/featured_desktop.png"
+            }
+            
+          
         }
     ]
 }

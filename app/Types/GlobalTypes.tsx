@@ -58,8 +58,10 @@ export interface Demographic {
 
 export enum Type {
     Anime = "anime",
+    Manga = "manga"
 }
 
 export interface Genre extends Demographic{}
 export interface Producer extends Demographic{}
+export interface Author extends Demographic{}
 export interface Studios extends Demographic{}

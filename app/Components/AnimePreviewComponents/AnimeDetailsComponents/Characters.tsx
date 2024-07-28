@@ -1,9 +1,10 @@
 import Image from "next/image"
 import { CharacterFull, Data } from "@/app/Types/Characters"
 import { FetchAnime } from "@/app/Utilities/FetchAnime"
+import { Type } from "@/app/Types/Enums"
 
-const Characters = async ({ id }: { id: number }) => {
-    const enpoint = `/anime/${id}/characters`
+const Characters = async ({ id, type }: { id: number, type: Type}) => {
+    const enpoint = `/${type}/${id}/characters`
     const data: CharacterFull  = await FetchAnime(enpoint)
     const castData: Data[] = data.data.filter((cast: Data) => cast.role.toLowerCase() === "main" || cast.favorites > 100)
     

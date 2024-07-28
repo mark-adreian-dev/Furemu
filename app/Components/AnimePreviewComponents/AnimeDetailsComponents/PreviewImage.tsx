@@ -1,8 +1,9 @@
 import Image from "next/image"
 import { AnimeData } from "@/app/Types/Anime"
+import { MangaData } from "@/app/Types/Manga"
 
 interface Props{
-    data: AnimeData
+    data: AnimeData | MangaData
 }
 
 const PreviewImage:React.FC<Props> = ({ data }) => {

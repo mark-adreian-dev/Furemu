@@ -2,18 +2,21 @@ import Badge from "../BasicInfoComponents/Badge"
 import InfoRow from "../BasicInfoComponents/InfoRow"
 import { AnimeData } from "@/app/Types/Anime"
 import { Genre } from "@/app/Types/GlobalTypes"
+import { Type } from "@/app/Types/Enums"
+import { MangaData } from "@/app/Types/Manga"
 
 interface BasicInfo {
   "Title": string,
   "Title English": string,
   "Title Japanese": string,
-  "Rating" : string,
+  "Rating" : string | number,
   "Type": string[],
   "Genre": string[]
 }
 
 interface Props {
-  data: AnimeData
+  data: AnimeData | MangaData,
+  type: Type
 }
 
 enum BasicInfoAttributes {
@@ -27,16 +30,19 @@ enum BasicInfoAttributes {
 
 }
 
-const BasicInfo:React.FC<Props> = ({ data }) => {
+const BasicInfo:React.FC<Props> = ({ data, type }) => {
   let genreContainer:string[] = []
-  data.genres.map((genre: Genre) => genreContainer.push(genre.name))
+  let anime : AnimeData = data as AnimeData
+  let manga : MangaData = data as MangaData
   
+  data.genres.map((genre: Genre) => genreContainer.push(genre.name))
+
   const basicInfoAnime: BasicInfo = {
     "Title": !data.title ? data.title_english : data.title,
     "Title English": !data.title_english ? "N/A" : data.title_english,
     "Title Japanese": !data.title_japanese ? "N/A" : data.title_japanese,
-    "Rating" : !data.rating? "N/A" : data.rating,
-    "Type":[data.type,data.status,data.episodes + " episodes"],
+    "Rating" : type == Type.manga ? manga.score : anime.rating ,
+    "Type": type === Type.anime ? [data.type, data.status, anime.episodes + " episodes"] : [data.type, data.status],
     "Genre": genreContainer
   }
 
@@ -46,9 +52,10 @@ const BasicInfo:React.FC<Props> = ({ data }) => {
         Object.entries(basicInfoAnime).map(([key, value], index) => {
             if(key === BasicInfoAttributes.TYPE || key === BasicInfoAttributes.GENRE) {
               return <InfoRow key={index} text={key}>
-                 {value.map((item: string) => <Badge key={item} text={item} />) }
-              </InfoRow>
-                
+                {
+                  value.map((item: string) => <Badge key={item} text={item} />) 
+                }
+              </InfoRow>  
             } 
             else {
               return <div key={index} className="info-item flex mb-2">
@@ -59,8 +66,6 @@ const BasicInfo:React.FC<Props> = ({ data }) => {
           }          
         )
       }
-
-  
     </div>
   )
 }

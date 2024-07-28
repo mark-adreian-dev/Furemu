@@ -69,9 +69,9 @@ export async function FetchAnime<T>(
       if (response.status === ResponseStatus.TooManyRequest)
         throw Error("Too many request! rate limit exceed");
 
-      console.log(
-        `\nEndpoint : ${endpoint}\nResponse Status: ${response.status}\nDelay: ${delayInMilis}`
-      );
+      // console.log(
+      //   `\nEndpoint : ${endpoint}\nResponse Status: ${response.status}\nDelay: ${delayInMilis}`
+      // );
       const result: T = await response.json();
       return result;
     }
