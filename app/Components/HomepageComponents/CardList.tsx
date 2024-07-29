@@ -1,8 +1,7 @@
-import Link from 'next/link'
 import TitleControl from './CardListComponents/TitleControl'
 import CardCarousel from './CardListComponents/CardCarousel'
 import Card from './CardListComponents/Card'
-import { TopAnimeData, TopAnime, Pagination } from '@/app/Types/TopAnime'
+import { AnimeData, Batch, Pagination } from '@/app/Types/BatchData'
 import { FetchAnime } from '@/app/Utilities/FetchAnime'
 
 interface Props {
@@ -17,8 +16,8 @@ interface Props {
 }
 
 const CardList:React.FC<Props> = async ({ endpoint, prevEl, nextEl, title, type, index}) => {
-  const animeData: TopAnime = await FetchAnime(endpoint, index)
-  const data: TopAnimeData[] = animeData.data
+  const animeData: Batch = await FetchAnime(endpoint, index)
+  const data: AnimeData[] = animeData.data
   const animePagination: Pagination = animeData.pagination
   
   return (
@@ -26,7 +25,7 @@ const CardList:React.FC<Props> = async ({ endpoint, prevEl, nextEl, title, type,
         <TitleControl title={title} nextEl={nextEl} prevEl={prevEl}/>
         <CardCarousel nextEl={nextEl} prevEl={prevEl} >
           {
-            data.map((anime: TopAnimeData) => 
+            data.map((anime: AnimeData) => 
               <a key={anime.mal_id} href={`${type}/${anime.mal_id}`}>
                 <Card 
                   imageUrl={anime.images.jpg.large_image_url}

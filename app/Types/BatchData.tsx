@@ -1,11 +1,11 @@
 import { Image, Trailer, Title, Aired, Broadcast, Producer, Studios, Genre, Demographic} from "@/app/Types/GlobalTypes";
 
-export interface TopAnime {
+export interface Batch {
     pagination: Pagination,
-    data: TopAnimeData[]
+    data: AnimeData[]
 }
 
-export interface TopAnimeData {
+export interface AnimeData {
     mal_id:          number;
     url:             string;
     images:          { [key: string]: Image };

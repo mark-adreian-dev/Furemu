@@ -65,3 +65,12 @@ export interface Genre extends Demographic{}
 export interface Producer extends Demographic{}
 export interface Author extends Demographic{}
 export interface Studios extends Demographic{}
+
+
+
+//Search Page
+
+export interface Filter {
+    name: string,
+    value: string | number
+}

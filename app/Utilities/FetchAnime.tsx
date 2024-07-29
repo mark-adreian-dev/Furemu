@@ -5,7 +5,7 @@ enum Filter {
   FAVORITE = "favorite",
 }
 
-enum Rating {
+export enum Rating {
   ALL_AGES = "g",
   CHIDLREN = "pg",
   TEENS = "pg13",
@@ -14,13 +14,49 @@ enum Rating {
   HENTAI = "rx",
 }
 
-interface Params {
+export enum SearchType { 
+  TV ="tv",
+  MOVIE = "movie",
+  OVA = "ova",
+  SPECIAL = "special",
+  ONA = "ona",
+  MUSIC = "music",
+  CM = "cm",
+  PV = "pv",
+  TV_SPECIAL = "tv_special"
+}
+
+enum Status {
+  AIRING = "airing",
+  COMPELETE = "complete",
+  UPCOMING = "upcoming"
+}
+
+enum Order {
+  DESC = "desc",
+  ASC = "asc"
+}
+export interface Params {
   type?: string;
   filter?: Filter;
   rating?: Rating;
   sfw?: boolean;
   page?: number;
   limit?: number;
+  unapproved?: boolean,
+  q?: string,
+  searchType?: SearchType,
+  score?: number,
+  min_score?: number,
+  max_score?: number,
+  status?: Status,
+  genre?: string,
+  genres_exclude?: string,
+  sort?: Order,
+  letter?: string,
+  producers?: string,
+  start_date?: string,
+  end_date?: string
 }
 
 enum ResponseStatus {
@@ -34,7 +70,7 @@ enum ResponseStatus {
 
 const BASE_URL = "https://api.jikan.moe/v4";
 
-const extractParams = (params: Params | undefined): string => {
+export const extractParams = (params: Params | undefined): string => {
   if (params === undefined) return "";
   else {
     let result: string = "?";
