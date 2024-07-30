@@ -6,6 +6,7 @@ enum Filter {
 }
 
 export enum Rating {
+  NO_RATING = "",
   ALL_AGES = "g",
   CHIDLREN = "pg",
   TEENS = "pg13",
@@ -92,7 +93,6 @@ export async function FetchAnime<T>(
   //This may cause slow performance since I'm limiting request sent to the API and prevent any runtime error at most
   const delay = 336;
   const delayInMilis = index ? delay * index : 0;
-
   return new Promise((resolve) => setTimeout(resolve, delayInMilis)).then(
     async () => {
 

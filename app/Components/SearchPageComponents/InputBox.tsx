@@ -5,9 +5,11 @@ import Image from "next/image";
 const InputBox = ({
   value,
   setValue,
+  type
 }: {
   value: string;
   setValue: Dispatch<SetStateAction<string>>;
+  type: string
 }) => {
 
 
@@ -18,12 +20,12 @@ const InputBox = ({
     setValue(e.target.value);
   };
   return (
-    <div className="input input-bordered flex items-center gap-2 px-4 py-3.5 border-accent border-solid border-2 rounded-lg">
+    <div className="input flex items-center gap-2 px-4 py-3.5 border-accent border-solid border-2 rounded-lg bg-transparent">
       <input
         id="anime-query"
         type="text"
         className="grow text-sm text-white font-medium bg-transparent outline-none font-main"
-        placeholder="Search Anime... "
+        placeholder={`Search ${type}... `}
         value={value}
         onChange={handleChange}
       />

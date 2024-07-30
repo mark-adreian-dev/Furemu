@@ -57,7 +57,7 @@ export const socials: MenuItem[] = [
   }
 ];
 
-const Header = ({ active } : { active?: string }) => {
+const Header = ({ active, page } : { active?: string, page?: string }) => {
   return (
     <header
       className={`absolute z-50 p-6 w-full flex justify-between items-center tablet:p-8 desktop:px-16 desktop:py-8`}
@@ -91,7 +91,7 @@ const Header = ({ active } : { active?: string }) => {
 
       <IconButton
         iconPath="/icons/search_icon.svg"
-        className="w-12 h-12 p-[0.875rem] hidden desktop:block"
+        className={`w-12 h-12 p-[0.875rem] hidden ${page === undefined ? "desktop:block" : ""} `}
       />
 
       <div className="absolute top-0 left-0 !z-40 drawer drawer-end tablet:hidden">
@@ -110,11 +110,11 @@ const Header = ({ active } : { active?: string }) => {
                 {
                   menu.map((items, index) => {
                     return <li key={index} className="relative">
-                      <Link href={items.destination} className={index === menu.length - 1 ?  `pb-1 pt-1 px-0` : `pb-3 pt-1 px-0`} scroll={false}>
+                      <Link href={items.destination} className={"hover:bg-transparent " + (index === menu.length - 1 ?  `pb-1 pt-1 px-0` : `pb-3 pt-1 px-0 `)} scroll={false}>
                         <p className="text-accent font-semibold text-sm">0{index}</p>                      
                         <p className="text-white text-sm font-semibold">{items.menuTitle}</p>
                       </Link>
-                      <div className={`absolute -left-8 top-0 w-[3px] h-8 bg-accent ${active === items.menuTitle.toLowerCase() ? "opacity-100" : "opacity-0"}`}></div>
+                      <div className={`absolute -left-8 top-0 p-0 w-[3px] h-8 bg-accent ${active === items.menuTitle.toLowerCase() ? "opacity-100" : "opacity-0"}`}></div>
                     </li>
                   }) 
                 }
@@ -125,7 +125,7 @@ const Header = ({ active } : { active?: string }) => {
                 {
                   socials.map((items, index) => {
                     return <li key={index}>
-                      <Link href={items.destination} className={index === menu.length - 1 ?  `pb-1 pt-1 px-0` : `pb-3 pt-1 px-0`}>
+                      <Link href={items.destination} className={"hover:bg-transparent " + (index === menu.length - 1 ?  `pb-1 pt-1 px-0` : `pb-3 pt-1 px-0`)}>
                         <Image src={items.icon} alt="icon" width={100} height={100} sizes="100%" className="w-4 h-4"/>                   
                         <p className="text-white text-sm font-semibold">{items.menuTitle}</p>
                       </Link>

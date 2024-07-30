@@ -1,3 +1,5 @@
+import { Rating } from "../Utilities/FetchAnime";
+
 export interface Image {
     image_url:       string;
     small_image_url: string;
@@ -72,5 +74,5 @@ export interface Studios extends Demographic{}
 
 export interface Filter {
     name: string,
-    value: string | number
+    value: string | Rating 
 }

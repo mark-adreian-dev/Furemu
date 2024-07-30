@@ -49,7 +49,6 @@ const config: Config = {
 
   daisyui: {
     themes: false,
-    styled: false, 
     themeRoot: "*"
   }
 };
