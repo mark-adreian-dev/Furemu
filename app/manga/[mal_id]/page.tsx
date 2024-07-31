@@ -10,13 +10,13 @@ import { Manga } from "@/app/Types/Manga";
 const page = async ({ params }: { params: { mal_id: string } }) => {
   const animeId = params.mal_id;
   const endpoint= `/manga/${animeId}/full`
-  const responseData: Manga | Anime = await FetchAnime(endpoint);
+  const responseData: Manga | Anime | null = await FetchAnime(endpoint);
 
   return (
     <>
       <SmoothScroll root={true}>
         <Header />
-        <AnimePreview data={responseData.data} type={Type.manga}/>
+        <AnimePreview data={(responseData as Manga).data} type={Type.manga}/>
       </SmoothScroll>
     </>
   );

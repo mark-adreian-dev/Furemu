@@ -5,8 +5,8 @@ import { Author, AuthorData } from "@/app/Types/Author";
 
 const AuthorImage = async ({ authorId, index }: { authorId: number, index: number }) => {
   const endpoint = `/people/${authorId}`;
-  const author: Author = await FetchAnime(endpoint, index);
-  const authorData: AuthorData = author.data;
+  const author: Author | null = await FetchAnime(endpoint, index);
+  const authorData: AuthorData = (author as Author).data;
 
   return (
     <div>

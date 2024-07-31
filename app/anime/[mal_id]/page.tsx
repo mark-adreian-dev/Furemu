@@ -9,13 +9,13 @@ import { Type } from "@/app/Types/Enums";
 const page = async ({ params }: { params: { mal_id: string } }) => {
   const animeId = params.mal_id;
   const endpoint= `/anime/${animeId}/full`
-  const animeData: Anime = await FetchAnime(endpoint);
+  const animeData: Anime | null = await FetchAnime(endpoint);
 
   return (
     <>
       <SmoothScroll root={true}>
         <Header />
-        <AnimePreview data={animeData.data} type={Type.anime}/>
+        <AnimePreview data={(animeData as Anime).data} type={Type.anime}/>
       </SmoothScroll>
     </>
   );

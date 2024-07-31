@@ -5,8 +5,8 @@ import { Type } from "@/app/Types/Enums"
 
 const Characters = async ({ id, type }: { id: number, type: Type}) => {
     const enpoint = `/${type}/${id}/characters`
-    const data: CharacterFull  = await FetchAnime(enpoint)
-    const castData: Data[] = data.data.filter((cast: Data) => cast.role.toLowerCase() === "main" || cast.favorites > 100)
+    const data: CharacterFull | null  = await FetchAnime(enpoint)
+    const castData: Data[] = (data as CharacterFull).data.filter((cast: Data) => cast.role.toLowerCase() === "main" || cast.favorites > 100)
     
     return (
         <div className="characters text-start mb-16">

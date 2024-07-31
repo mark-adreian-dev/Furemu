@@ -3,7 +3,7 @@
 import Image from "next/image";
 import FilterItem from "./FilterItem";
 import { useState } from "react";
-import { useGlobalContext } from "@/app/search/[type]/page";
+import { useGlobalContext } from "./SearchPage";
 import { Filter } from "@/app/Types/GlobalTypes";
 import { Rating } from "@/app/Utilities/FetchAnime";
 

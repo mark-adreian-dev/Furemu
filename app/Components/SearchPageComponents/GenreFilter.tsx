@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import FilterItem from "./FilterItem";
 import { GenreData } from "@/app/Types/Genre";
-import { useGlobalContext } from "@/app/search/[type]/page";
+import { useGlobalContext } from "./SearchPage";
 import SmoothScroll from "../SmoothScroll";
 
 interface Props {

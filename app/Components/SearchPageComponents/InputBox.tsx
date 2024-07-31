@@ -1,7 +1,7 @@
 "use client";
 import { Dispatch, SetStateAction, MutableRefObject } from "react";
 import Image from "next/image";
-import { useGlobalContext } from "@/app/search/[type]/page";
+import { useGlobalContext } from "./SearchPage";
 
 const InputBox = ({
   value,

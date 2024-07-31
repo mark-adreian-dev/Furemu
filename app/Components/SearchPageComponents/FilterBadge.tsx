@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { GenreData } from "@/app/Types/Genre";
 import Badge from "../AnimePreviewComponents/BasicInfoComponents/Badge";
-import { useGlobalContext } from "@/app/search/[type]/page";
+import { useGlobalContext } from "./SearchPage";
 import { Filter } from "@/app/Types/GlobalTypes";
 
 interface Props {
