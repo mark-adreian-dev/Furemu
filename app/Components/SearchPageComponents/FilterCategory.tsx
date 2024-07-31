@@ -14,12 +14,16 @@ interface Props {
 
 const FilterCategory: React.FC<Props> = ({ title, items }) => {
   const [activeValue, setActiveValue] = useState<string>("");
-  const { setType, setRating } = useGlobalContext()
+  const { setType, setRating, setIsLoading, setMangaStatus } = useGlobalContext()
   
   const clearSelection = () =>{
-     setActiveValue("")
-     if(title === "Type") setType("")
-     if(title === "Rating") setRating(Rating.NO_RATING)
+    setIsLoading(true)
+    setActiveValue("")
+ 
+    if(title === "Type") setType("")
+    if(title === "Rating") setRating(Rating.NO_RATING)
+    if(title === "Status") setMangaStatus("")
+
   };
 
   return (

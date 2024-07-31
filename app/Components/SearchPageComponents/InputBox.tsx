@@ -1,23 +1,35 @@
 "use client";
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction, MutableRefObject } from "react";
 import Image from "next/image";
+import { useGlobalContext } from "@/app/search/[type]/page";
 
 const InputBox = ({
   value,
   setValue,
-  type
+  type,
+  controller
 }: {
   value: string;
   setValue: Dispatch<SetStateAction<string>>;
-  type: string
+  type: string,
+  controller: MutableRefObject<AbortController | undefined>
 }) => {
 
+  const { setIsLoading } = useGlobalContext()
 
   const clearText = () => {
     setValue("");
   };
+  
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setIsLoading(true)
     setValue(e.target.value);
+
+    if(controller.current){
+      controller.current.abort()
+    }
+    
+    
   };
   return (
     <div className="input flex items-center gap-2 px-4 py-3.5 border-accent border-solid border-2 rounded-lg bg-transparent">

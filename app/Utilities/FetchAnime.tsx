@@ -50,8 +50,8 @@ export interface Params {
   score?: number,
   min_score?: number,
   max_score?: number,
-  status?: Status,
-  genre?: string,
+  status?: string,
+  genres?: string,
   genres_exclude?: string,
   sort?: Order,
   letter?: string,
@@ -87,8 +87,10 @@ export const extractParams = (params: Params | undefined): string => {
 export async function FetchAnime<T>(
   endpoint: string,
   index?: number,
-  params?: Params
-): Promise<T> {
+  params?: Params, 
+  signal?: AbortSignal
+
+): Promise<T | null> {
   //This is to ensure that the request sent to JikanAPI does not reach or exceeds the rate limit
   //This may cause slow performance since I'm limiting request sent to the API and prevent any runtime error at most
   const delay = 336;
@@ -98,18 +100,24 @@ export async function FetchAnime<T>(
 
       const parameters = extractParams(params ? params : undefined);
       const url = `${BASE_URL}${endpoint}${parameters ? parameters : ""}`;
-      const response = await fetch(url, {
-        method: "GET",
-      });
+      
+      try {
+        const response = await fetch(url, {
+          method: "GET",
+          signal: signal
+        });
 
-      if (response.status === ResponseStatus.TooManyRequest)
-        throw Error("Too many request! rate limit exceed");
-
-      // console.log(
-      //   `\nEndpoint : ${endpoint}\nResponse Status: ${response.status}\nDelay: ${delayInMilis}`
-      // );
-      const result: T = await response.json();
-      return result;
+        if (response.status === ResponseStatus.TooManyRequest)
+          throw Error("Too many request! rate limit exceed");
+  
+        // console.log(
+        //   `\nEndpoint : ${endpoint}\nResponse Status: ${response.status}\nDelay: ${delayInMilis}`
+        // );
+        const result: T = await response.json();
+        return result;
+      } 
+      catch (err) {}
+      return null
     }
   );
 }

@@ -55,11 +55,11 @@ const FeaturedAnime = () => {
                     <p className='text-darker-blue text-xs font-medium leading-4'>Finished Airing</p>
                     </div>
                 </div>
-                <Link href={`anime/${featuredData.mal_id}`} scroll={false}>
+                <a href={`anime/${featuredData.mal_id}`}>
                     <button className='w-[6.625rem] h-[6.625rem] absolute right-0 bg-accent rounded-none rounded-bl-3xl rounded-tr-3xl tablet:w-40 tablet:h-40 tablet:bottom-0 tablet:rounded-tl-3xl tablet:rounded-tr-none tablet:rounded-bl-none tablet:rounded-br-3xl hover:bg-white btn'>
                         <p className='text-sm text-dark-blue font-semibold'>See More</p>
                     </button>
-                </Link>  
+                </a>  
             </div>
         </div>
     )

@@ -18,13 +18,13 @@ export const menu: MenuItem[] = [
   },
 
   {
-    menuTitle: "Anime",
+    menuTitle: "Search Anime",
     destination: "/search/anime",
     icon: ""
   },
 
   {
-    menuTitle: "Manga",
+    menuTitle: "Search Manga",
     destination: "/search/manga",
     icon: ""
   },

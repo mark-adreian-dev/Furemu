@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { GenreData } from "@/app/Types/Genre";
 import Badge from "../AnimePreviewComponents/BasicInfoComponents/Badge";
 import { useGlobalContext } from "@/app/search/[type]/page";
+import { Filter } from "@/app/Types/GlobalTypes";
 
 interface Props {
   resultLength: number;
@@ -11,6 +12,8 @@ interface Props {
   genreActiveFilter: string;
   rating: string;
   type: string;
+  mangaFilter: Filter[]
+  
 }
 
 const FilterBadge: React.FC<Props> = ({
@@ -19,6 +22,7 @@ const FilterBadge: React.FC<Props> = ({
   genreFilter,
   rating,
   type,
+  mangaFilter
 }) => {
   const [activeFilterId, setActiveFilterId] = useState<string[]>(
     genreActiveFilter.split(",")
@@ -26,7 +30,7 @@ const FilterBadge: React.FC<Props> = ({
   const [genreFilterAll, setGenreFilterAll] = useState<GenreData[]>(
     genreFilter.filter((item) => activeFilterId.includes(String(item.mal_id)))
   );
-  const { ratingFilters, typeFilters } = useGlobalContext();
+  const { ratingFilters, animeTypeFilters, mangaStatus, mangaTypeFilters} = useGlobalContext();
   useEffect(() => {
     setActiveFilterId(genreActiveFilter.split(","));
     setGenreFilterAll(
@@ -35,22 +39,41 @@ const FilterBadge: React.FC<Props> = ({
   }, [genreActiveFilter]);
 
   return (
-    <div className="flex justify-between items-start w-full mt-6">
+    <div className="desktop:flex justify-between items-start w-full mt-6 hidden">
       <div>
         <div className="badge-container flex flex-wrap">
-          {genreFilter
-            .filter((item) => activeFilterId.includes(String(item.mal_id)))
-            .map((item) => (
-              <Badge key={item.mal_id} text={item.name} />
-            ))}
+          {
+            genreFilter
+              .filter((item) => activeFilterId.includes(String(item.mal_id)))
+              .map((item) => (
+                <Badge key={item.mal_id} text={item.name} />
+              ))
+          }
         </div>
         <div className="badge-container flex flex-wrap">
-          {ratingFilters.map((item) => {
-            if (item.value === rating) return <Badge key={item.value} text={item.name} />;
-          })}
-          {typeFilters.map((item) => {
-            if (item.value === type) return <Badge key={item.value} text={item.name} />;
-          })}
+          {
+            mangaFilter.map(item => {
+              if(item.value === mangaStatus) return <Badge key={item.value} text={item.name}/>
+            })
+          }
+          {
+            ratingFilters.map((item) => {
+              if (item.value === rating) return <Badge key={item.value} text={item.name} />;
+            })
+          }
+
+          { 
+            mangaTypeFilters.map((item) => {
+              if (item.value === type) return <Badge key={item.value} text={item.name} />;
+            })
+          }
+          
+          {
+            animeTypeFilters.map((item) => {
+              if (item.value === type) return <Badge key={item.value} text={item.name} />;
+            })
+          }
+          
         </div>
       </div>
 

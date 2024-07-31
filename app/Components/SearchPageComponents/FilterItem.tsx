@@ -18,7 +18,7 @@ const FilterItem: React.FC<Props> = ({
   setActiveValue,
   title
 }) => {
-  const { setType, setRating, setGenre, genre } = useGlobalContext() 
+  const { setType, setRating, setGenre, genre ,setIsLoading, setMangaStatus } = useGlobalContext() 
   // console.log(genre.toString().split(","))
 
   const updateRating = () => {
@@ -45,6 +45,7 @@ const FilterItem: React.FC<Props> = ({
   }
 
   const handleClick = () => {
+    setIsLoading(true)
     if(title == "Genre") {
       if(genre.toString() === "") setGenre(String(optionValue))
       else if (genre.toString().split(",").includes(String(optionValue))) updateGenre()
@@ -56,12 +57,14 @@ const FilterItem: React.FC<Props> = ({
         setActiveValue("")
         if(title === "Type") setType("")
         if(title === "Rating") setRating(Rating.NO_RATING)
+        if(title === "Status") setMangaStatus("")
       }
   
       else if (activeValue == "") {
         setActiveValue(optionValue);
         if(title === "Type") setType(optionValue)
         if(title === "Rating") updateRating()
+        if(title === "Status") setMangaStatus(optionValue)
         
       }
   
@@ -69,6 +72,7 @@ const FilterItem: React.FC<Props> = ({
         setActiveValue(optionValue);
         if(title === "Type") setType(optionValue)
         if(title === "Rating") updateRating()
+        if(title === "Status") setMangaStatus(optionValue)
       }
     }
   };

@@ -2,7 +2,7 @@ import { Image, Trailer, Title, Aired, Broadcast, Producer, Studios, Genre, Demo
 
 export interface Batch {
     pagination: Pagination,
-    data: AnimeData[]
+    data: AnimeData[] | []
 }
 
 export interface AnimeData {
