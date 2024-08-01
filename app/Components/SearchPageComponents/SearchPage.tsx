@@ -17,7 +17,6 @@ import { BannerSlide } from "@/app/Types/BannerType";
 import { Filter } from "@/app/Types/GlobalTypes";
 import { Genre, GenreData } from "@/app/Types/Genre";
 
-
 const bannerData: BannerSlide[] = banner.data;
 
 const animeTypeFilters: Filter[] = [
@@ -150,10 +149,10 @@ export const FilterContext = createContext<Context>({
   pageCount: 1
 })
 export const useGlobalContext = () => useContext(FilterContext)
-
 interface Props {
   params: string
 }
+
 const paginationDefaultValue = {
   current_page: 1,
   has_next_page: false,
@@ -164,7 +163,6 @@ const paginationDefaultValue = {
   },
   last_visible_page: 0,
 }
-
 
 const SearchPage:React.FC<Props> = ({ params }) => {
   const controllerRef = useRef<AbortController>();
@@ -180,15 +178,12 @@ const SearchPage:React.FC<Props> = ({ params }) => {
   const [data, setData] = useState<AnimeData[]>([]);
   const [paginationData, setPaginationData] = useState<Pagination>(paginationDefaultValue);
   
-
   const resetFitler = () => {
     setRating(Rating.NO_RATING);
     setType("");
     setQuery("");
     setGenre("");
   };
-
- 
 
   useEffect(() => {
     const updateScreenSize = () => {
