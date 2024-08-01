@@ -18,13 +18,13 @@ export const menu: MenuItem[] = [
   },
 
   {
-    menuTitle: "Search Anime",
+    menuTitle: "Anime",
     destination: "/search/anime",
     icon: ""
   },
 
   {
-    menuTitle: "Search Manga",
+    menuTitle: "Manga",
     destination: "/search/manga",
     icon: ""
   },
@@ -84,16 +84,8 @@ const Header = ({ active, page } : { active?: string, page?: string }) => {
         </ul>
       </nav>
       
-      <IconButton
-        iconPath="/icons/hamburger_menu.svg"
-        className="w-12 h-12 p-[0.875rem] drawer-button tablet:hidden"
-      />
-
-      <IconButton
-        iconPath="/icons/search_icon.svg"
-        className={`w-12 h-12 p-[0.875rem] hidden ${page === undefined ? "desktop:block" : ""} `}
-      />
-
+      <IconButton iconPath="/icons/hamburger_menu.svg" className="w-12 h-12 p-[0.875rem] drawer-button tablet:hidden"/>
+      <IconButton iconPath="/icons/search_icon.svg" className={`w-12 h-12 p-[0.875rem] hidden ${page === undefined ? "desktop:block" : ""} `} />
       <div className="absolute top-0 left-0 !z-40 drawer drawer-end tablet:hidden">
         <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
        
@@ -106,6 +98,7 @@ const Header = ({ active, page } : { active?: string, page?: string }) => {
             />
             <div className="main-menu mt-12">
               <h5 className="text-white text-base font-bold mb-4">Menu</h5>
+              
               <ul className="mb-12 ">
                 {
                   menu.map((items, index) => {
@@ -133,14 +126,12 @@ const Header = ({ active, page } : { active?: string, page?: string }) => {
                   }) 
                 }
               </ul>
-              
               <Link href="/" scroll={false}>
                 <h1 className="leading-7 text-nav-logo-text text-white font-black">
                   Heroku
                 </h1>
                 <p className="text-accent text-[8px] italic">Copyright © 2024 - All right reserved.</p>
-              </Link>
-                      
+              </Link>       
             </div>
           </div>
         </div>

@@ -6,7 +6,7 @@ import InputBox from "@/app/Components/SearchPageComponents/InputBox";
 import FilterCategory from "@/app/Components/SearchPageComponents/FilterCategory";
 import GenreFilter from "@/app/Components/SearchPageComponents/GenreFilter";
 
-import { useState, useEffect, useContext, useReducer, createContext, Dispatch, SetStateAction, useRef } from "react";
+import { useState, useEffect, useContext, createContext, Dispatch, SetStateAction, useRef } from "react";
 import { FetchAnime, Params, Rating } from "@/app/Utilities/FetchAnime";
 import { AnimeData, Batch, Pagination } from "@/app/Types/BatchData";
 import { SearchType } from "@/app/Utilities/FetchAnime";
@@ -18,6 +18,7 @@ import FilterBadge from "@/app/Components/SearchPageComponents/FilterBadge";
 import SearchCard from "@/app/Components/SearchPageComponents/SearchCard";
 
 const bannerData: BannerSlide[] = data.data;
+
 const animeTypeFilters: Filter[] = [
   {
     name: "TV",
@@ -118,7 +119,6 @@ const mangaStatusFilters: Filter[] = [
     value: "upcoming"
   },
 ]
-
 export interface Context {
   setType: Dispatch<SetStateAction<string>>,
   setRating: Dispatch<SetStateAction<Rating>>,
@@ -146,12 +146,22 @@ export const FilterContext = createContext<Context>({
   mangaTypeFilters,
   mangaStatus: ""
 })
+export const useGlobalContext = () => useContext(FilterContext)
 
 interface Props {
-    params: string
+  params: string
+}
+const paginationDefaultValue = {
+  current_page: 1,
+  has_next_page: false,
+  items: {
+    count: 0,
+    total: 0,
+    per_page: 0,
+  },
+  last_visible_page: 0,
 }
 
-export const useGlobalContext = () => useContext(FilterContext)
 
 const SearchPage:React.FC<Props> = ({ params }) => {
   const controllerRef = useRef<AbortController>();
@@ -164,21 +174,13 @@ const SearchPage:React.FC<Props> = ({ params }) => {
   const [genre, setGenre] = useState<string>("");
   const [mangaStatus, setMangaStatus] = useState<string>("");
   const [pageCount, setPageCount] = useState<number>(1);
-  const [paginationData, setPaginationData] = useState<Pagination>({
-    current_page: 1,
-    has_next_page: false,
-    items: {
-      count: 0,
-      total: 0,
-      per_page: 0,
-    },
-    last_visible_page: 0,
-  });
   const [data, setData] = useState<AnimeData[]>([]);
+  const [paginationData, setPaginationData] = useState<Pagination>(paginationDefaultValue);
+  
 
   const resetFitler = () => {
-    setType("");
     setRating(Rating.NO_RATING);
+    setType("");
     setQuery("");
     setGenre("");
   };
@@ -191,9 +193,9 @@ const SearchPage:React.FC<Props> = ({ params }) => {
   };
 
   const fetchSearchData = (delayRate: number) => {
-    const parameters: Params = {
-      page: pageCount,
-    };
+    const parameters: Params = {page: pageCount,};
+
+    //If filter is present add filter as parameters to the request
     if (query !== "") parameters.q = query;
     if (rating != Rating.NO_RATING) parameters.rating = rating;
     if (type != "") parameters.type = type;
@@ -210,30 +212,27 @@ const SearchPage:React.FC<Props> = ({ params }) => {
         parameters,
         signal
       );
-      setPaginationData((prevState) =>
-        (response as Batch) ? (response as Batch).pagination : prevState
-      );
-      setData((prevState) =>
-        (response as Batch) ? (response as Batch).data : prevState
-      );
-      setIsLoading(false);
-    };
 
+      if(response !== null) {
+        setPaginationData(response.pagination);
+        setData(response.data);
+        setIsLoading(false);
+      } else {
+        setPaginationData(paginationDefaultValue)
+        setData([])
+      }
+    };
     fetchdata();
   };
 
   const fetchGenre = async () => {
-    const response: Genre | null = await FetchAnime(
-      `/genres/${params}`,
-      0
-    );
+    const response: Genre | null = await FetchAnime(`/genres/${params}`,);
     setGenreFilters((response as Genre).data);
   };
 
   useEffect(() => {
     updateScreenSize();
     window.addEventListener("resize", () => updateScreenSize());
-
     fetchGenre();
   }, []);
 
@@ -303,7 +302,7 @@ const SearchPage:React.FC<Props> = ({ params }) => {
               genreActiveFilter={genre}
               genreFilter={genreFilters}
               mangaFilter={mangaStatusFilters}
-              resultLength={paginationData.items.total}
+              resultLength={paginationData ? paginationData.items.total : 0}
               rating={rating}
               type={type}
             />

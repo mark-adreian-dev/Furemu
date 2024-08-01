@@ -71,8 +71,8 @@ enum ResponseStatus {
 
 const BASE_URL = "https://api.jikan.moe/v4";
 
-export const extractParams = (params: Params | undefined): string => {
-  if (params === undefined) return "";
+export const extractParams = (params: Params | null): string => {
+  if (params === null) return "";
   else {
     let result: string = "?";
     Object.entries(params).map(([key, value], index) => {
@@ -86,38 +86,58 @@ export const extractParams = (params: Params | undefined): string => {
 
 export async function FetchAnime<T>(
   endpoint: string,
-  index?: number,
+  delayRate?: number,
   params?: Params, 
   signal?: AbortSignal
-
 ): Promise<T | null> {
   //This is to ensure that the request sent to JikanAPI does not reach or exceeds the rate limit
   //This may cause slow performance since I'm limiting request sent to the API and prevent any runtime error at most
   const delay = 336;
-  const delayInMilis = index ? delay * index : 0;
-  return new Promise((resolve) => setTimeout(resolve, delayInMilis)).then(
-    async () => {
+  const delayInMilis = delayRate ? delay * delayRate : 0;
 
-      const parameters = extractParams(params ? params : undefined);
-      const url = `${BASE_URL}${endpoint}${parameters ? parameters : ""}`;
-      
-      try {
-        const response = await fetch(url, {
-          method: "GET",
-          signal: signal
-        });
+  return new Promise((resolve) => 
+    setTimeout(resolve, delayInMilis))
+      .then(async () => {
 
-        if (response.status === ResponseStatus.TooManyRequest)
-          throw Error("Too many request! rate limit exceed");
-  
-        // console.log(
-        //   `\nEndpoint : ${endpoint}\nResponse Status: ${response.status}\nDelay: ${delayInMilis}`
-        // );
-        const result: T = await response.json();
-        return result;
-      } 
-      catch (err) {}
-      return null
-    }
-  );
+          const parametersObject = params ? params : null
+          const requestParameters = extractParams(parametersObject);
+          const url = `${BASE_URL}${endpoint}${parametersObject !== null ? requestParameters : ""}`;
+          
+          try {
+            const response = await fetch(url, {
+              method: "GET",
+              signal: signal
+            });
+
+            switch(response.status){
+
+              case ResponseStatus.TooManyRequest:
+                throw new Error("You’ve sent too many requests in a short period of time. Please wait a moment and try again later.");
+
+              case ResponseStatus.NotFound:
+                throw new Error("Sorry, the page you're looking for doesn’t exist. It may have been moved or deleted. Please check the URL for errors or return to the homepage to find what you're looking for.");
+               
+              case ResponseStatus.InternalServerError:
+                throw new Error("Oops! Something went wrong on our end. We’re working to fix it as quickly as possible. Please try again later");
+            
+              case ResponseStatus.BadRequest:
+                throw new Error("It looks like there was an issue with the request you sent. Please check the information you’ve provided and try again.");
+              
+              case ResponseStatus.ServiceUnavailable:
+                throw new Error("We’re currently experiencing technical difficulties and are working to get things back up and running. Please try again later.");
+              
+              case ResponseStatus.MethodNotAllowed:
+                throw new Error("The method used for this request is not allowed. Please check the request and try using a different method.");
+              
+            }
+           
+            const result: T = await response.json();
+            return result;
+          } 
+          catch (error) {  
+            if(error instanceof Error) console.log(error.name) 
+            return null      
+          } 
+        }
+      );
 }
