@@ -14,6 +14,7 @@ const InputBox:React.FC<Props> = ({ setValue, controller, value, type }) => {
   const { setIsLoading } = useGlobalContext()
 
   const clearText = () => {
+    setIsLoading(true)
     setValue("");
   };
   

@@ -12,7 +12,7 @@ const Producers:React.FC<Props> = ({ animeProducers }) => {
             <div className="images grid grid-cols-4 gap-2 w-full h-fit relative">
 
             {
-                animeProducers?.map((item: Producer, index: number) => <ProducerImage key={item.mal_id} prodId={item.mal_id} index={index}/>)  
+                animeProducers.map((item: Producer, index: number) => <ProducerImage key={item.mal_id} prodId={item.mal_id} index={index}/>)  
                 
             }
             </div>

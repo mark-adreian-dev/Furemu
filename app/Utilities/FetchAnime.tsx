@@ -89,32 +89,33 @@ export async function FetchAnime<T>(
   delayRate?: number,
   params?: Params, 
   signal?: AbortSignal
-): Promise<T | null> {
+): Promise<T> {
   //This is to ensure that the request sent to JikanAPI does not reach or exceeds the rate limit
   //This may cause slow performance since I'm limiting request sent to the API and prevent any runtime error at most
   const delay = 336;
   const delayInMilis = delayRate ? delay * delayRate : 0;
 
+  const parametersObject = params ? params : undefined
+  const requestParameters = extractParams(parametersObject);
+  const url = `${BASE_URL}${endpoint}${parametersObject !== undefined ? requestParameters : ""}`;
+  let result: T
+
   return new Promise((resolve) => 
     setTimeout(resolve, delayInMilis))
       .then(async () => {
+       
+        try {
+          const response = await fetch(url, {
+            method: "GET",
+            signal: signal
+          })
+      
+          result = await response.json();
+          
+        }
+      
+        catch(err) {}
 
-        const parametersObject = params ? params : undefined
-        const requestParameters = extractParams(parametersObject);
-        const url = `${BASE_URL}${endpoint}${parametersObject !== undefined ? requestParameters : ""}`;
-        
-        const response = await fetch(url, {
-          method: "GET",
-          signal: signal
-        })
-        
-        const result: T = await response.json();
-        return result;
-      
-      })
-      
-      .catch(error => {
-        if(error instanceof Error) console.log("Error occurred: " + error.message)
-        return null
+        return result
       })
 }

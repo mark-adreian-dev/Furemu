@@ -4,7 +4,7 @@ const Theme = ({ data, type }: { data: string[], type: string}) => {
         <p className=" text-white text-sm leading-6 font-bold mb-[0.875rem]">{type}:</p>
         <div className="">
           {
-            data?.map(theme => <p key={theme} className="text-accent text-sm leading-6 font-normal mb-3">{theme}</p>)
+            data.map(theme => <p key={theme} className="text-accent text-sm leading-6 font-normal mb-3">{theme}</p>)
           }
         </div>
         

@@ -64,7 +64,6 @@ const Home:React.FC<Props> = () => {
       <SmoothScroll root={true}>
         <Header active='home'/>
         <Banner/>
-     
         <div>
           {
             Object.entries(endpoints).map(([key, value], index) => {
@@ -76,8 +75,7 @@ const Home:React.FC<Props> = () => {
               }
             })
           }
-        </div>
-        
+        </div>  
       </SmoothScroll>
       <Footer/>
     </>

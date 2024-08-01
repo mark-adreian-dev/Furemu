@@ -16,7 +16,7 @@ interface Props {
 }
 
 const CardList:React.FC<Props> = async ({ endpoint, prevEl, nextEl, title, type, index}) => {
-  const animeData: Batch | null = await FetchAnime(endpoint, index)
+  const animeData: Batch = await FetchAnime(endpoint, index)
   const data: AnimeData[] = (animeData as Batch).data
   
   return (
@@ -24,10 +24,10 @@ const CardList:React.FC<Props> = async ({ endpoint, prevEl, nextEl, title, type,
         <TitleControl title={title} nextEl={nextEl} prevEl={prevEl}/>
         <CardCarousel nextEl={nextEl} prevEl={prevEl} >
           {
-            data?.map((anime: AnimeData) => 
+            data.map((anime: AnimeData) => 
               <a key={anime.mal_id} href={`${type}/${anime.mal_id}`}>
                 <Card 
-                  imageUrl={anime.images.jpg.large_image_url}
+                  imageUrl={anime.images.webp.image_url}
                   animeTitleEnglish={anime.title_english}
                   animeTitleJapanese={anime.title_japanese}
                   animeType={anime.type}

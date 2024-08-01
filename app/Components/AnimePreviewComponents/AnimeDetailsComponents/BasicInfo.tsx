@@ -49,7 +49,7 @@ const BasicInfo:React.FC<Props> = ({ data, type }) => {
   return (
     <div className="anime-basic-info flex flex-col items-start mb-16 tablet:items-center desktop:items-start">
       {
-        Object.entries(basicInfoAnime)?.map(([key, value], index) => {
+        Object.entries(basicInfoAnime).map(([key, value], index) => {
             if(key === BasicInfoAttributes.TYPE || key === BasicInfoAttributes.GENRE) {
               return <InfoRow key={index} text={key}>
                 {value.map((item: string) => <Badge key={item} text={item} />)}

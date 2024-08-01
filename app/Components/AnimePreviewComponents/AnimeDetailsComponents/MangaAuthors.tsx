@@ -9,7 +9,7 @@ const MangaAuthors = ({ mangaAuthors }: {  mangaAuthors: Author[] }) => {
             <div className="images grid grid-cols-4 gap-2 w-full h-fit relative">
 
             {
-                mangaAuthors?.map((item: Author, index: number) => <AuthorImage key={index} authorId={item.mal_id} index={index}/>)  
+                mangaAuthors.map((item: Author, index: number) => <AuthorImage key={index} authorId={item.mal_id} index={index}/>)  
                 
             }
             </div>
