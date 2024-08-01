@@ -6,13 +6,13 @@ import Image from "next/image";
 import Link from "next/link";
 
 interface Props {
-  data: AnimeData[] | MangaData[] | [], 
+  data: AnimeData[] | MangaData[], 
   isLoading: boolean, 
   type: string 
 }
 
 const SearchCard:React.FC<Props> = ({ data, isLoading, type }) => {
-  if(isLoading) {
+  if(isLoading || data === undefined) {
     return(
       <div className="h-[calc(100vh-18rem)] flex flex-col justify-center items-center">
         <span className="w-32 h-32 loading loading-ring mb-2 block"></span>
