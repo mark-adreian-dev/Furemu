@@ -6,7 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useGlobalContext } from "./SearchPage";
 
-const SearchCard = ({ data, isLoading, type }: { data: AnimeData[] | MangaData[] | [] | undefined, isLoading: boolean, type: string }) => {
+const SearchCard = ({ data, isLoading, type }: { data: AnimeData[] | MangaData[] | [], isLoading: boolean, type: string }) => {
   const { fetchSearchData } = useGlobalContext()
   if(isLoading) {
     return(

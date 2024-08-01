@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import data from "@/HeroBannerData.json";
+import banner from "@/HeroBannerData.json";
 import InputBox from "@/app/Components/SearchPageComponents/InputBox";
 import FilterCategory from "@/app/Components/SearchPageComponents/FilterCategory";
 import GenreFilter from "@/app/Components/SearchPageComponents/GenreFilter";
@@ -17,7 +17,7 @@ import { Genre, GenreData } from "@/app/Types/Genre";
 import FilterBadge from "@/app/Components/SearchPageComponents/FilterBadge";
 import SearchCard from "@/app/Components/SearchPageComponents/SearchCard";
 
-const bannerData: BannerSlide[] = data.data;
+const bannerData: BannerSlide[] = banner.data;
 
 const animeTypeFilters: Filter[] = [
   {
@@ -227,10 +227,7 @@ const SearchPage:React.FC<Props> = ({ params }) => {
 
   const fetchGenre = async () => {
     const response: Genre | null = await FetchAnime(`/genres/${params}`,);
-    if((response as Genre)) setGenreFilters((response as Genre).data);
-
-    
-    
+    if((response as Genre)) setGenreFilters((response as Genre).data);    
   };
 
   useEffect(() => {
