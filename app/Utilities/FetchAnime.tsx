@@ -101,7 +101,7 @@ export async function FetchAnime<T>(
 
         const parametersObject = params ? params : undefined
         const requestParameters = extractParams(parametersObject);
-        const url = `${BASE_URL}${endpoint}${parametersObject !== null ? requestParameters : ""}`;
+        const url = `${BASE_URL}${endpoint}${parametersObject !== undefined ? requestParameters : ""}`;
         
         
           const response = await fetch(url, {
