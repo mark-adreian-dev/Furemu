@@ -19,7 +19,7 @@ const Error = ({ reset }: { error: Error, reset: () => void }) => {
                 Homepage
               </button>
             </Link>    
-            <button onClick={() => location.reload()} className='btn bg-accent border-accent text-darker-blue hover:bg-white'>Try Again</button>
+            <button onClick={() => location.reload()} className='btn bg-accent border-accent text-darker-blue hover:bg-white'>Refresh</button>
           </div>
         </div>
       </div>
