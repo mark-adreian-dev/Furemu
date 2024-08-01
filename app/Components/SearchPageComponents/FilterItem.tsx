@@ -18,16 +18,34 @@ const FilterItem: React.FC<Props> = ({
   setActiveValue,
   title
 }) => {
-  const { setType, setRating, setGenre, genre ,setIsLoading, setMangaStatus } = useGlobalContext() 
-  // console.log(genre.toString().split(","))
-
+  const { setType, setRating, setGenre, genre, setIsLoading, setMangaStatus } = useGlobalContext() 
+  
   const updateRating = () => {
-    if(optionValue === 'g') setRating(Rating.ALL_AGES)
-    else if (optionValue === 'pg') setRating(Rating.CHIDLREN)
-    else if (optionValue === 'pg13') setRating(Rating.TEENS)
-    else if (optionValue === 'r17') setRating(Rating.VIOLENCE_PROFANITY)
-    else if (optionValue === 'r') setRating(Rating.NUDITY)
-    else if (optionValue === 'rx') setRating(Rating.HENTAI)
+    switch(optionValue){
+
+      case Rating.ALL_AGES:
+        setRating(Rating.ALL_AGES)
+        break
+
+      case Rating.CHIDLREN:
+        setRating(Rating.CHIDLREN)
+        break
+
+      case Rating.TEENS:
+        setRating(Rating.TEENS)
+        break
+
+      case Rating.VIOLENCE_PROFANITY:
+        setRating(Rating.VIOLENCE_PROFANITY)
+        break
+
+      case Rating.NUDITY:
+        setRating(Rating.NUDITY)
+        break
+
+      case Rating.HENTAI:
+        break
+    }
   }
 
   const updateGenre = () => {
@@ -44,36 +62,31 @@ const FilterItem: React.FC<Props> = ({
     setGenre(updatedIdList)
   }
 
+  const resetFilter = () => {
+    setActiveValue("")
+    if(title === "Type") setType("")
+    if(title === "Rating") setRating(Rating.NO_RATING)
+    if(title === "Status") setMangaStatus("")
+  }
+
+  const addAsFilters = () => {
+    setActiveValue(optionValue);
+    if(title === "Type") setType(optionValue)
+    if(title === "Status") setMangaStatus(optionValue)
+    if(title === "Rating") updateRating()
+  }
+
   const handleClick = () => {
     setIsLoading(true)
     if(title == "Genre") {
-      if(genre.toString() === "") setGenre(String(optionValue))
-      else if (genre.toString().split(",").includes(String(optionValue))) updateGenre()
-      else setGenre(prevState => prevState += `,${optionValue}`)
+      if(genre.toString() === "") setGenre(String(optionValue))                         //add genre id to parameter if no id was included yet
+      else if (genre.toString().split(",").includes(String(optionValue))) updateGenre() //remove genre id to parameter
+      else setGenre(prevState => prevState += `,${optionValue}`)                        //add genre id to parameter
     }
 
     else {
-      if (optionValue == activeValue) {
-        setActiveValue("")
-        if(title === "Type") setType("")
-        if(title === "Rating") setRating(Rating.NO_RATING)
-        if(title === "Status") setMangaStatus("")
-      }
-  
-      else if (activeValue == "") {
-        setActiveValue(optionValue);
-        if(title === "Type") setType(optionValue)
-        if(title === "Rating") updateRating()
-        if(title === "Status") setMangaStatus(optionValue)
-        
-      }
-  
-      else {
-        setActiveValue(optionValue);
-        if(title === "Type") setType(optionValue)
-        if(title === "Rating") updateRating()
-        if(title === "Status") setMangaStatus(optionValue)
-      }
+      if (optionValue == activeValue) resetFilter() //remove as active filter
+      else addAsFilters()                           //set as active filter
     }
   };
 

@@ -99,45 +99,45 @@ export async function FetchAnime<T>(
     setTimeout(resolve, delayInMilis))
       .then(async () => {
 
-          const parametersObject = params ? params : null
-          const requestParameters = extractParams(parametersObject);
-          const url = `${BASE_URL}${endpoint}${parametersObject !== null ? requestParameters : ""}`;
+        const parametersObject = params ? params : null
+        const requestParameters = extractParams(parametersObject);
+        const url = `${BASE_URL}${endpoint}${parametersObject !== null ? requestParameters : ""}`;
+        
+        
+          const response = await fetch(url, {
+            method: "GET",
+            signal: signal
+          });
+
+          switch(response.status){
+
+            case ResponseStatus.TooManyRequest:
+              console.log("You’ve sent too many requests in a short period of time. Please wait a moment and try again later.");
+
+            case ResponseStatus.NotFound:
+              console.log("Sorry, the page you're looking for doesn’t exist. It may have been moved or deleted. Please check the URL for errors or return to the homepage to find what you're looking for.");
+              
+            case ResponseStatus.InternalServerError:
+              console.log("Oops! Something went wrong on our end. We’re working to fix it as quickly as possible. Please try again later");
           
-          try {
-            const response = await fetch(url, {
-              method: "GET",
-              signal: signal
-            });
-
-            switch(response.status){
-
-              case ResponseStatus.TooManyRequest:
-                throw new Error("You’ve sent too many requests in a short period of time. Please wait a moment and try again later.");
-
-              case ResponseStatus.NotFound:
-                throw new Error("Sorry, the page you're looking for doesn’t exist. It may have been moved or deleted. Please check the URL for errors or return to the homepage to find what you're looking for.");
-               
-              case ResponseStatus.InternalServerError:
-                throw new Error("Oops! Something went wrong on our end. We’re working to fix it as quickly as possible. Please try again later");
+            case ResponseStatus.BadRequest:
+              console.log("It looks like there was an issue with the request you sent. Please check the information you’ve provided and try again.");
             
-              case ResponseStatus.BadRequest:
-                throw new Error("It looks like there was an issue with the request you sent. Please check the information you’ve provided and try again.");
-              
-              case ResponseStatus.ServiceUnavailable:
-                throw new Error("We’re currently experiencing technical difficulties and are working to get things back up and running. Please try again later.");
-              
-              case ResponseStatus.MethodNotAllowed:
-                throw new Error("The method used for this request is not allowed. Please check the request and try using a different method.");
-              
-            }
-           
-            const result: T = await response.json();
-            return result;
-          } 
-          catch (error) {  
-            if(error instanceof Error) console.log(error.name) 
-            return null      
-          } 
-        }
-      );
+            case ResponseStatus.ServiceUnavailable:
+              console.log("We’re currently experiencing technical difficulties and are working to get things back up and running. Please try again later.");
+            
+            case ResponseStatus.MethodNotAllowed:
+              console.log("The method used for this request is not allowed. Please check the request and try using a different method.");
+            
+          }
+          
+          const result: T = await response.json();
+          return result;
+      
+      })
+      
+      .catch(error => {
+        if(error instanceof Error) console.log("Error occurred: " + error.message)
+        return null
+      })
 }

@@ -1,10 +1,11 @@
 "use client";
-import { useEffect, useState } from "react";
+
 import Image from "next/image";
 import FilterItem from "./FilterItem";
+import SmoothScroll from "../SmoothScroll";
+import { useEffect, useState } from "react";
 import { GenreData } from "@/app/Types/Genre";
 import { useGlobalContext } from "./SearchPage";
-import SmoothScroll from "../SmoothScroll";
 
 interface Props {
   items: GenreData[]

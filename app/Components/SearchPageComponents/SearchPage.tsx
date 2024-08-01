@@ -10,7 +10,7 @@ import { useState, useEffect, useContext, createContext, Dispatch, SetStateActio
 import { FetchAnime, Params, Rating } from "@/app/Utilities/FetchAnime";
 import { AnimeData, Batch, Pagination } from "@/app/Types/BatchData";
 import { SearchType } from "@/app/Utilities/FetchAnime";
-import { Breakpoints } from "@/app/Types/Enums";
+import { Breakpoints, Type } from "@/app/Types/Enums";
 import { BannerSlide } from "@/app/Types/BannerType";
 import { Filter } from "@/app/Types/GlobalTypes";
 import { Genre, GenreData } from "@/app/Types/Genre";
@@ -237,9 +237,9 @@ const SearchPage:React.FC<Props> = ({ params }) => {
   }, []);
 
   useEffect(() => {
-    fetchSearchData(1);
+    fetchSearchData(1)
   }, [query, mangaStatus, pageCount, rating, type, genre]);
-
+  
   return (
     <div className="relative z-0 h-fit">
       <div className="absolute z-0 background-image w-full h-[43.8125rem] bg-darker-blue">
@@ -277,18 +277,10 @@ const SearchPage:React.FC<Props> = ({ params }) => {
       >
         <div className="content relative z-20 w-full pt-24 px-6 tablet:px-8 tablet:pt-[8.25rem] desktop:flex desktop:px-16 desktop:pt-[10.25rem]">
           <div className="left hidden desktop:block w-[12.8125rem] mr-6">
-            {params === "anime" && (
-              <FilterCategory title="Type" items={animeTypeFilters} />
-            )}
-            {params === "anime" && (
-              <FilterCategory title="Rating" items={ratingFilters} />
-            )}
-            {params === "manga" && (
-              <FilterCategory title="Type" items={mangaTypeFilters} />
-            )}
-            {params === "manga" && (
-              <FilterCategory title="Status" items={mangaStatusFilters} />
-            )}
+            {params === Type.anime && (<FilterCategory title="Type" items={animeTypeFilters} />)}
+            {params === Type.anime && (<FilterCategory title="Rating" items={ratingFilters} />)}
+            {params === Type.manga && (<FilterCategory title="Type" items={mangaTypeFilters} />)}
+            {params === Type.manga && (<FilterCategory title="Status" items={mangaStatusFilters} />)}
             <GenreFilter items={genreFilters} />
           </div>
           <div className="right w-full relative">

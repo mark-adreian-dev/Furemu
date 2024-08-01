@@ -18,8 +18,8 @@ const FilterCategory: React.FC<Props> = ({ title, items }) => {
   
   const clearSelection = () =>{
     setIsLoading(true)
+
     setActiveValue("")
- 
     if(title === "Type") setType("")
     if(title === "Rating") setRating(Rating.NO_RATING)
     if(title === "Status") setMangaStatus("")
@@ -31,9 +31,7 @@ const FilterCategory: React.FC<Props> = ({ title, items }) => {
       <div className="filter-header flex justify-between items-center mb-6">
         <h3 className="text-sm text-white font-main font-semibold">{title}</h3>
         <div
-          className={`relative w-[0.875rem] h-[0.875rem] cursor-pointer ${
-            activeValue === "" ? "hidden" : "block"
-          }`}
+          className={`relative w-[0.875rem] h-[0.875rem] cursor-pointer ${ activeValue === "" ? "hidden" : "block" }`}
           onClick={clearSelection}
         >
           <Image

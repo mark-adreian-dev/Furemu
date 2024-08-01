@@ -3,18 +3,14 @@ import { Dispatch, SetStateAction, MutableRefObject } from "react";
 import Image from "next/image";
 import { useGlobalContext } from "./SearchPage";
 
-const InputBox = ({
-  value,
-  setValue,
-  type,
-  controller
-}: {
-  value: string;
+interface Props {
   setValue: Dispatch<SetStateAction<string>>;
-  type: string,
   controller: MutableRefObject<AbortController | undefined>
-}) => {
+  type: string,
+  value: string;
+}
 
+const InputBox:React.FC<Props> = ({ setValue, controller, value, type }) => {
   const { setIsLoading } = useGlobalContext()
 
   const clearText = () => {
@@ -22,15 +18,13 @@ const InputBox = ({
   };
   
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    e.preventDefault()
     setIsLoading(true)
+    if(controller.current) controller.current.abort()
     setValue(e.target.value);
 
-    if(controller.current){
-      controller.current.abort()
-    }
-    
-    
-  };
+  }
+
   return (
     <div className="input flex items-center gap-2 px-4 py-3.5 border-accent border-solid border-2 rounded-lg bg-transparent">
       <input
