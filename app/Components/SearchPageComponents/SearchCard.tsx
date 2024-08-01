@@ -17,17 +17,6 @@ const SearchCard = ({ data, isLoading, type }: { data: AnimeData[] | MangaData[]
     )
   }
 
-  else if (data === undefined) {
-    return(
-      <div className="h-[calc(100vh-18rem)] flex flex-col justify-center items-center">
-        <span className="w-32 h-32 loading loading-ring mb-6"></span>
-        <p className="text-white text-2xl text-center mb-2">Too many attempts, failed to fetch anime data.</p>
-        <p className="text-accent italic  mb-6">Please try to reduce operations per second</p>
-        <button className="btn bg-accent text-darker-blue hover:bg-white" onClick={() => { fetchSearchData(1) }}>Referesh</button>
-      </div>
-    )
-  }
-
   else if (data.length !== 0) {
     return (
       <div className="card-container grid grid-cols-2 gap-x-2 gap-y-6 tablet:grid-cols-3 tablet:gap-y-8 tablet:gap-x-4 mt-8 desktop:grid-cols-5 mb-16">
