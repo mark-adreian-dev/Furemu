@@ -227,7 +227,10 @@ const SearchPage:React.FC<Props> = ({ params }) => {
 
   const fetchGenre = async () => {
     const response: Genre | null = await FetchAnime(`/genres/${params}`,);
-    setGenreFilters((response as Genre).data);
+    if((response as Genre)) setGenreFilters((response as Genre).data);
+
+    
+    
   };
 
   useEffect(() => {
