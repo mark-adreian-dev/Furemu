@@ -213,9 +213,9 @@ const SearchPage:React.FC<Props> = ({ params }) => {
         signal
       );
 
-      if(response !== null) {
-        setPaginationData(response.pagination);
-        setData(response.data);
+      if((response as Batch)) {
+        setPaginationData((response as Batch).pagination);
+        setData((response as Batch).data);
         setIsLoading(false);
       } else {
         setPaginationData(paginationDefaultValue)
