@@ -130,14 +130,12 @@ export interface Context {
   ratingFilters: Filter[]
   animeTypeFilters: Filter[],
   mangaTypeFilters: Filter[],
-  fetchSearchData: (delayRate: number) => void,
   
 }
 export const FilterContext = createContext<Context>({
   setType: () => {},
   setRating: () => {},
   setGenre: () => {},
-  fetchSearchData: () => {},
   setIsLoading: () => {},
   setMangaStatus: () => {},
   genre: "",
@@ -185,60 +183,62 @@ const SearchPage:React.FC<Props> = ({ params }) => {
     setGenre("");
   };
 
-  const updateScreenSize = () => {
-    if (window.innerWidth <= 1366) resetFitler();
-    if (window.innerWidth >= Breakpoints.DESKTOP) setScreenSize("desktop");
-    else if (window.innerWidth >= Breakpoints.TABLET) setScreenSize("tablet");
-    else setScreenSize("mobile");
-  };
-
-  const fetchSearchData = (delayRate: number) => {
-    const parameters: Params = {page: pageCount,};
-
-    //If filter is present add filter as parameters to the request
-    if (query !== "") parameters.q = query;
-    if (rating != Rating.NO_RATING) parameters.rating = rating;
-    if (type != "") parameters.type = type;
-    if (genre != "") parameters.genres = genre;
-    if (mangaStatus != "") parameters.status = mangaStatus;
-
-    controllerRef.current = new AbortController();
-    const signal = controllerRef.current.signal;
-
-    const fetchdata = async () => {
-      const response: Batch | null = await FetchAnime(
-        `/${params}`,
-        delayRate,
-        parameters,
-        signal
-      );
-
-      if((response as Batch)) {
-        setPaginationData((response as Batch).pagination);
-        setData((response as Batch).data);
-        setIsLoading(false);
-      } else {
-        setPaginationData(paginationDefaultValue)
-        setData([])
-      }
-    };
-    fetchdata();
-  };
-
-  const fetchGenre = async () => {
-    const response: Genre | null = await FetchAnime(`/genres/${params}`,);
-    if((response as Genre)) setGenreFilters((response as Genre).data);    
-  };
+ 
 
   useEffect(() => {
+    const updateScreenSize = () => {
+      if (window.innerWidth <= 1366) resetFitler();
+      if (window.innerWidth >= Breakpoints.DESKTOP) setScreenSize("desktop");
+      else if (window.innerWidth >= Breakpoints.TABLET) setScreenSize("tablet");
+      else setScreenSize("mobile");
+    };
+  
+    const fetchGenre = async (animeType: string) => {
+      const response: Genre | null = await FetchAnime(`/genres/${animeType}`,);
+      if((response as Genre)) setGenreFilters((response as Genre).data);    
+    };
+    
     updateScreenSize();
     window.addEventListener("resize", () => updateScreenSize());
-    fetchGenre();
-  }, []);
+    fetchGenre(params);
+  }, [params]);
 
   useEffect(() => {
+    const fetchSearchData = (delayRate: number) => {
+      const parameters: Params = {page: pageCount,};
+  
+      //If filter is present add filter as parameters to the request
+      if (query !== "") parameters.q = query;
+      if (rating != Rating.NO_RATING) parameters.rating = rating;
+      if (type != "") parameters.type = type;
+      if (genre != "") parameters.genres = genre;
+      if (mangaStatus != "") parameters.status = mangaStatus;
+  
+      controllerRef.current = new AbortController();
+      const signal = controllerRef.current.signal;
+  
+      const fetchdata = async () => {
+        const response: Batch | null = await FetchAnime(
+          `/${params}`,
+          delayRate,
+          parameters,
+          signal
+        );
+  
+        if((response as Batch)) {
+          setPaginationData((response as Batch).pagination);
+          setData((response as Batch).data);
+          setIsLoading(false);
+        } else {
+          setPaginationData(paginationDefaultValue)
+          setData([])
+        }
+      };
+      fetchdata();
+    };
+
     fetchSearchData(1)
-  }, [query, mangaStatus, pageCount, rating, type, genre]);
+  }, [query, mangaStatus, pageCount, rating, type, genre, params]);
   
   return (
     <div className="relative z-0 h-fit">
@@ -268,7 +268,7 @@ const SearchPage:React.FC<Props> = ({ params }) => {
           genre,
           ratingFilters,
           animeTypeFilters,
-          fetchSearchData,
+ 
           setIsLoading,
           setMangaStatus,
           mangaStatus,
