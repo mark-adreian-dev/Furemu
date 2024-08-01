@@ -18,7 +18,7 @@ const FilterItem: React.FC<Props> = ({
   setActiveValue,
   title
 }) => {
-  const { setType, setRating, setGenre, genre, setIsLoading, setMangaStatus } = useGlobalContext() 
+  const { setType, setRating, setGenre, genre, setIsLoading, setMangaStatus, setPageCount } = useGlobalContext() 
   
   const updateRating = () => {
     switch(optionValue){
@@ -77,6 +77,7 @@ const FilterItem: React.FC<Props> = ({
   }
 
   const handleClick = () => {
+    setPageCount(1)
     setIsLoading(true)
     if(title == "Genre") {
       if(genre.toString() === "") setGenre(String(optionValue))                         //add genre id to parameter if no id was included yet

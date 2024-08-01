@@ -5,7 +5,9 @@ import banner from "@/HeroBannerData.json";
 import InputBox from "@/app/Components/SearchPageComponents/InputBox";
 import FilterCategory from "@/app/Components/SearchPageComponents/FilterCategory";
 import GenreFilter from "@/app/Components/SearchPageComponents/GenreFilter";
-
+import FilterBadge from "@/app/Components/SearchPageComponents/FilterBadge";
+import SearchCard from "@/app/Components/SearchPageComponents/SearchCard";
+import PaginationControl from "@/app/Components/SearchPageComponents/PaginationControl"
 import { useState, useEffect, useContext, createContext, Dispatch, SetStateAction, useRef } from "react";
 import { FetchAnime, Params, Rating } from "@/app/Utilities/FetchAnime";
 import { AnimeData, Batch, Pagination } from "@/app/Types/BatchData";
@@ -14,8 +16,7 @@ import { Breakpoints, Type } from "@/app/Types/Enums";
 import { BannerSlide } from "@/app/Types/BannerType";
 import { Filter } from "@/app/Types/GlobalTypes";
 import { Genre, GenreData } from "@/app/Types/Genre";
-import FilterBadge from "@/app/Components/SearchPageComponents/FilterBadge";
-import SearchCard from "@/app/Components/SearchPageComponents/SearchCard";
+
 
 const bannerData: BannerSlide[] = banner.data;
 
@@ -125,11 +126,13 @@ export interface Context {
   setGenre: Dispatch<SetStateAction<string>>,
   setIsLoading: Dispatch<SetStateAction<boolean>>,
   setMangaStatus: Dispatch<SetStateAction<string>>
-  genre: string,
-  mangaStatus : string,
+  setPageCount: Dispatch<SetStateAction<number>>
   ratingFilters: Filter[]
   animeTypeFilters: Filter[],
   mangaTypeFilters: Filter[],
+  genre: string,
+  mangaStatus : string,
+  pageCount: number
   
 }
 export const FilterContext = createContext<Context>({
@@ -138,11 +141,13 @@ export const FilterContext = createContext<Context>({
   setGenre: () => {},
   setIsLoading: () => {},
   setMangaStatus: () => {},
-  genre: "",
+  setPageCount: () => {},
   ratingFilters,
   animeTypeFilters,
   mangaTypeFilters,
-  mangaStatus: ""
+  genre: "",
+  mangaStatus: "",
+  pageCount: 1
 })
 export const useGlobalContext = () => useContext(FilterContext)
 
@@ -273,6 +278,8 @@ const SearchPage:React.FC<Props> = ({ params }) => {
           setMangaStatus,
           mangaStatus,
           mangaTypeFilters,
+          setPageCount,
+          pageCount
         }}
       >
         <div className="content relative z-20 w-full pt-24 px-6 tablet:px-8 tablet:pt-[8.25rem] desktop:flex desktop:px-16 desktop:pt-[10.25rem]">
@@ -299,6 +306,7 @@ const SearchPage:React.FC<Props> = ({ params }) => {
               type={type}
             />
             <SearchCard data={data} isLoading={isLoading} type={params} />
+            <PaginationControl paginationData={paginationData} isLoading={isLoading}/>
           </div>
         </div>
       </FilterContext.Provider>

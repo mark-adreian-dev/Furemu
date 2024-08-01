@@ -1,5 +1,4 @@
 import AuthorImage from '../AuthorsComponents/AuthorImage'
-import ProducerImage from '../ProducersComponents/ProducerImage'
 import { Author } from '@/app/Types/Manga'
 
 const MangaAuthors = ({ mangaAuthors }: {  mangaAuthors: Author[] }) => {
