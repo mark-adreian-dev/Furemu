@@ -12,17 +12,16 @@ interface Props {
 }
 
 const SearchCard:React.FC<Props> = ({ data, isLoading, type }) => {
-  if(isLoading || data === undefined) {
+  if(isLoading) {
     return(
       <div className="h-[calc(100vh-18rem)] flex flex-col justify-center items-center">
         <span className="w-32 h-32 loading loading-ring mb-2 block"></span>
-        <p className="text-white italic">Searching for results...</p>
+        <p className="text-white italic">Searching results...</p>
       </div>
     )
   }
-
   else {
-    if(data.length !== 0) {   
+    if(data.length !== 0) {
       return (
         <div className="card-container grid grid-cols-2 gap-x-2 gap-y-6 tablet:grid-cols-3 tablet:gap-y-8 tablet:gap-x-4 mt-8 desktop:grid-cols-5 mb-16">
           {data.map((item) => (

@@ -7,7 +7,7 @@ const Characters = async ({ id, type }: { id: number, type: Type}) => {
     const enpoint = `/${type}/${id}/characters`
     const data: CharacterFull | null  = await FetchAnime(enpoint)
     const castData: Data[] = (data as CharacterFull).data.filter((cast: Data) => cast.role.toLowerCase() === "main" || cast.favorites > 100)
-    
+
     return (
         <div className="characters text-start mb-16">
             <p className=" text-white text-sm leading-6 font-bold mb-8 text-start tablet:text-center desktop:text-start">Characters:</p>

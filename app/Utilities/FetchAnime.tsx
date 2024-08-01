@@ -71,8 +71,8 @@ enum ResponseStatus {
 
 const BASE_URL = "https://api.jikan.moe/v4";
 
-export const extractParams = (params: Params | null): string => {
-  if (params === null) return "";
+export const extractParams = (params: Params | undefined): string => {
+  if (params === undefined) return "";
   else {
     let result: string = "?";
     Object.entries(params).map(([key, value], index) => {
@@ -99,7 +99,7 @@ export async function FetchAnime<T>(
     setTimeout(resolve, delayInMilis))
       .then(async () => {
 
-        const parametersObject = params ? params : null
+        const parametersObject = params ? params : undefined
         const requestParameters = extractParams(parametersObject);
         const url = `${BASE_URL}${endpoint}${parametersObject !== null ? requestParameters : ""}`;
         

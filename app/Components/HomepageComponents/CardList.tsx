@@ -18,7 +18,6 @@ interface Props {
 const CardList:React.FC<Props> = async ({ endpoint, prevEl, nextEl, title, type, index}) => {
   const animeData: Batch | null = await FetchAnime(endpoint, index)
   const data: AnimeData[] = (animeData as Batch).data
-  const animePagination: Pagination = (animeData as Batch).pagination
   
   return (
     <div className='featured-section py-8 px-6 tablet:px-8 tablet:py-16 desktop:px-16'>

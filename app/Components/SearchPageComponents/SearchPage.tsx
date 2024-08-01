@@ -205,7 +205,7 @@ const SearchPage:React.FC<Props> = ({ params }) => {
 
   useEffect(() => {
     const fetchSearchData = (delayRate: number) => {
-      const parameters: Params = {page: pageCount,};
+      const parameters: Params = {page: pageCount};
   
       //If filter is present add filter as parameters to the request
       if (query !== "") parameters.q = query;
