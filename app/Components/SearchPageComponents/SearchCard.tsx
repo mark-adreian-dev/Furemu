@@ -6,8 +6,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { useGlobalContext } from "./SearchPage";
 
-const SearchCard = ({ data, isLoading, type }: { data: AnimeData[] | MangaData[] | [], isLoading: boolean, type: string }) => {
-  const { fetchSearchData } = useGlobalContext()
+const SearchCard = ({ data, isLoading, type }: { data: AnimeData[] | MangaData[], isLoading: boolean, type: string }) => {
+
   if(isLoading) {
     return(
       <div className="h-[calc(100vh-18rem)] flex flex-col justify-center items-center">
