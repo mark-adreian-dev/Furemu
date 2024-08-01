@@ -4,7 +4,7 @@ import { FetchAnime } from "@/app/Utilities/FetchAnime";
 
 const ProducerImage = async ({ prodId, index }: { prodId: number, index: number }) => {
   const endpoint = `/producers/${prodId}`;
-  const prod: Producer | null = await FetchAnime(endpoint, index);
+  const prod: Producer = await FetchAnime(endpoint, index);
   const prodData: ProducerData = (prod as Producer).data;
 
   return (

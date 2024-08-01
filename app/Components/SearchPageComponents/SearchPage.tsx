@@ -218,7 +218,7 @@ const SearchPage:React.FC<Props> = ({ params }) => {
       const signal = controllerRef.current.signal;
   
       const fetchdata = async () => {
-        const response: Batch | null = await FetchAnime(
+        const response: Batch = await FetchAnime(
           `/${params}`,
           delayRate,
           parameters,
