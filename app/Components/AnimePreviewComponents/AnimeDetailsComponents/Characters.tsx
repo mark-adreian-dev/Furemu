@@ -5,9 +5,8 @@ import { Type } from "@/app/Types/Enums"
 
 const Characters = async ({ id, type }: { id: number, type: Type}) => {
     const enpoint = `/${type}/${id}/characters`
-    const data: CharacterFull = await FetchAnime(enpoint)
-    const castData: Data[] = (data as CharacterFull).data.filter((cast: Data) => cast.role.toLowerCase() === "main" || cast.favorites > 100)
-
+    const characters: CharacterFull = await FetchAnime(enpoint)
+    const castData: Data[] = characters.data.filter((cast: Data) => cast.role.toLowerCase() === "main" || cast.favorites > 100)
     return (
         <div className="characters text-start mb-16">
             <p className=" text-white text-sm leading-6 font-bold mb-8 text-start tablet:text-center desktop:text-start">Characters:</p>
@@ -15,7 +14,7 @@ const Characters = async ({ id, type }: { id: number, type: Type}) => {
             {
                 castData.map((cast: Data) =>
                 <div key={cast.character.mal_id} className="w-[calc((100vw-5rem)/5)] h-[calc((100vw-5rem)/5)] relative rounded-xl overflow-hidden tablet:w-[calc((100vw-10rem)/5)] desktop:w-[calc((40.5rem-2rem)/5)] desktop:h-[calc((40.5rem-2rem)/5)]">
-                    <Image src={cast.character.images.jpg.image_url} alt={`${cast.character.name}-image`} draggable={false} fill sizes="100%" className="object-cover" priority={true} quality={100}/>
+                    <Image src={cast.character.images.jpg.image_url} alt={`${cast.character.name}-image`} draggable={false} fill sizes="(min-width: 1380px) 123px, (min-width: 780px) calc(20vw - 32px), calc(20vw - 16px)" className="object-cover" />
                 </div>)
             }
             </div>

@@ -1,10 +1,10 @@
+
 import Header from '@/app/Components/Header'
 import Footer from '@/app/Components/Footer';
 import Banner from '@/app/Components/HomepageComponents/Banner'
 import CardList from '@/app/Components/HomepageComponents/CardList'
 import FeaturedAnime from '@/app/Components/HomepageComponents/FeaturedAnime';
 import SmoothScroll from './Components/SmoothScroll';
-import Loading from './loading';
 
 interface EndpointDetails {
   endpoint: string,

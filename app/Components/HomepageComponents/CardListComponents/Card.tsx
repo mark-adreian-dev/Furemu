@@ -1,3 +1,5 @@
+"use client"
+
 import Image from "next/image"
 import Badge from "./Badge"
 
@@ -10,7 +12,7 @@ interface Props {
   animeRating: string, 
 }
 
-const Card:React.FC<Props> = async ({ imageUrl, animeTitleEnglish, animeTitleJapanese, animeType, animeStatus, animeRating }) => {
+const Card:React.FC<Props> = ({ imageUrl, animeTitleEnglish, animeTitleJapanese, animeType, animeStatus, animeRating }) => {
 
   return (
       <div className="carousel-item card relative w-[6.63563rem] tablet:w-56">

@@ -103,10 +103,10 @@ const Header = ({ active, page } : { active?: string, page?: string }) => {
                 {
                   menu.map((items, index) => {
                     return <li key={index} className="relative">
-                      <Link href={items.destination} className={"hover:bg-transparent " + (index === menu.length - 1 ?  `pb-1 pt-1 px-0` : `pb-3 pt-1 px-0 `)} scroll={false}>
+                      <a href={items.destination} className={"hover:bg-transparent " + (index === menu.length - 1 ?  `pb-1 pt-1 px-0` : `pb-3 pt-1 px-0 `)}>
                         <p className="text-accent font-semibold text-sm">0{index}</p>                      
                         <p className="text-white text-sm font-semibold">{items.menuTitle}</p>
-                      </Link>
+                      </a>
                       <div className={`absolute -left-8 top-0 p-0 w-[3px] h-8 bg-accent ${active === items.menuTitle.toLowerCase() ? "opacity-100" : "opacity-0"}`}></div>
                     </li>
                   }) 
