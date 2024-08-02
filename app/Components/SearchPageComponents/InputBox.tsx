@@ -32,7 +32,7 @@ const InputBox:React.FC<Props> = ({ setValue, controller, value, type }) => {
         className="grow text-sm text-white font-medium bg-transparent outline-none font-main"
         placeholder={`Search ${type}... `}
         value={value}
-        onChange={handleChange}
+        onInput={handleChange}
       />
       <div className={`relative w-4 h-4 cursor-pointer ${value === "" ? "hidden" : "block"}`} onClick={clearText}>
         <Image
