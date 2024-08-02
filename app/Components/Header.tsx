@@ -74,11 +74,11 @@ const Header = ({ active, page } : { active?: string, page?: string }) => {
         <ul className="flex">
           {menu.map((item) => (
             <li key={item.menuTitle} className="rounded-lg hover:bg-accent">
-              <Link href={item.destination} scroll={false}>
+              <a href={item.destination}>
                 <p className="text-white text-sm font-semibold py-4 px-[0.875rem] hover:text-dark-blue">
                   {item.menuTitle}
                 </p>
-              </Link>
+              </a>
             </li>
           ))}
         </ul>
@@ -118,20 +118,20 @@ const Header = ({ active, page } : { active?: string, page?: string }) => {
                 {
                   socials.map((items, index) => {
                     return <li key={index}>
-                      <Link href={items.destination} className={"hover:bg-transparent " + (index === menu.length - 1 ?  `pb-1 pt-1 px-0` : `pb-3 pt-1 px-0`)}>
+                      <a href={items.destination} className={"hover:bg-transparent " + (index === menu.length - 1 ?  `pb-1 pt-1 px-0` : `pb-3 pt-1 px-0`)}>
                         <Image src={items.icon} alt="icon" width={100} height={100} sizes="100%" className="w-4 h-4"/>                   
                         <p className="text-white text-sm font-semibold">{items.menuTitle}</p>
-                      </Link>
+                      </a>
                     </li>
                   }) 
                 }
               </ul>
-              <Link href="/" scroll={false}>
+              <a href="/">
                 <h1 className="leading-7 text-nav-logo-text text-white font-black">
                   Heroku
                 </h1>
                 <p className="text-accent text-[8px] italic">Copyright © 2024 - All right reserved.</p>
-              </Link>       
+              </a>       
             </div>
           </div>
         </div>

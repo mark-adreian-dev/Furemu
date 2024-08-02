@@ -44,6 +44,7 @@ const FilterItem: React.FC<Props> = ({
         break
 
       case Rating.HENTAI:
+        setRating(Rating.HENTAI)
         break
     }
   }

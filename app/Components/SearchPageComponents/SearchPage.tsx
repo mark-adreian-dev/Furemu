@@ -16,6 +16,7 @@ import { Breakpoints, Type } from "@/app/Types/Enums";
 import { BannerSlide } from "@/app/Types/BannerType";
 import { Filter } from "@/app/Types/GlobalTypes";
 import { Genre, GenreData } from "@/app/Types/Genre";
+import { Order } from "@/app/Utilities/FetchAnime";
 
 const bannerData: BannerSlide[] = banner.data;
 
@@ -207,7 +208,11 @@ const SearchPage:React.FC<Props> = ({ params }) => {
 
   useEffect(() => {
     const fetchSearchData = (delayRate: number) => {
-      const parameters: Params = {page: pageCount};
+      const parameters: Params = {
+        page: pageCount,
+        sort: Order.ASC,
+        order_by: "popularity",
+      };
   
       //If filter is present add filter as parameters to the request
       if (query !== "") parameters.q = query;
@@ -304,7 +309,7 @@ const SearchPage:React.FC<Props> = ({ params }) => {
               rating={rating}
               type={type}
             />
-            <p className="text-accent text-sm desktop:text-base mt-8 italic">{query !== "" ? `Results for "${query}"`: ""}</p>
+            <p className="text-accent text-sm mt-8 italic desktop:text-base desktop:mt-4">{query !== "" ? `Results for "${query}"`: ""}</p>
             <SearchCard data={data} isLoading={isLoading} type={params} />
             <PaginationControl paginationData={paginationData} isLoading={isLoading}/>
           </div>

@@ -33,7 +33,7 @@ enum Status {
   UPCOMING = "upcoming"
 }
 
-enum Order {
+export enum Order {
   DESC = "desc",
   ASC = "asc"
 }
@@ -58,6 +58,7 @@ export interface Params {
   producers?: string,
   start_date?: string,
   end_date?: string
+  order_by?: string
 }
 
 enum ResponseStatus {
@@ -100,7 +101,7 @@ export async function FetchAnime<T>(
   const url = `${BASE_URL}${endpoint}${parametersObject !== undefined ? requestParameters : ""}`;
   let result: T
 
-  // console.log("url: " + endpoint + "\ndelay: " + delayInMilis)
+  console.log("url: " + url + "\ndelay: " + delayInMilis)
 
   return new Promise((resolve) => 
     setTimeout(resolve, delayInMilis))
