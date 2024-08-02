@@ -1,8 +1,6 @@
 import Header from "@/app/Components/Header";
 import AnimePreview from "../../Components/AnimePreviewComponents/AnimePreview";
 import SmoothScroll from "@/app/Components/SmoothScroll";
-
-import { Anime } from "@/app/Types/Anime";
 import { FetchAnime } from "@/app/Utilities/FetchAnime";
 import { Type } from "@/app/Types/Enums"
 import { Manga } from "@/app/Types/Manga";

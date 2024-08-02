@@ -34,7 +34,7 @@ const CardList:React.FC<Props> = ({ endpoint, prevEl, nextEl, title, type, index
     }
 
     fetchDefaultData()
-  },[])
+  },[endpoint, index])
   
   return (
     <div className='featured-section py-8 px-6 tablet:px-8 tablet:py-16 desktop:px-16'>

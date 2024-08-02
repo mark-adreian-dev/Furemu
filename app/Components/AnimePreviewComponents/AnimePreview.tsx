@@ -3,17 +3,19 @@ import Image from "next/image"
 import PreviewImage from "./AnimeDetailsComponents/PreviewImage"
 import BasicInfo from "./AnimeDetailsComponents/BasicInfo"
 import Theme from "./AnimeDetailsComponents/Theme"
-import Characters from "./AnimeDetailsComponents/Characters"
-// import Producers from "./AnimeDetailsComponents/Producers"
 import Synopsis from "./AnimeDetailsComponents/Synopsis"
 import MangaBackground from "./AnimeDetailsComponents/MangaBackground"
 import MangaAuthors from "./AnimeDetailsComponents/MangaAuthors"
+// import Characters from "./AnimeDetailsComponents/Characters"
+// import Producers from "./AnimeDetailsComponents/Producers"
+
 import dynamic from "next/dynamic"
 import { Type } from "@/app/Types/Enums"
 import { AnimeData } from "@/app/Types/Anime"
 import { MangaData } from "@/app/Types/Manga"
 
 const Producers = dynamic(() => import("./AnimeDetailsComponents/Producers"))
+const Characters = dynamic(() => import("./AnimeDetailsComponents/Characters"))
 
 interface Props {
   data: AnimeData | MangaData,
