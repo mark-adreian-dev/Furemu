@@ -44,18 +44,18 @@ const FeaturedAnime = () => {
                     <p className='text-white text-xs w-64 leading-4 font-normal mb-4 tablet tablet:text-base tablet:leading-6 tablet:w-[26.8125rem]'>Frieren, after she and her companions defeat the Demon King and go back to their regular lives. Except Frieren is near-immortal, and the rest of the party is human.</p>
                     <p className='text-light-blue text-xs font-normal mb-[0.625rem] tablet:text-sm'>PG-13 - Teens 13 or older</p>
 
-                    <div className='badge bg-accent rounded-full mr-[0.625rem]'>
+                    <div className='border-none badge bg-accent rounded-full mr-[0.625rem]'>
                     <p className='text-darker-blue text-xs font-medium leading-4'>TV</p>
                     </div>
-                    <div className='badge bg-accent rounded-full mr-[0.625rem]'>
+                    <div className='border-none badge bg-accent rounded-full mr-[0.625rem]'>
                     <p className='text-darker-blue text-xs font-medium leading-4'>2023</p>
                     </div>
-                    <div className='badge bg-accent rounded-full'>
+                    <div className='border-none badge bg-accent rounded-full'>
                     <p className='text-darker-blue text-xs font-medium leading-4'>Finished Airing</p>
                     </div>
                 </div>
                 <a href={`anime/${featuredData.mal_id}`}>
-                    <button className='w-[6.625rem] h-[6.625rem] absolute right-0 bg-accent rounded-none rounded-bl-3xl rounded-tr-3xl tablet:w-40 tablet:h-40 tablet:bottom-0 tablet:rounded-tl-3xl tablet:rounded-tr-none tablet:rounded-bl-none tablet:rounded-br-3xl hover:bg-white btn'>
+                    <button className='w-[6.625rem] h-[6.625rem] border-none absolute right-0 bg-accent rounded-none rounded-bl-3xl rounded-tr-3xl tablet:w-40 tablet:h-40 tablet:bottom-0 tablet:rounded-tl-3xl tablet:rounded-tr-none tablet:rounded-bl-none tablet:rounded-br-3xl hover:bg-white btn'>
                         <p className='text-sm text-dark-blue font-semibold'>See More</p>
                     </button>
                 </a>  

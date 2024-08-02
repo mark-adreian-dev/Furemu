@@ -54,7 +54,7 @@ const Banner = () => {
             bulletClass: "bullet",
             bulletActiveClass: "active-bullet",
           }}
-      
+          loop={true}
           slidesPerView={1}
           onSlideChange={(slide) => {
             setActiveSlide(slide.realIndex);

@@ -26,9 +26,8 @@ const InputBox:React.FC<Props> = ({ setValue, controller, value, type }) => {
   }
 
   return (
-    <div className="input flex items-center gap-2 px-4 py-3.5 border-accent border-solid border-2 rounded-lg bg-transparent">
+    <div className="flex items-center gap-2 px-4 py-3.5 border-accent border-solid border-2 rounded-lg bg-transparent">
       <input
-        id="anime-query"
         type="text"
         className="grow text-sm text-white font-medium bg-transparent outline-none font-main"
         placeholder={`Search ${type}... `}
