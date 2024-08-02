@@ -19,7 +19,6 @@ const InputBox:React.FC<Props> = ({ setValue, controller, value, type }) => {
   };
   
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    e.preventDefault()
     setIsLoading(true)
     if(controller.current) controller.current.abort()
     setValue(e.target.value);

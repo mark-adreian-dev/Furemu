@@ -17,13 +17,14 @@ const Banner = () => {
   const [activeSlide, setActiveSlide] = useState<number>(0);
   const [screenSize, setScreenSize] = useState<string>();
 
-  const updateScreenSize = () => {
-    if (window.innerWidth >= Breakpoints.DESKTOP) setScreenSize("desktop");
-    else if (window.innerWidth >= Breakpoints.TABLET) setScreenSize("tablet");
-    else setScreenSize("mobile");
-  };
-
+  
   useEffect(() => {
+    const updateScreenSize = () => {
+      if (window.innerWidth >= Breakpoints.DESKTOP) setScreenSize("desktop");
+      else if (window.innerWidth >= Breakpoints.TABLET) setScreenSize("tablet");
+      else setScreenSize("mobile");
+    };
+  
     updateScreenSize();
     window.addEventListener("resize", () => updateScreenSize());
   }, []);
