@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react"
 import { Breakpoints } from '@/app/Types/Enums';
-import Link from "next/link";
 import Image from "next/image"
 import data from '@/FeaturedAnime.json'
 
