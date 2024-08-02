@@ -15,7 +15,7 @@ const Card:React.FC<Props> = async ({ imageUrl, animeTitleEnglish, animeTitleJap
   return (
       <div className="carousel-item card relative w-[6.63563rem] tablet:w-56">
         <div className="relative image w-full h-[9.39063rem] rounded-[0.47rem] mb-[0.47rem] tablet:h-[19.8125rem] overflow-hidden">
-          <Image src={imageUrl} alt="anime-poster" fill className="object-cover" sizes="100%" priority={true} quality={100}/>
+          <Image src={imageUrl} alt="anime-poster" fill className="object-cover" sizes="(min-width: 780px) 224px, 106px"/>
         </div>
           <div className="anime-content">
             <h3 className="text-white text-[12px] leading-[12px] font-semibold mb-[0.3555rem] tablet:mb-3 tablet:text-lg tablet:!leading-5">{animeTitleEnglish}</h3>

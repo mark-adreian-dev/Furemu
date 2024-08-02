@@ -18,7 +18,8 @@ const config: Config = {
 
       },
       backgroundImage: {
-        "preview-overlay": "var(--preview-overlay)"
+        "preview-overlay": "var(--preview-overlay)",
+        "banner-overlay": "var(--banner-overlay)"
       },
       fontSize: {
         "nav-logo-text": "var(--nav-logo-text)",

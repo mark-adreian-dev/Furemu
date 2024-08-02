@@ -17,7 +17,7 @@ const loading = () => {
         </div>
       </div>
     </> 
-  )
+  )  
 }
 
 export default loading

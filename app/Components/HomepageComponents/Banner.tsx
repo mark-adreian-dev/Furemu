@@ -53,7 +53,7 @@ const Banner = () => {
             bulletClass: "bullet",
             bulletActiveClass: "active-bullet",
           }}
-          loop={true}
+      
           slidesPerView={1}
           onSlideChange={(slide) => {
             setActiveSlide(slide.realIndex);
@@ -66,7 +66,8 @@ const Banner = () => {
           {heroSectionData.map((slide: BannerSlide) => (
             <SwiperSlide key={slide.mal_id}>
               <div className="relative w-screen h-[26.5625rem] tablet:h-[43.8125rem]">
-                <div className="absolute z-0 w-full h-full ">
+                <div className="banner-overlay absolute top-0 left-0 bottom-0 right-0 bg-banner-overlay z-[1]"></div>
+                <div className="absolute z-0 w-full h-full">
                   <Image
                     src={
                       screenSize === "mobile"
@@ -76,10 +77,10 @@ const Banner = () => {
                         : slide.imagePathDesktop
                     }
                     alt="banner-image"
-                    fill
+                    width={1040}
+                    height={506}
+                    className="w-full h-auto object-cover object-bottom"
                     quality={100}
-                    className="object-cover object-bottom"
-                    priority={true}
                   />
                 </div>
               </div>

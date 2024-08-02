@@ -9,7 +9,7 @@ const PaginationControl = ({ paginationData, isLoading }: {paginationData: Pagin
   const upPage = () => {
     
     if(paginationData.has_next_page){
-      
+      window.scrollTo(0, 0)
       setIsLoading(true)
       setPageCount(prevState => prevState + 1)
     }

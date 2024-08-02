@@ -242,7 +242,9 @@ const SearchPage:React.FC<Props> = ({ params }) => {
   
   return (
     <div className="relative z-0 h-fit">
+      
       <div className="absolute z-0 background-image w-full h-[43.8125rem] bg-darker-blue">
+      <div className="banner-overlay absolute top-0 left-0 bottom-0 right-0 bg-banner-overlay z-[1]"></div>
         <Image
           src={
             screenSize === "mobile"
