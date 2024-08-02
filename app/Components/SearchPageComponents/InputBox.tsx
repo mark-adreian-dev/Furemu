@@ -1,5 +1,5 @@
 "use client";
-import { Dispatch, SetStateAction, MutableRefObject } from "react";
+import { Dispatch, SetStateAction, MutableRefObject, useEffect } from "react";
 import Image from "next/image";
 import { useGlobalContext } from "./SearchPage";
 
@@ -19,20 +19,26 @@ const InputBox:React.FC<Props> = ({ setValue, controller, value, type }) => {
   };
   
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    e.preventDefault()
+    e.target.focus()
     setIsLoading(true)
-    if(controller.current) controller.current.abort()
     setValue(e.target.value);
-
+    if(controller.current) controller.current.abort()
+    
   }
+
 
   return (
     <div className="flex items-center gap-2 px-4 py-3.5 border-accent border-solid border-2 rounded-lg bg-transparent">
       <input
+        id="input-box"
         type="text"
         className="grow text-sm text-white font-medium bg-transparent outline-none font-main"
         placeholder={`Search ${type}... `}
         value={value}
-        onInput={handleChange}
+        onChange={handleChange}
+        
+
       />
       <div className={`relative w-4 h-4 cursor-pointer ${value === "" ? "hidden" : "block"}`} onClick={clearText}>
         <Image

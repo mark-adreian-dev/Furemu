@@ -181,13 +181,11 @@ const SearchPage:React.FC<Props> = ({ params }) => {
   const resetFitler = () => {
     setRating(Rating.NO_RATING);
     setType("");
-    setQuery("");
     setGenre("");
   };
 
   useEffect(() => {
     const updateScreenSize = () => {
-      if (window.innerWidth <= 1366) resetFitler();
       if (window.innerWidth >= Breakpoints.DESKTOP) setScreenSize("desktop");
       else if (window.innerWidth >= Breakpoints.TABLET) setScreenSize("tablet");
       else setScreenSize("mobile");
@@ -199,7 +197,11 @@ const SearchPage:React.FC<Props> = ({ params }) => {
     };
     
     updateScreenSize();
-    window.addEventListener("resize", () => updateScreenSize());
+    window.addEventListener("resize", () => {
+      resetFitler()
+      updateScreenSize(
+
+    )});
     fetchGenre(params);
   }, [params]);
 
@@ -302,6 +304,7 @@ const SearchPage:React.FC<Props> = ({ params }) => {
               rating={rating}
               type={type}
             />
+            <p className="text-accent text-sm desktop:text-base mt-8 italic">{query !== "" ? `Results for "${query}"`: ""}</p>
             <SearchCard data={data} isLoading={isLoading} type={params} />
             <PaginationControl paginationData={paginationData} isLoading={isLoading}/>
           </div>
