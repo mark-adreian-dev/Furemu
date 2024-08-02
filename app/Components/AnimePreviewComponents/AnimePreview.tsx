@@ -51,7 +51,7 @@ const AnimePreview:React.FC<Props> = ({ data, type }) => {
           <Synopsis synopsis={previewData.synopsis} />
           <Characters id={previewData.mal_id} type={type}/>
           {type == Type.manga && <MangaAuthors mangaAuthors={(previewData as MangaData).authors}/>}
-          {type == Type.anime && <Producers animeProducers={(previewData as AnimeData).producers}/>}
+          {/* {type == Type.anime && <Producers animeProducers={(previewData as AnimeData).producers}/>} */}
           {type == Type.manga && <MangaBackground background={(previewData as MangaData).background}/>}
         </div>
       </div>
