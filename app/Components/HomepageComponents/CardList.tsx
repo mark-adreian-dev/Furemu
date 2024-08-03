@@ -39,7 +39,7 @@ const CardList:React.FC<Props> = ({ endpoint, prevEl, nextEl, title, type, index
 
     fetchDefaultData()
     
-  },[endpoint, index])
+  },[endpoint, index, setIsContentLoaded])
 
   if(isContentLoaded) {
     return (

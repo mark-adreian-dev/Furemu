@@ -18,7 +18,7 @@ interface FeaturedData {
 const featuredData: FeaturedData = data.data[0]
 const featuredImage: ImagePath = featuredData.images
 
-const FeaturedAnime = ({isContentLoaded, setIsContentLoaded}: {isContentLoaded: boolean, setIsContentLoaded: Dispatch<SetStateAction<boolean>>}) => {
+const FeaturedAnime = ({isContentLoaded }: { isContentLoaded: boolean }) => {
     const [screenSize, setScreenSize] = useState<string>("desktop")
 
     const updateScreenSize = () => {

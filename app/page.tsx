@@ -82,7 +82,7 @@ const Home:React.FC<Props> = () => {
                 return <CardList key={index} isContentLoaded={isContentLoaded} setIsContentLoaded={setIsContentLoaded} endpoint={value.endpoint} prevEl={value.prevEl} nextEl={value.nextEl} title={value.title} type={value.type} index={index}/>
                 
               } else {
-                return <FeaturedAnime key={index} isContentLoaded={isContentLoaded} setIsContentLoaded={setIsContentLoaded}/>
+                return <FeaturedAnime key={index} isContentLoaded={isContentLoaded}/>
               }
             })
           }
