@@ -75,7 +75,7 @@ const GenreFilter:React.FC<Props> = ({ items }) => {
       </div>
 
       <div className={`input input-bordered flex items-center px-0 bg-transparent mb-6 ${searchActive ? "block" : "hidden"}`}>
-        <input onChange={handleChange} type="text" className="grow bg-transparent w-full h-[30px] border-2 border-accent rounded-[4px] font-main text-xs font-medium text-white pl-4" placeholder="Search genre..."/>
+        <input id="genre-input-box" onChange={handleChange} type="text" className="grow bg-transparent w-full h-[30px] border-2 border-accent rounded-[4px] font-main text-xs font-medium text-white pl-4" placeholder="Search genre..."/>
       </div>
 
       <SmoothScroll root={true}>

@@ -12,7 +12,7 @@ const IconButton: React.FC<Props> = ({ iconPath, className }) => {
   return (
     <label
       className={`bg-accent rounded-lg relative cursor-pointer ${className}`}
-      htmlFor={iconFileName === "hamburger_menu.svg" || iconFileName === "close_icon.svg" ? "my-drawer-4" : ""}
+      htmlFor={iconFileName === "hamburger_menu.svg" || iconFileName === "close_icon.svg" ? "my-drawer-4" : "my-drawer-4"}
     >
       <Image
         src={iconPath}

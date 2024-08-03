@@ -11,7 +11,7 @@ interface Props {
 }
 
 const InputBox:React.FC<Props> = ({ setValue, controller, value, type }) => {
-  const { setIsLoading } = useGlobalContext()
+  const { setIsLoading, setPageCount } = useGlobalContext()
 
   const clearText = () => {
     setIsLoading(true)
@@ -21,6 +21,7 @@ const InputBox:React.FC<Props> = ({ setValue, controller, value, type }) => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault()
     e.target.focus()
+    setPageCount(1)
     setIsLoading(true)
     setValue(e.target.value);
     if(controller.current) controller.current.abort()
