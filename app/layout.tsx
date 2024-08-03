@@ -4,6 +4,7 @@ import { Inter } from "next/font/google";
 import 'swiper/css';
 import 'swiper/css/pagination';
 import "@/app/globals.css";
+import Header from "./Components/Header";
 
 const inter = Inter({
   weight: ['100','200','300','400','500','600','700','800','900'],

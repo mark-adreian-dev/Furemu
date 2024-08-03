@@ -1,4 +1,6 @@
+"use client"
 
+import { useState } from 'react';
 import Header from '@/app/Components/Header'
 import Footer from '@/app/Components/Footer';
 import Banner from '@/app/Components/HomepageComponents/Banner'
@@ -59,19 +61,28 @@ interface Props {
 }
 
 const Home:React.FC<Props> = () => {
+  const [isContentLoaded, setIsContentLoaded] = useState<boolean>(false)
+
   return (
     <>
-      <SmoothScroll root={true}>
+    
+      <SmoothScroll root={true}> 
         <Header active='home'/>
         <Banner/>
         <div>
           {
+            !isContentLoaded && <div className="w-full flex justify-center items-start mt-16 pb-96">
+              {/* <span className="block w-32 h-32 loading loading-ring"></span> */}
+              <span className="loading loading-dots loading-lg"></span>
+            </div>
+          }
+          {
             Object.entries(endpoints).map(([key, value], index) => {
               if (key !== "featuredAnime") {
-                return <CardList key={index} endpoint={value.endpoint} prevEl={value.prevEl} nextEl={value.nextEl} title={value.title} type={value.type} index={index}/>
+                return <CardList key={index} isContentLoaded={isContentLoaded} setIsContentLoaded={setIsContentLoaded} endpoint={value.endpoint} prevEl={value.prevEl} nextEl={value.nextEl} title={value.title} type={value.type} index={index}/>
                 
               } else {
-                return <FeaturedAnime key={index}/>
+                return <FeaturedAnime key={index} isContentLoaded={isContentLoaded} setIsContentLoaded={setIsContentLoaded}/>
               }
             })
           }
@@ -81,4 +92,5 @@ const Home:React.FC<Props> = () => {
     </>
   );
 }
+
 export default Home

@@ -210,8 +210,8 @@ const SearchPage:React.FC<Props> = ({ params }) => {
     const fetchSearchData = (delayRate: number) => {
       const parameters: Params = {
         page: pageCount,
-        sort: Order.ASC,
-        order_by: "popularity",
+        sort: Order.DESC,
+        order_by: "start_date",
       };
   
       //If filter is present add filter as parameters to the request

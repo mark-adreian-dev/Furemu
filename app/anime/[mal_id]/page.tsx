@@ -7,6 +7,7 @@ import { Type } from "@/app/Types/Enums";
 import { Manga } from "@/app/Types/Manga";
 
 
+
 const page = async ({ params }: { params: { mal_id: string } }) => {
   const animeId = params.mal_id;
   const endpoint= `/anime/${animeId}/full`
@@ -17,7 +18,7 @@ const page = async ({ params }: { params: { mal_id: string } }) => {
     <>
       <SmoothScroll root={true}>
         <Header />
-        <AnimePreview data={(animeData as Anime).data} type={Type.anime}/>
+          <AnimePreview data={(animeData as Anime).data} type={Type.anime}/>
       </SmoothScroll>
     </>
   );

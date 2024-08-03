@@ -101,8 +101,6 @@ export async function FetchAnime<T>(
   const url = `${BASE_URL}${endpoint}${parametersObject !== undefined ? requestParameters : ""}`;
   let result: T
 
-  console.log("url: " + url + "\ndelay: " + delayInMilis)
-
   return new Promise((resolve) => 
     setTimeout(resolve, delayInMilis))
       .then(async () => {
