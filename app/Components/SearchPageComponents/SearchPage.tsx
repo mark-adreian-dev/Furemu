@@ -262,7 +262,7 @@ const SearchPage:React.FC<Props> = ({ params }) => {
     };
 
     fetchSearchData(1)
-  }, [query, mangaStatus, pageCount, rating, type, genre, params]);
+  }, [query, mangaStatus, pageCount, rating, type, genre, params, homePageQuery, isInitialLoad]);
   
   return (
     <div className="relative z-0 h-fit">
