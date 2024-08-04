@@ -82,6 +82,7 @@ const Banner = () => {
                     height={506}
                     className="w-full h-auto object-cover object-bottom"
                     quality={100}
+                    priority={true}
                   />
                 </div>
               </div>

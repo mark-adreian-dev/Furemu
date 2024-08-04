@@ -17,6 +17,7 @@ import { BannerSlide } from "@/app/Types/BannerType";
 import { Filter } from "@/app/Types/GlobalTypes";
 import { Genre, GenreData } from "@/app/Types/Genre";
 import { Order } from "@/app/Utilities/FetchAnime";
+import { useSearchParams } from "next/navigation";
 
 const bannerData: BannerSlide[] = banner.data;
 
@@ -166,6 +167,7 @@ const paginationDefaultValue = {
 }
 
 const SearchPage:React.FC<Props> = ({ params }) => {
+
   const controllerRef = useRef<AbortController>();
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [screenSize, setScreenSize] = useState<string>();
@@ -178,7 +180,9 @@ const SearchPage:React.FC<Props> = ({ params }) => {
   const [pageCount, setPageCount] = useState<number>(1);
   const [data, setData] = useState<AnimeData[]>([]);
   const [paginationData, setPaginationData] = useState<Pagination>(paginationDefaultValue);
-  
+  const homePageQuery = useSearchParams().get("query")
+  const [isInitialLoad, setIsInitialLoad] = useState<boolean>(true)
+
   const resetFitler = () => {
     setRating(Rating.NO_RATING);
     setType("");
@@ -203,6 +207,7 @@ const SearchPage:React.FC<Props> = ({ params }) => {
       updateScreenSize(
 
     )});
+    
     fetchGenre(params);
   }, [params]);
 
@@ -214,6 +219,15 @@ const SearchPage:React.FC<Props> = ({ params }) => {
       };
   
       //If filter is present add filter as parameters to the request
+      if(homePageQuery !== null && isInitialLoad) {
+        setIsInitialLoad(false)
+        setQuery(homePageQuery)
+        parameters.q = homePageQuery
+        parameters.sort = Order.ASC
+        parameters.order_by = "popularity"
+        
+        
+      }
       if (query === "") {
         parameters.sort = Order.ASC
         parameters.order_by = "popularity"
@@ -303,6 +317,7 @@ const SearchPage:React.FC<Props> = ({ params }) => {
               value={query}
               setValue={setQuery}
               controller={controllerRef}
+
             />
             <FilterBadge
               genreActiveFilter={genre}

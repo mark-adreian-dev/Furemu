@@ -1,18 +1,21 @@
 import Image from "next/image";
 import path from "path";
+import { Dispatch, SetStateAction } from "react";
 
 interface Props {
-  iconPath: string;
-  className: string;
+  iconPath: string,
+  className: string,
+  handleClick?: () => void
 }
 
-const IconButton: React.FC<Props> = ({ iconPath, className }) => {
+const IconButton: React.FC<Props> = ({ iconPath, className, handleClick }) => {
   const iconFileName: string = iconPath.split("/")[2]
-
+  
   return (
     <label
       className={`bg-accent rounded-lg relative cursor-pointer ${className}`}
       htmlFor={iconFileName === "hamburger_menu.svg" || iconFileName === "close_icon.svg" ? "my-drawer-4" : "my-drawer-4"}
+      onClick={() => handleClick ? handleClick() : {}}
     >
       <Image
         src={iconPath}
