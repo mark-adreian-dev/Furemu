@@ -215,7 +215,6 @@ const SearchPage:React.FC<Props> = ({ params }) => {
     const fetchSearchData = (delayRate: number) => {
       const parameters: Params = {
         page: pageCount,
-      
       };
   
       //If filter is present add filter as parameters to the request
@@ -231,6 +230,7 @@ const SearchPage:React.FC<Props> = ({ params }) => {
       if (query === "") {
         parameters.sort = Order.ASC
         parameters.order_by = "popularity"
+
       }
       if (query !== "") parameters.q = query;
       if (rating !== Rating.NO_RATING) parameters.rating = rating;

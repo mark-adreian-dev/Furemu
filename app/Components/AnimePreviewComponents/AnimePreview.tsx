@@ -38,7 +38,7 @@ const AnimePreview:React.FC<Props> = ({ data, type }) => {
         </div>
         <PreviewImage data={previewData}/>
         <div className="anime-preview-scroll-wrapper relative w-full tablet:w-full desktop:w-[40.5rem] scrollbar-thin scrollbar-thumb-accent scrollbar-track-darker-blue wide:pl-16 wide:w-[44.5rem]">
-          <h1 className="text-accent text-center text-3xl font-bold mb-32 tablet:mb-16 tablet:text-6xl  tablet:mx-auto desktop:text-start">{previewData.title_english ? previewData.title : previewData.title_english}</h1>
+          <h1 className="text-accent text-center text-3xl font-bold mb-32 tablet:mb-16 tablet:text-6xl  tablet:mx-auto desktop:text-start">{!previewData.title_english ? previewData.title : previewData.title_english}</h1>
           <BasicInfo data={previewData} type={type}/>
           {
             type == Type.anime &&
