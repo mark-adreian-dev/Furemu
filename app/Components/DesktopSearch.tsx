@@ -121,9 +121,7 @@ const DesktopSearch: React.FC<Props> = ({ page }) => {
         </p>
 
         
-        { isLoading ? <LoadingUI/> : <SearchEntries data={data} query={query}/>
-        
-        }
+        {isLoading ? <LoadingUI/> : <SearchEntries data={data} query={query}/>}
       </div>
       <IconButton
         iconPath={isSearchVisible ? "/icons/close_icon.svg": "/icons/search_icon.svg"}
@@ -170,7 +168,7 @@ const SearchEntries:React.FC<EntriesProps> = ({data, query}) => {
                 <h2 className="card-title !mb-0 text-base text-white leading-4">
                   {item.title}
                 </h2>
-                <p className="italic text-xs text-wrap leading-4">Rating: {item.rating}</p>
+                <p className="italic text-xs text-wrap leading-6">Rating: {item.rating}</p>
               </div>
             </div>
           </Link>
@@ -178,7 +176,7 @@ const SearchEntries:React.FC<EntriesProps> = ({data, query}) => {
       }
       <Link href={`/search/anime?query=${query}`}>
         <div className={`p-2 bg-accent w-full cursor-pointer rounded-b-lg border-none hover:bg-white transition-[background-color] duration-500 ease-in-out ${data.length === 0 ? "hidden" : "block"}`}>
-          <p className="text-center text-xs font-main font-bold text-dark-blue">Search More</p>
+          <p className="text-center text-xs font-main font-bold text-dark-blue">See More</p>
         </div>
       </Link>
     </>

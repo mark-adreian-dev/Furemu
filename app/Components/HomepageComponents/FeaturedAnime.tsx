@@ -1,9 +1,10 @@
 'use client'
 
-import { useState, useEffect, Dispatch, SetStateAction } from "react"
+import { useState, useEffect } from "react"
 import { Breakpoints } from '@/app/Types/Enums';
 import Image from "next/image"
 import data from '@/FeaturedAnime.json'
+import Link from "next/link";
 
 interface ImagePath {
     "mobile": string
@@ -55,11 +56,11 @@ const FeaturedAnime = ({isContentLoaded }: { isContentLoaded: boolean }) => {
                         <p className='text-darker-blue text-xs font-medium leading-4'>Finished Airing</p>
                         </div>
                     </div>
-                    <a href={`anime/${featuredData.mal_id}`}>
+                    <Link href={`anime/${featuredData.mal_id}`} scroll={false}>
                         <button className='w-[6.625rem] h-[6.625rem] border-none absolute right-0 bg-accent rounded-none rounded-bl-3xl rounded-tr-3xl tablet:w-40 tablet:h-40 tablet:bottom-0 tablet:rounded-tl-3xl tablet:rounded-tr-none tablet:rounded-bl-none tablet:rounded-br-3xl hover:bg-white btn'>
                             <p className='text-sm text-dark-blue font-semibold'>See More</p>
                         </button>
-                    </a>  
+                    </Link>  
                 </div>
             </div>
         )

@@ -20,7 +20,7 @@ html {
     --darker-blue: #0F172A;
     --preview-overlay: linear-gradient(270deg, rgba(31, 41, 55, 0.00) 10.5%, #0F172A 90.91%);
     --banner-overlay: linear-gradient(180deg, rgba(31, 41, 55, 0.00)-134.3%, #0F172A 100%);
-
+    --hover-state: rgba(167, 243, 208, 0.20);
     scroll-padding: 0;
 
 }

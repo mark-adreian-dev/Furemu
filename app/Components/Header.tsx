@@ -3,7 +3,6 @@
 import Link from "next/link";
 import Image from "next/image";
 import IconButton from "./IconButton";
-import { useState, useEffect } from "react";
 import { MenuItem } from "@/app/Types/MenuItem";
 import DesktopSearch from "./DesktopSearch";
 
@@ -16,7 +15,7 @@ export const menu: MenuItem[] = [
 
   {
     menuTitle: "About",
-    destination: "/",
+    destination: "/about",
     icon: "",
   },
 
@@ -36,25 +35,25 @@ export const menu: MenuItem[] = [
 export const socials: MenuItem[] = [
   {
     menuTitle: "Facebook",
-    destination: "/",
+    destination: "https://www.facebook.com/mark.ramos.16121471",
     icon: "/icons/facebook_icon.svg",
   },
 
   {
     menuTitle: "Instagram",
-    destination: "/",
+    destination: "https://www.instagram.com/adreyaaaaaaan/",
     icon: "/icons/instagram_icon.svg",
   },
 
   {
     menuTitle: "Github",
-    destination: "/",
+    destination: "https://github.com/mark-adreian-dev",
     icon: "/icons/github_icon.svg",
   },
 
   {
     menuTitle: "Linked In",
-    destination: "/",
+    destination: "https://www.linkedin.com/in/mark-ramos-238076213/",
     icon: "/icons/linkedIn_icon.svg",
   },
 ];
@@ -95,12 +94,6 @@ const Header = ({ active, page }: { active?: string; page?: string }) => {
         className="w-12 h-12 p-[0.875rem] drawer-button tablet:hidden"
       />
       
-
-
-
-
-
-
 
       <div className="absolute top-0 left-0 !z-40 drawer drawer-end tablet:hidden">
         <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
@@ -160,6 +153,7 @@ const Header = ({ active, page }: { active?: string; page?: string }) => {
                   return (
                     <li key={index}>
                       <Link
+                        target="_blank"
                         scroll={false}
                         href={items.destination}
                         className={

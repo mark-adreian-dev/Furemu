@@ -15,11 +15,12 @@ const config: Config = {
         "light-blue": "var(--light-blue)",
         "dark-blue": "var(--dark-blue)",
         "darker-blue": "var(--darker-blue)",
+        "hover-state": "var(--hover-state)"
 
       },
       backgroundImage: {
         "preview-overlay": "var(--preview-overlay)",
-        "banner-overlay": "var(--banner-overlay)"
+        "banner-overlay": "var(--banner-overlay)",
       },
       fontSize: {
         "nav-logo-text": "var(--nav-logo-text)",
