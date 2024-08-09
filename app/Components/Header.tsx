@@ -67,7 +67,7 @@ const Header = ({ active, page }: { active?: string; page?: string }) => {
     >
       <Link href="/" scroll={false}>
         <h1 className="leading-7 text-nav-logo-text text-white font-black">
-          Heroku
+          Furēmu
         </h1>
       </Link>
       <nav

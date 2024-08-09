@@ -14,7 +14,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Heroku",
+  title: "Furēmu",
   description: "Heroku, your friendly anime dictionary find details on your favorite anime, manga and more",
 };
 

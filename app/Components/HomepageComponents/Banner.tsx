@@ -71,16 +71,13 @@ const Banner = () => {
                 <div className="absolute z-0 w-full h-full">
                   <Image
                     src={
-                      screenSize === "mobile"
-                        ? slide.imagePathMobile
-                        : screenSize === "tablet"
-                        ? slide.imagePathTablet
-                        : slide.imagePathDesktop
+                      slide.imagePathDesktop
                     }
                     alt="banner-image"
-                    width={1040}
-                    height={506}
-                    className="w-full h-auto object-cover object-bottom"
+                    fill
+                    // width={1040}
+                    // height={506}
+                    className="w-full h-auto object-cover desktop:object-bottom"
                     quality={100}
                     priority={true}
                   />
