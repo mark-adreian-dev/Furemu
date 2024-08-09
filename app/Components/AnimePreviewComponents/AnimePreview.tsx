@@ -15,7 +15,7 @@ import { AnimeData } from "@/app/Types/Anime"
 import { MangaData } from "@/app/Types/Manga"
 
 const Producers = dynamic(() => import("./AnimeDetailsComponents/Producers"))
-const Characters = dynamic(() => import("./AnimeDetailsComponents/Characters"), { ssr: false})
+const Characters = dynamic(() => import("./AnimeDetailsComponents/Characters"), { ssr: false })
 
 interface Props {
   data: AnimeData | MangaData,
