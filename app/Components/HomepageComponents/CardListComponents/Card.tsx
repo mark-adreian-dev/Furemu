@@ -27,7 +27,7 @@ const Card:React.FC<Props> = ({ imageUrl, animeTitleEnglish, animeTitleJapanese,
               <Badge text={animeStatus}/>
             </div>
             <div className="flex justify-between tablet:mb-3">
-              <p className="text-light-blue italic text-[0.3555rem] tablet:text-xs">{animeRating}</p>
+              <p className="text-light-blue italic text-[0.6rem] tablet:text-base">{animeRating}</p>
             </div>
           </div>
       </div>
