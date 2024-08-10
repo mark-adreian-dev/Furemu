@@ -182,6 +182,9 @@ const SearchPage:React.FC<Props> = ({ params }) => {
   const [paginationData, setPaginationData] = useState<Pagination>(paginationDefaultValue);
   const homePageQuery = useSearchParams().get("query")
   const [isInitialLoad, setIsInitialLoad] = useState<boolean>(true)
+  const [isContentClicked, setIsContentClicked] = useState<boolean>(false)
+
+
 
   const resetFitler = () => {
     setRating(Rating.NO_RATING);
@@ -265,75 +268,80 @@ const SearchPage:React.FC<Props> = ({ params }) => {
   }, [query, mangaStatus, pageCount, rating, type, genre, params, homePageQuery, isInitialLoad]);
   
   return (
-    <div className="relative z-0 h-fit">
-      
-      <div className="absolute z-0 background-image w-full h-[43.8125rem] bg-darker-blue">
-      <div className="banner-overlay absolute top-0 left-0 bottom-0 right-0 bg-banner-overlay z-[1]"></div>
-        <Image
-          src={
-            screenSize === "mobile"
-              ? bannerData[4].imagePathMobile
-              : screenSize === "tablet"
-              ? bannerData[4].imagePathTablet
-              : bannerData[4].imagePathDesktop
-          }
-          alt="background-image"
-          fill
-          sizes="100%"
-          className="object-cover object-bottom"
-          draggable={false}
-          priority={true}
-          quality={100}
-        />
+    <>
+      <div className='w-full h-1 sticky top-0 z-[100] bg-transparent'>
+        <div className={`loader-bar bg-accent h-1 ${isContentClicked ? "w-full" : "w-0"} transition-[width] duration-[2000ms] ease-in-out`}></div>
       </div>
-      <FilterContext.Provider
-        value={{
-          setType,
-          setRating,
-          setGenre,
-          genre,
-          ratingFilters,
-          animeTypeFilters,
- 
-          setIsLoading,
-          setMangaStatus,
-          mangaStatus,
-          mangaTypeFilters,
-          setPageCount,
-          pageCount
-        }}
-      >
-        <div className="content relative z-20 w-full pt-24 px-6 tablet:px-8 tablet:pt-[8.25rem] desktop:flex desktop:px-16 desktop:pt-[10.25rem]">
-          <div className="left hidden desktop:block w-[12.8125rem] mr-6">
-            {params === Type.anime && (<FilterCategory title="Type" items={animeTypeFilters} />)}
-            {params === Type.anime && (<FilterCategory title="Rating" items={ratingFilters} />)}
-            {params === Type.manga && (<FilterCategory title="Type" items={mangaTypeFilters} />)}
-            {params === Type.manga && (<FilterCategory title="Status" items={mangaStatusFilters} />)}
-            <GenreFilter items={genreFilters} />
-          </div>
-          <div className="right w-full relative">
-            <InputBox
-              type={params}
-              value={query}
-              setValue={setQuery}
-              controller={controllerRef}
-
-            />
-            <FilterBadge
-              genreActiveFilter={genre}
-              genreFilter={genreFilters}
-              mangaFilter={mangaStatusFilters}
-              resultLength={paginationData ? paginationData.items.total : 0}
-              rating={rating}
-              type={type}
-            />
-            <p className="text-accent text-sm mt-8 italic desktop:text-base desktop:mt-4">{query !== "" ? `Results for "${query}"`: ""}</p>
-            <SearchCard data={data} isLoading={isLoading} type={params} />
-            <PaginationControl paginationData={paginationData} isLoading={isLoading}/>
-          </div>
+      <div className="relative z-0 h-fit">
+        
+        <div className="absolute z-0 background-image w-full h-[43.8125rem] bg-darker-blue">
+        <div className="banner-overlay absolute top-0 left-0 bottom-0 right-0 bg-banner-overlay z-[1]"></div>
+          <Image
+            src={
+              screenSize === "mobile"
+                ? bannerData[4].imagePathMobile
+                : screenSize === "tablet"
+                ? bannerData[4].imagePathTablet
+                : bannerData[4].imagePathDesktop
+            }
+            alt="background-image"
+            fill
+            sizes="100%"
+            className="object-cover object-bottom"
+            draggable={false}
+            priority={true}
+            quality={100}
+          />
         </div>
-      </FilterContext.Provider>
-    </div>
+        <FilterContext.Provider
+          value={{
+            setType,
+            setRating,
+            setGenre,
+            genre,
+            ratingFilters,
+            animeTypeFilters,
+  
+            setIsLoading,
+            setMangaStatus,
+            mangaStatus,
+            mangaTypeFilters,
+            setPageCount,
+            pageCount
+          }}
+        >
+          <div className="content relative z-20 w-full pt-24 px-6 tablet:px-8 tablet:pt-[8.25rem] desktop:flex desktop:px-16 desktop:pt-[10.25rem]">
+            <div className="left hidden desktop:block w-[12.8125rem] mr-6">
+              {params === Type.anime && (<FilterCategory title="Type" items={animeTypeFilters} />)}
+              {params === Type.anime && (<FilterCategory title="Rating" items={ratingFilters} />)}
+              {params === Type.manga && (<FilterCategory title="Type" items={mangaTypeFilters} />)}
+              {params === Type.manga && (<FilterCategory title="Status" items={mangaStatusFilters} />)}
+              <GenreFilter items={genreFilters} />
+            </div>
+            <div className="right w-full relative">
+              <InputBox
+                type={params}
+                value={query}
+                setValue={setQuery}
+                controller={controllerRef}
+
+              />
+              <FilterBadge
+                genreActiveFilter={genre}
+                genreFilter={genreFilters}
+                mangaFilter={mangaStatusFilters}
+                resultLength={paginationData ? paginationData.items.total : 0}
+                rating={rating}
+                type={type}
+              />
+              <p className="text-accent text-sm mt-8 italic desktop:text-base desktop:mt-4">{query !== "" ? `Results for "${query}"`: ""}</p>
+              <SearchCard data={data} isLoading={isLoading} type={params} setIsContentClicked={setIsContentClicked} />
+              <PaginationControl paginationData={paginationData} isLoading={isLoading}/>
+            </div>
+          </div>
+        </FilterContext.Provider>
+      </div>
+    </>
   );
 };
 

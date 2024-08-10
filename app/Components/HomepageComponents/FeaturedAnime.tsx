@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, Dispatch, SetStateAction } from "react"
 import { Breakpoints } from '@/app/Types/Enums';
 import Image from "next/image"
 import data from '@/FeaturedAnime.json'
@@ -19,9 +19,12 @@ interface FeaturedData {
 const featuredData: FeaturedData = data.data[0]
 const featuredImage: ImagePath = featuredData.images
 
-const FeaturedAnime = ({isContentLoaded }: { isContentLoaded: boolean }) => {
+const FeaturedAnime = ({isContentLoaded, setIsContentClicked}: { isContentLoaded: boolean, setIsContentClicked: Dispatch<SetStateAction<boolean>> }) => {
     const [screenSize, setScreenSize] = useState<string>("desktop")
 
+    const handleCardClick = () => {
+        setIsContentClicked(true)
+    }
     const updateScreenSize = () => {
       if (window.innerWidth >= Breakpoints.DESKTOP) setScreenSize("desktop")
       else if (window.innerWidth >= Breakpoints.TABLET)  setScreenSize("tablet")
@@ -56,11 +59,14 @@ const FeaturedAnime = ({isContentLoaded }: { isContentLoaded: boolean }) => {
                         <p className='text-darker-blue text-xs font-medium leading-4'>Finished Airing</p>
                         </div>
                     </div>
-                    <Link href={`anime/${featuredData.mal_id}`} scroll={false}>
-                        <button className='w-[6.625rem] h-[6.625rem] border-none absolute right-0 bg-accent rounded-none rounded-bl-3xl rounded-tr-3xl tablet:w-40 tablet:h-40 tablet:bottom-0 tablet:rounded-tl-3xl tablet:rounded-tr-none tablet:rounded-bl-none tablet:rounded-br-3xl hover:bg-white btn'>
-                            <p className='text-sm text-dark-blue font-semibold'>See More</p>
-                        </button>
-                    </Link>  
+                    <div onClick={handleCardClick}>
+                        <Link href={`anime/${featuredData.mal_id}`} scroll={false} >
+                            <button className='w-[6.625rem] h-[6.625rem] border-none absolute right-0 bg-accent rounded-none rounded-bl-3xl rounded-tr-3xl tablet:w-40 tablet:h-40 tablet:bottom-0 tablet:rounded-tl-3xl tablet:rounded-tr-none tablet:rounded-bl-none tablet:rounded-br-3xl hover:bg-white btn'>
+                                <p className='text-sm text-dark-blue font-semibold'>See More</p>
+                            </button>
+                        </Link>
+                    </div>
+                      
                 </div>
             </div>
         )

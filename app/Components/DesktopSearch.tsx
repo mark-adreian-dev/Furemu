@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
+import { SetStateAction, Dispatch, useEffect, useRef, useState } from "react";
 import { AnimeData, Batch } from "../Types/BatchData";
 import { Params } from "../Utilities/FetchAnime";
 import { FetchAnime } from "../Utilities/FetchAnime";
@@ -9,9 +9,10 @@ import Link from "next/link";
 
 interface Props {
   page?: string;
+  setIsContentClicked? : Dispatch<SetStateAction<boolean>>
 }
 
-const DesktopSearch: React.FC<Props> = ({ page }) => {
+const DesktopSearch: React.FC<Props> = ({ page, setIsContentClicked }) => {
   const controllerRef = useRef<AbortController>();
   const [isSearchFocused, setIsSearchFocused] = useState<boolean>(false)
   const [query, setQuery] = useState<string>("");
@@ -121,7 +122,7 @@ const DesktopSearch: React.FC<Props> = ({ page }) => {
         </p>
 
         
-        {isLoading ? <LoadingUI/> : <SearchEntries data={data} query={query}/>}
+        {isLoading ? <LoadingUI/> : <SearchEntries data={data} query={query} setIsContentClicked={setIsContentClicked}/>}
       </div>
       <IconButton
         iconPath={isSearchVisible ? "/icons/close_icon.svg": "/icons/search_icon.svg"}
@@ -145,33 +146,42 @@ const LoadingUI = () => {
 
 interface EntriesProps {
   data: AnimeData[],
-  query: string
+  query: string,
+  setIsContentClicked? : Dispatch<SetStateAction<boolean>>
 }
-const SearchEntries:React.FC<EntriesProps> = ({data, query}) => {
+const SearchEntries:React.FC<EntriesProps> = ({data, query, setIsContentClicked}) => {
+  
+  const handleEntryClick = () => {
+    if(setIsContentClicked !== undefined)
+      setIsContentClicked(true)
+  }
+
   return (
     <>
       {
         data.map((item, index) => (
-          <Link scroll={false} href={`/anime/${item.mal_id}`} key={item.mal_id}>
-            <div key={item.mal_id} className={`p-4 flex items-center hover:bg-darker-blue ${index === 0 && "mt-4"}`}>
-              <div className="w-[3.125rem] h-[4.625rem] relative rounded-md overflow-hidden mr-4">
-                <Image
-                  src={item.images.jpg.small_image_url}
-                  alt="anime-poster"
-                  fill
-                  sizes="100%"
-                  className="object-cover"
-                  quality={100}
-                />
+          <div onClick={handleEntryClick} key={item.mal_id}>
+            <Link scroll={false} href={`/anime/${item.mal_id}`}>
+              <div key={item.mal_id} className={`p-4 flex items-center hover:bg-darker-blue ${index === 0 && "mt-4"}`}>
+                <div className="w-[3.125rem] h-[4.625rem] relative rounded-md overflow-hidden mr-4">
+                  <Image
+                    src={item.images.jpg.small_image_url}
+                    alt="anime-poster"
+                    fill
+                    sizes="100%"
+                    className="object-cover"
+                    quality={100}
+                  />
+                </div>
+                <div className="w-[calc(384px-(50px+16px)] bg-transparent">
+                  <h2 className="card-title !mb-0 text-base text-white leading-4">
+                    {item.title}
+                  </h2>
+                  <p className="italic text-xs text-wrap leading-6">Rating: {item.rating}</p>
+                </div>
               </div>
-              <div className="w-[calc(384px-(50px+16px)] bg-transparent">
-                <h2 className="card-title !mb-0 text-base text-white leading-4">
-                  {item.title}
-                </h2>
-                <p className="italic text-xs text-wrap leading-6">Rating: {item.rating}</p>
-              </div>
-            </div>
-          </Link>
+            </Link>
+          </div>
         ))
       }
       <Link href={`/search/anime?query=${query}`}>

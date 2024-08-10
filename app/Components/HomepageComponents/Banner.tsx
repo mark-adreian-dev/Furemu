@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, Dispatch, SetStateAction } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper/modules";
 import { Breakpoints } from "@/app/Types/Enums";
@@ -12,11 +12,14 @@ import { BannerSlide } from "@/app/Types/BannerType";
 
 const heroSectionData: BannerSlide[] = data.data;
 
-const Banner = () => {
+const Banner = ({setIsContentClicked} : {setIsContentClicked: Dispatch<SetStateAction<boolean>>}) => {
   const swiperRef = useRef<any>();
   const [activeSlide, setActiveSlide] = useState<number>(0);
   const [screenSize, setScreenSize] = useState<string>();
 
+  const handleCardClicked = () => {
+    setIsContentClicked(true)
+  }
   
   useEffect(() => {
     const updateScreenSize = () => {
@@ -98,13 +101,15 @@ const Banner = () => {
                   <p className="text-white w-[28.75rem] text-base leading-6 font-normal mb-6">
                     {slide.description.context}
                   </p>
-                  <Link href={`anime/${slide.mal_id}`} scroll={false}>
-                    <button className="w-[7.375rem] py-[0.88rem] bg-accent px-[1rem] rounded-lg">
-                      <p className="text-sm text-darker-blue leading-5 font-semibold">
-                        See More
-                      </p>
-                    </button>
-                  </Link>
+                  <div onClick={handleCardClicked}>
+                    <Link href={`anime/${slide.mal_id}`} scroll={false}>
+                      <button className="w-[7.375rem] py-[0.88rem] bg-accent px-[1rem] rounded-lg">
+                        <p className="text-sm text-darker-blue leading-5 font-semibold">
+                          See More
+                        </p>
+                      </button>
+                    </Link>
+                  </div>  
                 </div>
               )
           )}

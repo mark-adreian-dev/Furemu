@@ -5,6 +5,7 @@ import Image from "next/image";
 import IconButton from "./IconButton";
 import { MenuItem } from "@/app/Types/MenuItem";
 import DesktopSearch from "./DesktopSearch";
+import { Dispatch, SetStateAction } from "react";
 
 export const menu: MenuItem[] = [
   {
@@ -58,9 +59,9 @@ export const socials: MenuItem[] = [
   },
 ];
 
-const Header = ({ active, page }: { active?: string; page?: string }) => {
+const Header = ({ active, page, setIsContentClicked }: { active?: string; page?: string, setIsContentClicked?:Dispatch<SetStateAction<boolean>> }) => {
  
-
+ 
   return (
     <header
       className={`absolute z-50 p-6 w-full flex justify-between items-center tablet:p-8 desktop:px-16 desktop:py-8`}
@@ -87,7 +88,7 @@ const Header = ({ active, page }: { active?: string; page?: string }) => {
         </ul>
       </nav>
 
-      <DesktopSearch page={page}/>
+      <DesktopSearch page={page} setIsContentClicked={setIsContentClicked}/>
 
       <IconButton
         iconPath="/icons/hamburger_menu.svg"

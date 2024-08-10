@@ -23,7 +23,6 @@ interface Endpoints {
   topManga: EndpointDetails,
 }
 
-
 const endpoints: Endpoints = {
   latestAnime: {
     endpoint: "/seasons/now",
@@ -56,19 +55,24 @@ const endpoints: Endpoints = {
   }
 }
 
-interface Props {
 
-}
 
-const Home:React.FC<Props> = () => {
+const Home = () => {
   const [isContentLoaded, setIsContentLoaded] = useState<boolean>(false)
+  const [isContentClicked, setIsContentClicked] = useState<boolean>(false)
+
+  const handleClick = () => {
+    setIsContentClicked(true)
+  }
 
   return (
     <>
-    
+      <div className='w-full h-fit sticky top-0 z-[100]'>
+          <div className={`loader-bar bg-accent h-1 ${isContentClicked ? "w-screen" : "w-0"} transition-[width] duration-[2000ms] ease-in-out`}></div>
+      </div>
       <SmoothScroll root={true}> 
-        <Header active='home'/>
-        <Banner/>
+        <Header active='home' setIsContentClicked={setIsContentClicked}/>
+        <Banner setIsContentClicked={setIsContentClicked}/>
         <div>
           {
             !isContentLoaded && <div className="w-full flex justify-center items-start mt-16 pb-96">
@@ -79,10 +83,10 @@ const Home:React.FC<Props> = () => {
           {
             Object.entries(endpoints).map(([key, value], index) => {
               if (key !== "featuredAnime") {
-                return <CardList key={index} isContentLoaded={isContentLoaded} setIsContentLoaded={setIsContentLoaded} endpoint={value.endpoint} prevEl={value.prevEl} nextEl={value.nextEl} title={value.title} type={value.type} index={index}/>
+                return <CardList key={index} setIsContentClicked={setIsContentClicked} isContentLoaded={isContentLoaded} setIsContentLoaded={setIsContentLoaded} endpoint={value.endpoint} prevEl={value.prevEl} nextEl={value.nextEl} title={value.title} type={value.type} index={index}/>
                 
               } else {
-                return <FeaturedAnime key={index} isContentLoaded={isContentLoaded}/>
+                return <FeaturedAnime key={index} setIsContentClicked={setIsContentClicked} isContentLoaded={isContentLoaded}/>
               }
             })
           }

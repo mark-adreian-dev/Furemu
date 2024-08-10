@@ -19,12 +19,17 @@ interface Props {
   index: number,
   isContentLoaded: boolean
   setIsContentLoaded: Dispatch<SetStateAction<boolean>>
+  setIsContentClicked: Dispatch<SetStateAction<boolean>>
 
 }
 
-const CardList:React.FC<Props> = ({ endpoint, prevEl, nextEl, title, type, index, setIsContentLoaded, isContentLoaded}) => {
+const CardList:React.FC<Props> = ({ endpoint, prevEl, nextEl, title, type, index, setIsContentLoaded, isContentLoaded, setIsContentClicked}) => {
   const animeRef = useRef<any>();
   const [data, setData] = useState<AnimeData[]>([])
+
+  const handleCardClicked = () => {
+    setIsContentClicked(true)
+  }
 
   useEffect(() => {
     const fetchDefaultData = () => {
@@ -59,7 +64,7 @@ const CardList:React.FC<Props> = ({ endpoint, prevEl, nextEl, title, type, index
           >
             {
               data?.map((anime: AnimeData) => 
-               <SwiperSlide key={anime.mal_id} className="mr-2">
+               <SwiperSlide key={anime.mal_id} className="mr-2" onClick={handleCardClicked}>
                 <Link key={anime.mal_id} href={`${type}/${anime.mal_id}`}>
                   <Card 
                     imageUrl={anime.images.jpg.image_url}
