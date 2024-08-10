@@ -67,7 +67,7 @@ const Home = () => {
 
   return (
     <>
-      <div className='w-full h-fit sticky top-0 z-[100]'>
+      <div className='w-full h-fit sticky top-0 z-[100] bg-transparent'>
           <div className={`loader-bar bg-accent h-1 ${isContentClicked ? "w-screen" : "w-0"} transition-[width] duration-[2000ms] ease-in-out`}></div>
       </div>
       <SmoothScroll root={true}> 
