@@ -3,12 +3,13 @@ export interface BannerData {
 }
 
 export interface BannerSlide {
-    mal_id:           number;
-    itemIndex:        number;
-    imagePathMobile:  string;
-    imagePathTablet:  string;
-    imagePathDesktop: string;
-    description:      Description;
+    mal_id:              number;
+    itemIndex:           number;
+    imagePathMobile:     string;
+    imagePathTablet:     string;
+    imagePathDesktop:    string;
+    imagePathNoOverlay:  string;
+    description:         Description;
 }
 
 export interface Description {

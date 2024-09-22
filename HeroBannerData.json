@@ -6,6 +6,7 @@
             "imagePathMobile": "/landing_page/mobile/demon_slayer.png",
             "imagePathTablet": "/landing_page/tablet/demon_slayer.png",
             "imagePathDesktop": "/landing_page/desktop/demon_slayer.png",
+            "imagePathNoOverlay": "",
             "description" : {
                 "title": "Demon Slayer",
                 "context": "Tanjiro sets out to become a demon slayer to avenge his family and cure his sister.A family is attacked by demons and only two members survive"
@@ -18,6 +19,7 @@
             "imagePathMobile": "/landing_page/mobile/kaiju_no_8.png",
             "imagePathTablet": "/landing_page/tablet/kaiju_no_8.png",
             "imagePathDesktop": "/landing_page/desktop/kaiju_no_8.png",
+            "imagePathNoOverlay": "",
             "description" : {
                 "title": "Kaiju No.8",
                 "context": "Kafka Hibino, a man who, after ingesting a kaiju, gains the ability to turn into one and now must navigate using his power while trying to become part of an organization that eliminates kaiju"
@@ -30,6 +32,7 @@
             "imagePathMobile": "/landing_page/mobile/frieren.png",
             "imagePathTablet": "/landing_page/tablet/frieren.png",
             "imagePathDesktop": "/landing_page/desktop/frieren.png",
+            "imagePathNoOverlay": "",
             "description" : {
                 "title": "Frieren: Beyond Journey's End",
                 "context": "Frieren, an elf mage who had once embarked on perilous adventures with her comrades to vanquish evil. The story takes place decades after their victory."
@@ -42,6 +45,7 @@
             "imagePathMobile": "/landing_page/mobile/boku_no_hero.png",
             "imagePathTablet": "/landing_page/tablet/boku_no_hero.png",
             "imagePathDesktop": "/landing_page/desktop/boku_no_hero.png",
+            "imagePathNoOverlay": "",
             "description" : {
                 "title": "My Hero Academia",
                 "context": "Izuku Midoriya, a boy born without superpowers in a world where they are the norm, but who still dreams of becoming a superhero himself, and is scouted by the world's greatest hero, All Might"
@@ -54,6 +58,7 @@
             "imagePathMobile": "/landing_page/mobile/apothecary_diaries.png",
             "imagePathTablet": "/landing_page/tablet/apothecary_diaries.png",
             "imagePathDesktop": "/landing_page/desktop/apothecary_diaries.png",
+            "imagePathNoOverlay": "/landing_page/desktop/apothecary_diaries_search_desktop.png",
             "description" : {
                 "title": "The Apothecary Diaries",
                 "context": "A young maiden is kidnapped and sold into servitude at the emperor's palace, where she secretly employs her pharmacist skills with the help of the head eunuch to unravel medical mysteries in the inner court."

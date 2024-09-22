@@ -14,7 +14,7 @@ import { Type } from "@/app/Types/Enums"
 import { AnimeData } from "@/app/Types/Anime"
 import { MangaData } from "@/app/Types/Manga"
 
-const Producers = dynamic(() => import("./AnimeDetailsComponents/Producers"))
+// const Producers = dynamic(() => import("./AnimeDetailsComponents/Producers"))
 const Characters = dynamic(() => import("./AnimeDetailsComponents/Characters"), { ssr: false })
 
 interface Props {

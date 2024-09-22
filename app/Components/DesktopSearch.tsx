@@ -74,6 +74,7 @@ const DesktopSearch: React.FC<Props> = ({ page, setIsContentClicked }) => {
     fetchSearchData(1);
   }, [query]);
 
+  
   return (
     <div className="relative hidden desktop:block">
       <div
@@ -108,7 +109,7 @@ const DesktopSearch: React.FC<Props> = ({ page, setIsContentClicked }) => {
         </div>
       </div>
 
-      <div
+      {isSearchVisible && <div
         className={`w-96 h-fit rounded-lg bg-dark-blue absolute top-16 -left-[25rem] left transition-[height] pt-4 ${
           query === "" ? "hidden" : "block"
         }`}
@@ -122,8 +123,8 @@ const DesktopSearch: React.FC<Props> = ({ page, setIsContentClicked }) => {
         </p>
 
         
-        {isLoading ? <LoadingUI/> : <SearchEntries data={data} query={query} setIsContentClicked={setIsContentClicked}/>}
-      </div>
+        {isLoading ? <LoadingUI/> : <SearchEntries data={data} query={query} setIsContentClicked={setIsContentClicked} isSearchVisible={isSearchVisible}/>}
+      </div>}
       <IconButton
         iconPath={isSearchVisible ? "/icons/close_icon.svg": "/icons/search_icon.svg"}
         className={`w-12 h-12 p-[0.875rem] hidden ${
@@ -147,9 +148,10 @@ const LoadingUI = () => {
 interface EntriesProps {
   data: AnimeData[],
   query: string,
-  setIsContentClicked? : Dispatch<SetStateAction<boolean>>
+  setIsContentClicked? : Dispatch<SetStateAction<boolean>>,
+  isSearchVisible: boolean
 }
-const SearchEntries:React.FC<EntriesProps> = ({data, query, setIsContentClicked}) => {
+const SearchEntries:React.FC<EntriesProps> = ({data, query, setIsContentClicked, isSearchVisible}) => {
   
   const handleEntryClick = () => {
     if(setIsContentClicked !== undefined)
@@ -159,6 +161,8 @@ const SearchEntries:React.FC<EntriesProps> = ({data, query, setIsContentClicked}
   return (
     <>
       {
+
+
         data.map((item, index) => (
           <div onClick={handleEntryClick} key={item.mal_id}>
             <Link scroll={false} href={`/anime/${item.mal_id}`}>
@@ -182,7 +186,7 @@ const SearchEntries:React.FC<EntriesProps> = ({data, query, setIsContentClicked}
               </div>
             </Link>
           </div>
-        ))
+        )) 
       }
       <Link href={`/search/anime?query=${query}`}>
         <div className={`p-2 bg-accent w-full cursor-pointer rounded-b-lg border-none hover:bg-white transition-[background-color] duration-500 ease-in-out ${data.length === 0 ? "hidden" : "block"}`}>

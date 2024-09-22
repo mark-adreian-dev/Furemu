@@ -70,12 +70,9 @@ const Banner = ({setIsContentClicked} : {setIsContentClicked: Dispatch<SetStateA
           {heroSectionData.map((slide: BannerSlide) => (
             <SwiperSlide key={slide.mal_id}>
               <div className="relative w-screen h-[26.5625rem] tablet:h-[43.8125rem]">
-                <div className="banner-overlay absolute top-0 left-0 bottom-0 right-0 bg-banner-overlay z-[1]"></div>
-                <div className="absolute z-0 w-full h-full">
+                <div className="relative  w-full h-full">
                   <Image
-                    src={
-                      slide.imagePathDesktop
-                    }
+                    src={slide.imagePathDesktop}
                     alt="banner-image"
                     fill
                     // width={1040}

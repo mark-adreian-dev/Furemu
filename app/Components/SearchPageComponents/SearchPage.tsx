@@ -269,8 +269,8 @@ const SearchPage:React.FC<Props> = ({ params }) => {
   
   return (
     <>
-      <div className='w-full h-1 sticky top-0 z-[100] bg-transparent'>
-        <div className={`loader-bar bg-accent h-1 ${isContentClicked ? "w-full" : "w-0"} transition-[width] duration-[2000ms] ease-in-out`}></div>
+       <div className='w-full h-0 sticky top-0 z-[100] bg-[rgba(225,2255,255, 0)]'>
+          <div className={`loader-bar h-1 ${isContentClicked ? "w-screen bg-accent " : "w-0"} transition-[width] duration-[2000ms] ease-in-out`}></div>
       </div>
       <div className="relative z-0 h-fit">
         
@@ -282,7 +282,7 @@ const SearchPage:React.FC<Props> = ({ params }) => {
                 ? bannerData[4].imagePathMobile
                 : screenSize === "tablet"
                 ? bannerData[4].imagePathTablet
-                : bannerData[4].imagePathDesktop
+                : bannerData[4].imagePathNoOverlay
             }
             alt="background-image"
             fill

@@ -61,14 +61,11 @@ const Home = () => {
   const [isContentLoaded, setIsContentLoaded] = useState<boolean>(false)
   const [isContentClicked, setIsContentClicked] = useState<boolean>(false)
 
-  const handleClick = () => {
-    setIsContentClicked(true)
-  }
 
   return (
     <>
-      <div className='w-full h-fit sticky top-0 z-[100] bg-transparent'>
-          <div className={`loader-bar bg-accent h-1 ${isContentClicked ? "w-screen" : "w-0"} transition-[width] duration-[2000ms] ease-in-out`}></div>
+      <div className='w-full h-0 sticky top-0 z-[100] bg-[rgba(225,2255,255, 0)]'>
+          <div className={`loader-bar h-1 ${isContentClicked ? "w-screen bg-accent " : "w-0 bg-transparent"} transition-[width] duration-[2000ms] ease-in-out`}></div>
       </div>
       <SmoothScroll root={true}> 
         <Header active='home' setIsContentClicked={setIsContentClicked}/>
