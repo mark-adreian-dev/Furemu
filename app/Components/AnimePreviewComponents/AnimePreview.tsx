@@ -1,4 +1,4 @@
-
+"use client"
 import Image from "next/image"
 import PreviewImage from "./AnimeDetailsComponents/PreviewImage"
 import BasicInfo from "./AnimeDetailsComponents/BasicInfo"
@@ -8,7 +8,9 @@ import MangaBackground from "./AnimeDetailsComponents/MangaBackground"
 import MangaAuthors from "./AnimeDetailsComponents/MangaAuthors"
 // import Characters from "./AnimeDetailsComponents/Characters"
 // import Producers from "./AnimeDetailsComponents/Producers"
-
+import { useEffect } from "react";
+import { useUser } from "@clerk/nextjs";
+import { useRouter } from "next/navigation";
 import dynamic from "next/dynamic"
 import { Type } from "@/app/Types/Enums"
 import { AnimeData } from "@/app/Types/Anime"
@@ -24,6 +26,21 @@ interface Props {
 
 const AnimePreview:React.FC<Props> = ({ data, type }) => {
   let previewData: AnimeData | MangaData = data
+
+  const { isSignedIn, isLoaded } = useUser();
+  const router = useRouter();
+
+  useEffect(() => {
+    // Wait until user data is loaded
+    if (isLoaded && !isSignedIn) {
+      // Redirect to Clerk sign-in page if not signed in
+      router.push("/sign-in");
+    }
+  }, [isLoaded, isSignedIn, router]);
+
+  if (!isLoaded || !isSignedIn) {
+    return <div>Loading...</div>; // optional loader
+  }
   
   return (
     <>

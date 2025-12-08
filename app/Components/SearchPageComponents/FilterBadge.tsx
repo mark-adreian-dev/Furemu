@@ -2,7 +2,7 @@
 
 import Badge from "../AnimePreviewComponents/BasicInfoComponents/Badge";
 import { GenreData } from "@/app/Types/Genre";
-import { useGlobalContext } from "./SearchPage";
+import { useGlobalContext } from "./SearchPageClient";
 import { Filter } from "@/app/Types/GlobalTypes";
 
 interface Props {

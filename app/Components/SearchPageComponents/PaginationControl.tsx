@@ -1,7 +1,7 @@
 "use client"
 
 import { Pagination } from "@/app/Types/BatchData"
-import { useGlobalContext } from "./SearchPage"
+import { useGlobalContext } from "./SearchPageClient"
 import { useEffect, useRef, useState } from "react"
 import { Swiper, SwiperSlide } from "swiper/react"
 import { Navigation } from "swiper/modules";
@@ -82,11 +82,11 @@ const PaginationControl = ({ paginationData, isLoading }: {paginationData: Pagin
             {
               pages.map((pageNumber: number) => {
                 if(pageNumber === pageCount)
-                  return <SwiperSlide key={pageNumber}>
+                  return <SwiperSlide key={pageNumber} className="!w-fit">
                     <button onClick={() => switchPage(pageNumber)} key={pageNumber} className="border-none btn bg-accent text-darker-blue hover:bg-accent mr-2">{pageNumber}</button>
                   </SwiperSlide>
                 else 
-                return <SwiperSlide key={pageNumber}>
+                  return <SwiperSlide key={pageNumber} className="!w-fit">
                     <button onClick={() => switchPage(pageNumber)} key={pageNumber} className="border-none btn bg-darker-blue text-white mr-2 hover:bg-accent hover:text-darker-blue">{pageNumber}</button>
                   </SwiperSlide>            
               })

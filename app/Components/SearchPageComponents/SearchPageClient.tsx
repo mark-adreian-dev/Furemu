@@ -18,6 +18,8 @@ import { Filter } from "@/app/Types/GlobalTypes";
 import { Genre, GenreData } from "@/app/Types/Genre";
 import { Order } from "@/app/Utilities/FetchAnime";
 import { useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
+import { useUser } from "@clerk/nextjs"
 
 const bannerData: BannerSlide[] = banner.data;
 
@@ -166,7 +168,7 @@ const paginationDefaultValue = {
   last_visible_page: 0,
 }
 
-const SearchPage:React.FC<Props> = ({ params }) => {
+const SearchPageClient:React.FC<Props> = ({ params }) => {
 
   const controllerRef = useRef<AbortController>();
   const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -185,12 +187,73 @@ const SearchPage:React.FC<Props> = ({ params }) => {
   const [isContentClicked, setIsContentClicked] = useState<boolean>(false)
 
 
-
+  const { isSignedIn, isLoaded } = useUser();
+  const router = useRouter();
   const resetFitler = () => {
     setRating(Rating.NO_RATING);
     setType("");
     setGenre("");
   };
+
+  useEffect(() => {
+    // Wait until user data is loaded
+    if (isLoaded && !isSignedIn) {
+      // Redirect to Clerk sign-in page if not signed in
+      router.push("/sign-in");
+    }
+
+    if (isSignedIn) {
+      const fetchSearchData = (delayRate: number) => {
+        const parameters: Params = {
+          page: pageCount,
+        };
+
+        //If filter is present add filter as parameters to the request
+        if (homePageQuery !== null && isInitialLoad) {
+          setIsInitialLoad(false)
+          setQuery(homePageQuery)
+          parameters.q = homePageQuery
+          parameters.sort = Order.ASC
+          parameters.order_by = "popularity"
+
+
+        }
+        if (query === "") {
+          parameters.sort = Order.ASC
+          parameters.order_by = "popularity"
+
+        }
+        if (query !== "") parameters.q = query;
+        if (rating !== Rating.NO_RATING) parameters.rating = rating;
+        if (type !== "") parameters.type = type;
+        if (genre !== "") parameters.genres = genre;
+        if (mangaStatus != "") parameters.status = mangaStatus;
+
+        controllerRef.current = new AbortController();
+        const signal = controllerRef.current.signal;
+
+        const fetchdata = async () => {
+          const response: Batch = await FetchAnime(
+            `/${params}`,
+            delayRate,
+            parameters,
+            signal
+          );
+
+          if ((response as Batch)) {
+            setPaginationData((response as Batch).pagination);
+            setData((response as Batch).data);
+            setIsLoading(false);
+          } else {
+            setPaginationData(paginationDefaultValue)
+            setData([])
+          }
+        };
+        fetchdata();
+      };
+      fetchSearchData(1)
+    }
+  }, [isLoaded, isSignedIn, router, query, mangaStatus, pageCount, rating, type, genre, params, homePageQuery, isInitialLoad]);
 
   useEffect(() => {
     const updateScreenSize = () => {
@@ -214,59 +277,10 @@ const SearchPage:React.FC<Props> = ({ params }) => {
     fetchGenre(params);
   }, [params]);
 
-  useEffect(() => {
-    const fetchSearchData = (delayRate: number) => {
-      const parameters: Params = {
-        page: pageCount,
-      };
   
-      //If filter is present add filter as parameters to the request
-      if(homePageQuery !== null && isInitialLoad) {
-        setIsInitialLoad(false)
-        setQuery(homePageQuery)
-        parameters.q = homePageQuery
-        parameters.sort = Order.ASC
-        parameters.order_by = "popularity"
-        
-        
-      }
-      if (query === "") {
-        parameters.sort = Order.ASC
-        parameters.order_by = "popularity"
-
-      }
-      if (query !== "") parameters.q = query;
-      if (rating !== Rating.NO_RATING) parameters.rating = rating;
-      if (type !== "") parameters.type = type;
-      if (genre !== "") parameters.genres = genre;
-      if (mangaStatus != "") parameters.status = mangaStatus;
-  
-      controllerRef.current = new AbortController();
-      const signal = controllerRef.current.signal;
-  
-      const fetchdata = async () => {
-        const response: Batch = await FetchAnime(
-          `/${params}`,
-          delayRate,
-          parameters,
-          signal
-        );
-  
-        if((response as Batch)) {
-          setPaginationData((response as Batch).pagination);
-          setData((response as Batch).data);
-          setIsLoading(false);
-        } else {
-          setPaginationData(paginationDefaultValue)
-          setData([])
-        }
-      };
-      fetchdata();
-    };
-
-    fetchSearchData(1)
-  }, [query, mangaStatus, pageCount, rating, type, genre, params, homePageQuery, isInitialLoad]);
-  
+  if (!isLoaded || !isSignedIn) {
+    return <div>Loading...</div>; // optional loader
+  }
   return (
     <>
        <div className='w-full h-0 sticky top-0 z-[100] bg-[rgba(225,2255,255, 0)]'>
@@ -345,4 +359,4 @@ const SearchPage:React.FC<Props> = ({ params }) => {
   );
 };
 
-export default SearchPage;
+export default SearchPageClient;

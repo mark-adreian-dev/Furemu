@@ -1,7 +1,7 @@
 "use client";
 
 import { Dispatch, SetStateAction } from "react";
-import { useGlobalContext } from "./SearchPage";
+import { useGlobalContext } from "./SearchPageClient";
 import { Rating } from "@/app/Utilities/FetchAnime";
 interface Props {
   optionName: string;

@@ -1,7 +1,7 @@
 "use client";
 import { Dispatch, SetStateAction, MutableRefObject, useEffect } from "react";
 import Image from "next/image";
-import { useGlobalContext } from "./SearchPage";
+import { useGlobalContext } from "./SearchPageClient";
 
 interface Props {
   setValue: Dispatch<SetStateAction<string>>;

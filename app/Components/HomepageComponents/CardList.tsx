@@ -45,27 +45,30 @@ const CardList:React.FC<Props> = ({ endpoint, prevEl, nextEl, title, type, index
     fetchDefaultData()
     
   },[endpoint, index, setIsContentLoaded])
-
+  console.log(data)
   if(isContentLoaded) {
     return (
       <div className='featured-section py-8 px-6 tablet:px-8 tablet:py-16 desktop:px-16'>
           <TitleControl title={title} nextEl={nextEl} prevEl={prevEl}/>
           <Swiper
-            modules={[Navigation]}
-            navigation={{
-              nextEl: "." + nextEl,
-              prevEl: "." + prevEl,
-            }}
-            slidesPerGroup={3}
-            onSlideChange={() => {}}
-            slidesPerView="auto"
-            onSwiper={(swiper) => (animeRef.current = swiper)}
-            initialSlide={0}
+          modules={[Navigation]}
+          navigation={{
+            nextEl: "." + nextEl,
+            prevEl: "." + prevEl,
+          }}
+          spaceBetween={16}                // spacing between cards
+          slidesPerView="auto"             // allow dynamic-sizing cards
+          slidesPerGroupAuto={true}        // auto group scrolling
+          centeredSlides={false}
+          resistance={true}
+          resistanceRatio={0.7}
+          onSwiper={(swiper) => (animeRef.current = swiper)}
+          initialSlide={0}
           >
             {
               data?.map((anime: AnimeData) => 
-               <SwiperSlide key={anime.mal_id} className="mr-2" onClick={handleCardClicked}>
-                <Link key={anime.mal_id} href={`${type}/${anime.mal_id}`}>
+                <SwiperSlide key={anime.mal_id} onClick={handleCardClicked} className="mr-2 !w-fit">
+                <Link key={anime.mal_id} href={`${type}/${anime.mal_id}`} className='w-fit'>
                   <Card 
                     imageUrl={anime.images.jpg.image_url}
                     animeTitleEnglish={anime.title_english}

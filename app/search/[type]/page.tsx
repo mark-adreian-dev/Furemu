@@ -1,14 +1,14 @@
 
 import Header from "@/app/Components/Header";
 import Footer from "@/app/Components/Footer";
-import SearchPage from "@/app/Components/SearchPageComponents/SearchPage";
+import SearchPageClient from "@/app/Components/SearchPageComponents/SearchPageClient";
 
 const page = ({ params }: { params: { type: string } }) => {
  
   return (
     <>
       <Header active={params.type} page="search" />
-      <SearchPage params={params.type} />
+      <SearchPageClient params={params.type} />
       <Footer />
       
     </>

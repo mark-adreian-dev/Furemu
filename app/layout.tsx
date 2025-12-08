@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-
+import { ClerkProvider } from "@clerk/nextjs"
 import 'swiper/css';
 import 'swiper/css/pagination';
 import "@/app/globals.css";
@@ -20,12 +20,15 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode;}>) {
   return (
-    <html lang="en" className="scrollbar-thin scrollbar-thumb-accent scrollbar-track-darker-blue scrollbar-thumb-rounded-full bg-darker-blue">
-      <body className={`bg-darker-blue ${inter.variable} relative`}>
-        <main>
-          {children}
-        </main>
-      </body>
-    </html>
+    <ClerkProvider>
+      <html lang="en" className="scrollbar-thin scrollbar-thumb-accent scrollbar-track-darker-blue scrollbar-thumb-rounded-full bg-darker-blue">
+        <body className={`bg-darker-blue ${inter.variable} relative`}>
+          <main>
+            {children}
+          </main>
+        </body>
+      </html>
+    </ClerkProvider>
+    
   );
 }

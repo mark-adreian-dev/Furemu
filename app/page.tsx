@@ -61,7 +61,6 @@ const Home = () => {
   const [isContentLoaded, setIsContentLoaded] = useState<boolean>(false)
   const [isContentClicked, setIsContentClicked] = useState<boolean>(false)
 
-
   return (
     <>
       <div className='w-full h-0 sticky top-0 z-[100] bg-[rgba(225,2255,255, 0)]'>

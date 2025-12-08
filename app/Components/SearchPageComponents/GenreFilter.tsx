@@ -5,7 +5,7 @@ import FilterItem from "./FilterItem";
 import SmoothScroll from "../SmoothScroll";
 import { useEffect, useState } from "react";
 import { GenreData } from "@/app/Types/Genre";
-import { useGlobalContext } from "./SearchPage";
+import { useGlobalContext } from "./SearchPageClient";
 
 interface Props {
   items: GenreData[]
